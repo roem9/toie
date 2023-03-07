@@ -22,7 +22,7 @@ class TesToefl extends BaseController
     public function getAllTes(){
         $db = db_connect();
         $builder = $db->table('tes_toefl')
-            ->where(["tes_toefl.hapus" => 0])
+            ->where(["tes_toefl.hapus" => 0, "client.hapus" => 0])
             ->select('id_tes, nama_tes, nama_client, DATE_FORMAT(tgl_tes, "%d-%M-%Y") as tgl_tes, nama_soal, kuota, status, url, MD5(id_tes) as tes, tes_toefl.password, (SELECT COUNT(id) FROM peserta_toefl WHERE id_tes = tes_toefl.id_tes) as peserta')
             ->join('client', 'tes_toefl.fk_id_client = client.id_client')
             ->join('soal', 'tes_toefl.id_soal = soal.id_soal');
@@ -275,7 +275,7 @@ class TesToefl extends BaseController
 
         $data['sidebar'] = "testoefl";
         $data['title'] = "Hasil Tes";
-        $data['breadcrumbs'] = ["<a class='opacity-5 text-dark' href='".base_url()."/tes'>Tes TOEFL</a>", $data['nama_tes']];
+        $data['breadcrumbs'] = ["<a class='opacity-5 text-dark' href='".base_url()."/testoefl'>Tes TOEFL</a>", $data['nama_tes']];
         $data['searchButton'] = false;
 
         return view('pages/hasilTes-toefl', $data);

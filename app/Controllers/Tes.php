@@ -35,7 +35,7 @@ class Tes extends BaseController
     public function getAllTes(){
         $db = db_connect();
         $builder = $db->table('tes')
-            ->where(["tes.hapus" => 0])
+            ->where(["tes.hapus" => 0, "client.hapus" => 0])
             ->select('id_tes, nama_tes, nama_client, DATE_FORMAT(tgl_tes, "%d-%M-%Y") as tgl_tes, tipe_tes, tipe_soal, kuota, status, url, MD5(id_tes) as tes, tes.password, (SELECT COUNT(id) FROM peserta_ielts WHERE id_tes = tes.id_tes) as peserta')
             ->join('client', 'tes.fk_id_client = client.id_client');
 

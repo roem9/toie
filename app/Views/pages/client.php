@@ -226,8 +226,7 @@
           $('.sukses').html($obj.sukses);
 
           if ($obj.edit == false) {
-            $(`#formTambahClient #nama_program_add`).val("");
-            $(`#formTambahClient #deskrispi_add`).val("");
+            $("#formTambahClient")[0].reset();
           } else {
             $(`#logo_client`).html(
               `<img src="<?= base_url()?>public/assets/logo-client/${$obj.logo}" alt="" class="img-fluid" width="30%">`
@@ -235,6 +234,9 @@
           }
 
           showData();
+          $('html, .modal-body').animate({
+            scrollTop: 0
+          }, 'slow');
         }
       }
     });

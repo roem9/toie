@@ -27,7 +27,7 @@ class ClientArea extends BaseController
         $password = $this->request->getPost('password');
         $remember = $this->request->getPost('remember');
 
-        $data = $model->where('url', $username)->first();
+        $data = $model->where(['url' => $username, 'hapus' => 0])->first();
         if ($data) {
             $pass = $data['password'];
             $verify_pass = password_verify($password, $pass);

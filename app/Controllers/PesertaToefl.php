@@ -5,6 +5,17 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\PesertaToeflModel;
 
+// library qrcode & pdf 
+use Endroid\QrCode\Color\Color;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Label\Label;
+use Endroid\QrCode\Logo\Logo;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
+use App\Libraries\Pdfgenerator;
+
 class PesertaToefl extends BaseController
 {
     public function cekEmail(){
@@ -73,10 +84,18 @@ class PesertaToefl extends BaseController
                 $nilai_reading = $benar;
             }
         }
-
         
         $text = substr($text, 0, -1);
         $text = '{"jawaban":['.$text.']}';
+
+        // nomor sertifikat 
+        $date_year = date('Y', strtotime($tes['tgl_tes']));
+        $date_month = date('m', strtotime($tes['tgl_tes']));
+
+        $no_doc = $db->query("SELECT no_doc FROM peserta_toefl as a JOIN tes_toefl as b ON a.id_tes = b.id_tes WHERE YEAR(tgl_tes) = $date_year AND MONTH(tgl_tes) = $date_month ORDER BY no_doc DESC")->getRowArray();
+
+        if(isset($no_doc)) $no = $no_doc['no_doc']+1;
+        else $no = 1;
 
         $data = [
             "id_tes" => $tes['id_tes'],
@@ -91,6 +110,7 @@ class PesertaToefl extends BaseController
             "nilai_structure" => $nilai_structure,
             "nilai_reading" => $nilai_reading,
             "text" => $text,
+            "no_doc" => $no
         ];
 
         $model = new PesertaToeflModel();
@@ -128,5 +148,49 @@ class PesertaToefl extends BaseController
 
         $id_tes = md5($data['id_tes']);
         return redirect()->to(base_url("toefl/$client[url]/$id_tes"));
+    }
+
+    public function pdfToefl($id_peserta){
+        $db = db_connect();
+        $data = $db->query("SELECT * FROM peserta_toefl as a JOIN tes_toefl as b ON a.id_tes = b.id_tes JOIN client as c ON b.fk_id_client = c.id_client WHERE md5(id) = '$id_peserta'")->getRowArray();
+
+        
+        $data['no_doc'] = no_doc($data['no_doc']);
+        $data['hari'] = date('d', strtotime($data['tgl_tes']));
+        $data['tahun'] = date('y', strtotime($data['tgl_tes']));
+        $data['bulan'] = getHurufBulan(date('m', strtotime($data['tgl_tes'])));
+        $writer = new PngWriter();
+
+        // Create QR code
+        $qrCode = QrCode::create(base_url()."c/toefl/".$data['url']."/".$id_peserta)
+            ->setEncoding(new Encoding('UTF-8'))
+            ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
+            ->setSize(300)
+            ->setMargin(10)
+            ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
+            ->setForegroundColor(new Color(0, 0, 0));
+
+        // Create generic logo
+        $logo = Logo::create( FCPATH .'/public/assets/logo-client/'.$data['logo'])
+            ->setResizeToWidth(150);
+
+        $result = $writer->write($qrCode, $logo);
+        
+        $data['barcode'] = $result->getDataUri();
+
+        $Pdfgenerator = new Pdfgenerator();
+        // filename dari pdf ketika didownload
+        $file_pdf = "$data[nama] - $data[tgl_tes]";
+        // setting paper
+        $paper = 'A4';
+        //orientasi paper potrait / landscape
+        $orientation = "potrait";
+
+        $html = view('pages/pdfToefl', $data);
+
+        // run dompdf
+        $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+
+        // return view('pages/pdfIelts', $data);
     }
 }

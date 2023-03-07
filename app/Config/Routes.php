@@ -92,12 +92,19 @@ $routes->post('/clientarea/simpanFeedbackSpeaking', 'ClientArea::simpanFeedbackS
 $routes->post('/PesertaIelts/cekEmail', 'PesertaIelts::cekEmail');
 $routes->post('/PesertaIelts/passwordCheck', 'PesertaIelts::passwordCheck');
 $routes->post('/PesertaIelts/addJawabanIelts', 'PesertaIelts::addJawabanIelts');
+$routes->get('/hasilielts/(.*)', 'PesertaIelts::pdfIelts/$1');
+$routes->get('/hasiltoefl/(.*)', 'PesertaToefl::pdfToefl/$1');
+$routes->get('/feedbackielts/(.*)', 'PesertaIelts::feedbackIelts/$1');
 
 $routes->post('/PesertaToefl/cekEmail', 'PesertaToefl::cekEmail');
 $routes->post('/PesertaToefl/passwordCheck', 'PesertaToefl::passwordCheck');
 $routes->post('/PesertaToefl/addJawabanToefl', 'PesertaToefl::addJawabanToefl');
 
+$routes->get('/c/toefl/(.*)/(.*)', 'Sertifikat::toefl/$1/$2');
+$routes->get('/c/ielts/(.*)/(.*)', 'Sertifikat::ielts/$1/$2');
+
 $routes->get('/toefl/(.*)/(.*)', 'TesToefl::soalTes/$1/$2');
+
 $routes->get('/(.*)/(.*)', 'Tes::soalTes/$1/$2');
 
 /*

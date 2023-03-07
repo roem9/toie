@@ -6,6 +6,17 @@ use App\Controllers\BaseController;
 use \Hermawan\DataTables\DataTable;
 use App\Models\PesertaIeltsModel;
 
+// library qrcode & pdf 
+use Endroid\QrCode\Color\Color;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Label\Label;
+use Endroid\QrCode\Logo\Logo;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
+use App\Libraries\Pdfgenerator;
+
 class PesertaIelts extends BaseController
 {
     public function cekEmail(){
@@ -439,6 +450,15 @@ class PesertaIelts extends BaseController
         }
 
         $text_writing = substr($text_writing, 0, -3);
+
+        // nomor sertifikat 
+        $date_year = date('Y', strtotime($tes['tgl_tes']));
+        $date_month = date('m', strtotime($tes['tgl_tes']));
+
+        $no_doc = $db->query("SELECT no_doc FROM peserta_ielts as a JOIN tes as b ON a.id_tes = b.id_tes WHERE YEAR(tgl_tes) = $date_year AND MONTH(tgl_tes) = $date_month ORDER BY no_doc DESC")->getRowArray();
+
+        if(isset($no_doc)) $no = $no_doc['no_doc']+1;
+        else $no = 1;
         
         $data = [
             "id_tes" => $tes['id_tes'],
@@ -448,7 +468,8 @@ class PesertaIelts extends BaseController
             "nilai_listening" => $benar_listening,
             "nilai_reading" => $benar_reading,
             "text_listening_reading" => $jawaban_ietls,
-            "text_writing" => $text_writing
+            "text_writing" => $text_writing,
+            "no_doc" => $no
         ];
 
         $model = new PesertaIeltsModel();
@@ -476,5 +497,91 @@ class PesertaIelts extends BaseController
         ];
 
         return $result;
+    }
+    
+    public function pdfIelts($id_peserta){
+        $db = db_connect();
+        $data = $db->query("SELECT * FROM peserta_ielts as a JOIN tes as b ON a.id_tes = b.id_tes JOIN client as c ON b.fk_id_client = c.id_client WHERE md5(id) = '$id_peserta'")->getRowArray();
+
+        $data['no_doc'] = no_doc($data['no_doc']);
+        $data['hari'] = date('d', strtotime($data['tgl_tes']));
+        $data['tahun'] = date('y', strtotime($data['tgl_tes']));
+        $data['bulan'] = getHurufBulan(date('m', strtotime($data['tgl_tes'])));
+        $writer = new PngWriter();
+
+        // Create QR code
+        $qrCode = QrCode::create(base_url()."c/ielts/".$data['url']."/".$id_peserta)
+            ->setEncoding(new Encoding('UTF-8'))
+            ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
+            ->setSize(300)
+            ->setMargin(10)
+            ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
+            ->setForegroundColor(new Color(0, 0, 0));
+
+        // Create generic logo
+        $logo = Logo::create( FCPATH .'/public/assets/logo-client/'.$data['logo'])
+            ->setResizeToWidth(150);
+
+        $result = $writer->write($qrCode, $logo);
+        
+        $data['barcode'] = $result->getDataUri();
+
+        $Pdfgenerator = new Pdfgenerator();
+        // filename dari pdf ketika didownload
+        $file_pdf = "$data[first_name] $data[last_name] - $data[tgl_tes]";
+        // setting paper
+        $paper = 'A4';
+        //orientasi paper potrait / landscape
+        $orientation = "potrait";
+
+        $html = view('pages/pdfIelts', $data);
+
+        // run dompdf
+        $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+
+        // return view('pages/pdfIelts', $data);
+    }
+
+    public function feedbackIelts($id_peserta){
+        $db = db_connect();
+        $data = $db->query("SELECT * FROM peserta_ielts as a JOIN tes as b ON a.id_tes = b.id_tes JOIN client as c ON b.fk_id_client = c.id_client WHERE md5(id) = '$id_peserta'")->getRowArray();
+
+        $data['no_doc'] = no_doc($data['no_doc']);
+        $data['hari'] = date('d', strtotime($data['tgl_tes']));
+        $data['tahun'] = date('y', strtotime($data['tgl_tes']));
+        $data['bulan'] = getHurufBulan(date('m', strtotime($data['tgl_tes'])));
+        $writer = new PngWriter();
+
+        // Create QR code
+        $qrCode = QrCode::create(base_url()."c/ielts/".$data['url']."/".$id_peserta)
+            ->setEncoding(new Encoding('UTF-8'))
+            ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
+            ->setSize(300)
+            ->setMargin(10)
+            ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
+            ->setForegroundColor(new Color(0, 0, 0));
+
+        // Create generic logo
+        $logo = Logo::create( FCPATH .'/public/assets/logo-client/'.$data['logo'])
+            ->setResizeToWidth(150);
+
+        $result = $writer->write($qrCode, $logo);
+        
+        $data['barcode'] = $result->getDataUri();
+
+        $Pdfgenerator = new Pdfgenerator();
+        // filename dari pdf ketika didownload
+        $file_pdf = "$data[first_name] $data[last_name] - $data[tgl_tes]";
+        // setting paper
+        $paper = 'A4';
+        //orientasi paper potrait / landscape
+        $orientation = "potrait";
+
+        $html = view('pages/feedbackIelts', $data);
+
+        // run dompdf
+        $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+
+        // return view('pages/pdfIelts', $data);
     }
 }

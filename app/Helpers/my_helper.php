@@ -166,6 +166,77 @@ function list_soal_toefl()
             }
         }
     }
+
+    function skor_ielts( $nilai_listening, $nilai_reading, $nilai_writing, $nilai_speaking) {
+        $skor = ($nilai_listening + $nilai_reading + $nilai_writing + $nilai_speaking) / 4;
+        
+        return $skor;
+    }
+
+    function ielts_writing(
+        $nilai_ta_1,
+        $nilai_cc_1,
+        $nilai_gra_1,
+        $nilai_lr_1,
+        $nilai_ta_2,
+        $nilai_cc_2,
+        $nilai_gra_2,
+        $nilai_lr_2
+      ) {
+        // $task_1 = pembulatan_skor_ielts(
+        //   (floatval($nilai_ta_1) +
+        //     floatval($nilai_cc_1) +
+        //     floatval($nilai_gra_1) +
+        //     floatval($nilai_lr_1)) /
+        //     4
+        // );
+        // $task_2 = pembulatan_skor_ielts(
+        //   (floatval($nilai_ta_2) +
+        //     floatval($nilai_cc_2) +
+        //     floatval($nilai_gra_2) +
+        //     floatval($nilai_lr_2)) /
+        //     4
+        // );
+
+        $task_1 = (floatval($nilai_ta_1) + floatval($nilai_cc_1) + floatval($nilai_gra_1) + floatval($nilai_lr_1)) / 4;
+        $task_2 = (floatval($nilai_ta_2) + floatval($nilai_cc_2) + floatval($nilai_gra_2) + floatval($nilai_lr_2)) / 4;
+      
+        $nilai_writing = (floatval($task_1) * 40 + floatval($task_2) * 60) / 100;
+      
+        return $nilai_writing;
+    }
+
+    function ielts_speaking(
+        $nilai_topic,
+        $nilai_fluency,
+        $nilai_grammar,
+        $nilai_vocabulary
+      ) {
+        $nilai_speaking = pembulatan_skor_ielts(
+          (floatval($nilai_topic) +
+            floatval($nilai_fluency) +
+            floatval($nilai_grammar) +
+            floatval($nilai_vocabulary)) /
+            4
+        );
+      
+        return $nilai_speaking;
+    }
+
+    function pembulatan_skor_ielts($angka) {
+        $decimal = $angka - floor($angka); // hitung nilai desimal
+      
+        if ($decimal <= 0.25) {
+          // jika desimal < 0.25
+          return floor($angka); // bulatkan ke bawah menjadi 0
+        } else if ($decimal > 0.25 && $decimal <= 0.75) {
+          // jika desimal >= 0.25 dan < 0.75
+          return floor($angka) + 0.5; // bulatkan menjadi 0.5
+        } else {
+          // jika desimal > 0.75
+          return ceil($angka); // bulatkan ke atas menjadi 1
+        }
+    }
 // soal ielts 
 
 // soal toefl 
@@ -248,5 +319,62 @@ function poin($tipe, $soal){
 }
 
 function skor($nilai_listening, $nilai_structure, $nilai_reading){
-    return round(((poin("Listening", $nilai_listening) + poin("Structure", $nilai_structure) + poin("Reading", $nilai_reading)) * 10) / 3);
+    $skor = round(((poin("Listening", $nilai_listening) + poin("Structure", $nilai_structure) + poin("Reading", $nilai_reading)) * 10) / 3);
+
+    if($skor <= 310){
+        return 310;
+    } else {
+        return $skor;
+    }
+}
+
+// penomoran sertifikat 
+function getHurufBulan($bln){
+    switch ($bln){
+        case 1: 
+            return "A";
+            break;
+        case 2:
+            return "B";
+            break;
+        case 3:
+            return "C";
+            break;
+        case 4:
+            return "D";
+            break;
+        case 5:
+            return "E";
+            break;
+        case 6:
+            return "F";
+            break;
+        case 7:
+            return "G";
+            break;
+        case 8:
+            return "H";
+            break;
+        case 9:
+            return "I";
+            break;
+        case 10:
+            return "J";
+            break;
+        case 11:
+            return "K";
+            break;
+        case 12:
+            return "L";
+            break;
+    }
+}
+
+function no_doc($no){
+    $no_doc = "";
+    if($no > 0 && $no < 10) $no_doc = "00".$no;
+    elseif($no >= 10 && $no < 100) $no_doc = "0".$no;
+    elseif($no >= 100) $no_doc = $no;
+
+    return $no_doc;
 }

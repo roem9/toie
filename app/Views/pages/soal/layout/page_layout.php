@@ -30,7 +30,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 border-radius-xl position-sticky mt-4 top-1 z-index-sticky blur shadow-blur left-auto" id="navbarTes" style="display:none" navbar-scroll="true">
       <div class="container-fluid pe-3">
-        <a href="javascript:void()"><img src="<?= $logo?>" class="img-fluid"></a>
+        <a href="javascript:void()"><img src="<?= $logo?>" class="img-fluid" style="max-height: 60px"></a>
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
             <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>

@@ -8,7 +8,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="text-center mt-4 mb-4">
-                                <a href="javascript:void()"><img src="<?= $logo?>" alt="" class="img-fluid"></a>
+                                <a href="javascript:void()"><img src="<?= $logo?>" alt="" class="img-fluid" style="max-height: 60px"></a>
                             </div>
                             <div class="mb-2 mt-3">
                                 <?php if (session()->getFlashdata('msg')) : ?>
@@ -32,7 +32,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center mt-4 mb-4">
-                                            <a href="javascript:void()"><img src="<?= $logo?>" alt="" class="img-fluid"></a>
+                                            <a href="javascript:void()"><img src="<?= $logo?>" alt="" class="img-fluid" style="max-height: 60px"></a>
                                         </div>
                                         <?php if (session()->getFlashdata('msg')) : ?>
                                             <?= session()->getFlashdata('msg'); ?>
@@ -90,7 +90,7 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="text-center mb-4">
-                                                <a href="javascript:void()"><img src="<?= $logo?>" alt="" class="img-fluid"></a>
+                                                <a href="javascript:void()"><img src="<?= $logo?>" alt="" class="img-fluid" style="max-height: 60px"></a>
                                             </div>
                                             <center>
                                                 <p><b>First Session : LISTENING</b></p>
@@ -113,7 +113,7 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="text-center mb-4">
-                                                <a href="javascript:void()"><img src="<?= $logo?>" alt="" class="img-fluid"></a>
+                                                <a href="javascript:void()"><img src="<?= $logo?>" alt="" class="img-fluid" style="max-height: 60px"></a>
                                             </div>
                                             <center>
                                                 <p><b>Second Session : READING</b></p>
@@ -136,7 +136,7 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="text-center mb-4">
-                                                <a href="javascript:void()"><img src="<?= $logo?>" alt="" class="img-fluid"></a>
+                                                <a href="javascript:void()"><img src="<?= $logo?>" alt="" class="img-fluid" style="max-height: 60px"></a>
                                             </div>
                                             <center>
                                                 <p><b>Third Session : WRITING</b></p>
@@ -200,7 +200,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="text-center mt-4 mb-4">
-                                    <a href="javascript:void()"><img src="<?= $logo?>" alt="" class="img-fluid"></a>
+                                    <a href="javascript:void()"><img src="<?= $logo?>" alt="" class="img-fluid" style="max-height: 60px"></a>
                                 </div>
                                 <div class="mb-2 mt-3">
                                     <b>Your device screen is too small to take the test. Please replace your device first</b>
