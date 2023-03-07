@@ -130,35 +130,24 @@ function ielts_writing(
   nilai_gra_2,
   nilai_lr_2
 ) {
-  // let task_1 = pembulatan_skor_ielts(
-  //   (parseFloat(nilai_ta_1) +
-  //     parseFloat(nilai_cc_1) +
-  //     parseFloat(nilai_gra_1) +
-  //     parseFloat(nilai_lr_1)) /
-  //     4
-  // );
-  // let task_2 = pembulatan_skor_ielts(
-  //   (parseFloat(nilai_ta_2) +
-  //     parseFloat(nilai_cc_2) +
-  //     parseFloat(nilai_gra_2) +
-  //     parseFloat(nilai_lr_2)) /
-  //     4
-  // );
-
-  let task_1 =
+  let task_1 = pembulatan_skor_ielts(
     (parseFloat(nilai_ta_1) +
       parseFloat(nilai_cc_1) +
       parseFloat(nilai_gra_1) +
       parseFloat(nilai_lr_1)) /
-    4;
-  let task_2 =
+      4
+  );
+  let task_2 = pembulatan_skor_ielts(
     (parseFloat(nilai_ta_2) +
       parseFloat(nilai_cc_2) +
       parseFloat(nilai_gra_2) +
       parseFloat(nilai_lr_2)) /
-    4;
+      4
+  );
 
-  let nilai_writing = (parseFloat(task_1) * 40 + parseFloat(task_2) * 60) / 100;
+  let nilai_writing = pembulatan_skor_ielts(
+    (parseFloat(task_1) + parseFloat(task_2) + parseFloat(task_2)) / 3
+  );
 
   return nilai_writing;
 }

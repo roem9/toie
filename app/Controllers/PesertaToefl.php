@@ -178,18 +178,26 @@ class PesertaToefl extends BaseController
         
         $data['barcode'] = $result->getDataUri();
 
-        $Pdfgenerator = new Pdfgenerator();
-        // filename dari pdf ketika didownload
-        $file_pdf = "$data[nama] - $data[tgl_tes]";
-        // setting paper
-        $paper = 'A4';
-        //orientasi paper potrait / landscape
-        $orientation = "potrait";
+        $dompdf = new \Dompdf\Dompdf(); 
+        $dompdf->loadHtml(view('pages/pdfToefl', $data));
+        $dompdf->setPaper('A4', 'potrait');
+        $dompdf->render();
+        // $dompdf->stream();
+        $dompdf->stream("$data[nama] - $data[tgl_tes] - TOEFL.pdf", array("Attachment" => false));
+        exit(0);
 
-        $html = view('pages/pdfToefl', $data);
+        // $Pdfgenerator = new Pdfgenerator();
+        // // filename dari pdf ketika didownload
+        // $file_pdf = "$data[nama] - $data[tgl_tes]";
+        // // setting paper
+        // $paper = 'A4';
+        // //orientasi paper potrait / landscape
+        // $orientation = "potrait";
 
-        // run dompdf
-        $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+        // $html = view('pages/pdfToefl', $data);
+
+        // // run dompdf
+        // $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
 
         // return view('pages/pdfIelts', $data);
     }

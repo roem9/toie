@@ -183,25 +183,22 @@ function list_soal_toefl()
         $nilai_gra_2,
         $nilai_lr_2
       ) {
-        // $task_1 = pembulatan_skor_ielts(
-        //   (floatval($nilai_ta_1) +
-        //     floatval($nilai_cc_1) +
-        //     floatval($nilai_gra_1) +
-        //     floatval($nilai_lr_1)) /
-        //     4
-        // );
-        // $task_2 = pembulatan_skor_ielts(
-        //   (floatval($nilai_ta_2) +
-        //     floatval($nilai_cc_2) +
-        //     floatval($nilai_gra_2) +
-        //     floatval($nilai_lr_2)) /
-        //     4
-        // );
-
-        $task_1 = (floatval($nilai_ta_1) + floatval($nilai_cc_1) + floatval($nilai_gra_1) + floatval($nilai_lr_1)) / 4;
-        $task_2 = (floatval($nilai_ta_2) + floatval($nilai_cc_2) + floatval($nilai_gra_2) + floatval($nilai_lr_2)) / 4;
+        $task_1 = pembulatan_skor_ielts(
+          (floatval($nilai_ta_1) +
+            floatval($nilai_cc_1) +
+            floatval($nilai_gra_1) +
+            floatval($nilai_lr_1)) /
+            4
+        );
+        $task_2 = pembulatan_skor_ielts(
+          (floatval($nilai_ta_2) +
+            floatval($nilai_cc_2) +
+            floatval($nilai_gra_2) +
+            floatval($nilai_lr_2)) /
+            4
+        );
       
-        $nilai_writing = (floatval($task_1) * 40 + floatval($task_2) * 60) / 100;
+        $nilai_writing = pembulatan_skor_ielts((floatval($task_1) + floatval($task_2) + floatval($task_2)) / 3);
       
         return $nilai_writing;
     }

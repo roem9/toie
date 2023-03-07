@@ -48,7 +48,7 @@
       font-family: 'times';
       font-size: 24px;
       position: absolute;
-      top: 649px;
+      top: 652px;
       left: 460px;
       /* background-color: red; */
       width: 240px;
@@ -58,7 +58,7 @@
       font-family: 'times';
       font-size: 24px;
       position: absolute;
-      top: 689px;
+      top: 693px;
       left: 460px;
       /* background-color: red; */
       width: 240px;
@@ -68,7 +68,7 @@
       font-family: 'times';
       font-size: 24px;
       position: absolute;
-      top: 729px;
+      top: 734px;
       left: 460px;
       /* background-color: red; */
       width: 240px;
@@ -78,7 +78,7 @@
       font-family: 'times';
       font-size: 24px;
       position: absolute;
-      top: 769px;
+      top: 775px;
       left: 460px;
       /* background-color: red; */
       width: 240px;

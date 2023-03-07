@@ -526,18 +526,25 @@ class PesertaIelts extends BaseController
         
         $data['barcode'] = $result->getDataUri();
 
-        $Pdfgenerator = new Pdfgenerator();
-        // filename dari pdf ketika didownload
-        $file_pdf = "$data[first_name] $data[last_name] - $data[tgl_tes]";
-        // setting paper
-        $paper = 'A4';
-        //orientasi paper potrait / landscape
-        $orientation = "potrait";
+        $dompdf = new \Dompdf\Dompdf(); 
+        $dompdf->loadHtml(view('pages/pdfIelts', $data));
+        $dompdf->setPaper('A4', 'potrait');
+        $dompdf->render();
+        // $dompdf->stream();
+        $dompdf->stream("$data[first_name] $data[last_name] - $data[tgl_tes] - IELTS.pdf", array("Attachment" => false));
+        exit(0);
+        // $Pdfgenerator = new Pdfgenerator();
+        // // filename dari pdf ketika didownload
+        // $file_pdf = "$data[first_name] $data[last_name] - $data[tgl_tes]";
+        // // setting paper
+        // $paper = 'A4';
+        // //orientasi paper potrait / landscape
+        // $orientation = "potrait";
 
-        $html = view('pages/pdfIelts', $data);
+        // $html = view('pages/pdfIelts', $data);
 
-        // run dompdf
-        $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+        // // run dompdf
+        // $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
 
         // return view('pages/pdfIelts', $data);
     }
@@ -569,18 +576,26 @@ class PesertaIelts extends BaseController
         
         $data['barcode'] = $result->getDataUri();
 
-        $Pdfgenerator = new Pdfgenerator();
-        // filename dari pdf ketika didownload
-        $file_pdf = "$data[first_name] $data[last_name] - $data[tgl_tes]";
-        // setting paper
-        $paper = 'A4';
-        //orientasi paper potrait / landscape
-        $orientation = "potrait";
+        $dompdf = new \Dompdf\Dompdf(); 
+        $dompdf->loadHtml(view('pages/feedbackIelts', $data));
+        $dompdf->setPaper('A4', 'potrait');
+        $dompdf->render();
+        // $dompdf->stream();
+        $dompdf->stream("$data[first_name] $data[last_name] - $data[tgl_tes] - IELTS Feedback.pdf", array("Attachment" => false));
+        exit(0);
 
-        $html = view('pages/feedbackIelts', $data);
+        // $Pdfgenerator = new Pdfgenerator();
+        // // filename dari pdf ketika didownload
+        // $file_pdf = "$data[first_name] $data[last_name] - $data[tgl_tes]";
+        // // setting paper
+        // $paper = 'A4';
+        // //orientasi paper potrait / landscape
+        // $orientation = "potrait";
 
-        // run dompdf
-        $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+        // $html = view('pages/feedbackIelts', $data);
+
+        // // run dompdf
+        // $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
 
         // return view('pages/pdfIelts', $data);
     }

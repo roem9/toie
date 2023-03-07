@@ -213,35 +213,35 @@
                 <form id="formFeedbackSpeaking">
                   <input type="hidden" name="id" id="id">
                   <div class="form-group">
-                    <label for="kriteria_topic">Evaluation Topic</label>
+                    <label for="kriteria_topic">Fluency and Coherence</label>
                     <textarea name="kriteria_topic" class="form-control" id="kriteria_topic" rows="3"></textarea>
                   </div>
                   <div class="form-group">
-                    <label>Score Topic</label>
+                    <label>Score Fluency and Coherence</label>
                     <input name="nilai_topic" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
                   </div>
                   <div class="form-group">
-                    <label for="kriteria_fluency">Evaluation Fluency</label>
+                    <label for="kriteria_fluency">Lexical Resource</label>
                     <textarea name="kriteria_fluency" class="form-control" id="kriteria_fluency" rows="3"></textarea>
                   </div>
                   <div class="form-group">
-                    <label>Score Fluency</label>
+                    <label>Score Lexical Resource</label>
                     <input name="nilai_fluency" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
                   </div>
                   <div class="form-group">
-                    <label for="kriteria_grammar">Evaluation Grammar</label>
+                    <label for="kriteria_grammar">Grammatical Range and Accuracy</label>
                     <textarea name="kriteria_grammar" class="form-control" id="kriteria_grammar" rows="3"></textarea>
                   </div>
                   <div class="form-group">
-                    <label>Score Grammar</label>
+                    <label>Score Grammatical Range and Accuracy</label>
                     <input name="nilai_grammar" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
                   </div>
                   <div class="form-group">
-                    <label for="kriteria_vocabulary">Evaluation Vocabulary</label>
+                    <label for="kriteria_vocabulary">Pronunciation</label>
                     <textarea name="kriteria_vocabulary" class="form-control" id="kriteria_vocabulary" rows="3"></textarea>
                   </div>
                   <div class="form-group">
-                    <label>Score Vocabulary</label>
+                    <label>Score Pronunciation</label>
                     <input name="nilai_vocabulary" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
                   </div>
                 </form>
