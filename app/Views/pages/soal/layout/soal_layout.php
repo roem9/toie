@@ -66,11 +66,11 @@
                                                     </div>
                                                     <div class="form-floating mb-3">
                                                         <input type="text" name="t4_lahir" class="form form-control required">
-                                                        <label for="">Tempat Lahir</label>
+                                                        <label for="">Place of Birth</label>
                                                     </div>
                                                     <div class="form-floating mb-3">
                                                         <input type="date" name="tgl_lahir" class="form form-control required">
-                                                        <label for="">Tgl Lahir</label>
+                                                        <label for="">Date of Birth</label>
                                                     </div>
                                                     <div class="form-floating mb-3">
                                                         <input type="text" name="email" class="form form-control required">

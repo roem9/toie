@@ -8,13 +8,20 @@ class Soal extends BaseController
 {
     public function index()
     {
-        //
+        $data['sidebar'] = "soal";
+        $data['title'] = "Soal TOEFL";
+        $data['breadcrumbs'] = ["Soal TOEFL"];
+        $data['searchButton'] = false;
+
+        return view('pages/tes', $data);
     }
 
-    public function getSoal($id_soal)
-    {
+    public function getAllSoal(){
         $db = db_connect();
-        $data = $db->query("SELECT * FROM soal WHERE id_soal = $id_soal")->getRowArray();
-        return json_encode($data);
+        $builder = $db->table('soal')
+            ->where(["hapus" => 0])
+            ->select('id_soal, nama_soal, catatan, DATE_FORMAT(tgl_pembuatan, "%d-%M-%Y") as tgl_pembuatan');
+
+        return DataTable::of($builder)->toJson(true);
     }
 }

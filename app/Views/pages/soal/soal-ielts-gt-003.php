@@ -4,7 +4,7 @@
     <div class="card mb-3">
         <div class="card-body">
             <center>
-                <audio id="audio-1" class="audio" data-id="1"><source src="<?= base_url('assets/myaudio/listening-gt-003.mp3?t='.time())?>" type="audio/mpeg"></audio>
+                <audio id="audio-1" class="audio" data-id="1"><source src="<?= base_url('public/assets/myaudio/listening-gt-003.mp3?t='.time())?>" type="audio/mpeg"></audio>
                 <progress id="seekbar-1" value="0" max="1" style="width:100%;"></progress><br>
                 <button class="btn btn-success btnAudio" data-id="1" type="button">play</button>
                 <p><small class="text-danger"><i>note : The audio can only be played once</i></small></p>

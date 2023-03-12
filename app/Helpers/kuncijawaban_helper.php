@@ -219,7 +219,8 @@
             ],
             [
                 "no" => 14,
-                "jawaban" => ["imported"],
+                // "jawaban" => ["imported"],
+                "jawaban" => ["meat"],
             ],
             [
                 "no" => 15,
@@ -303,7 +304,8 @@
             ],
             [
                 "no" => 35,
-                "jawaban" => ["fertiliser enhanced"],
+                // "jawaban" => ["fertilizer enhanced"],
+                "jawaban" => ["fertiliser enhanced", "fertiliser-enhanced"],
             ],
             [
                 "no" => 36,
@@ -311,7 +313,8 @@
             ],
             [
                 "no" => 37,
-                "jawaban" => ["floatation"],
+                // "jawaban" => ["floatation"],
+                "jawaban" => ["floatation", "flotation"],
             ],
             [
                 "no" => 38,
@@ -571,7 +574,8 @@
             ],
             [
                 "no" => 2,
-                "jawaban" => ["2833","3328"],
+                // "jawaban" => ["2833","3328"],
+                "jawaban" => ["28,33", "28, 33", "28 and 33"],
             ],
             [
                 "no" => 3,
@@ -591,7 +595,8 @@
             ],
             [
                 "no" => 7,
-                "jawaban" => ["AE", "EA"],
+                // "jawaban" => ["AE", "EA"],
+                "jawaban" => ["AE", "A,E", "A, E", "A and E"],
             ],
             [
                 "no" => 8,
@@ -816,7 +821,9 @@
             ],
             [
                 "no" => 10,
-                "jawaban" => ["TAKING", "PHOTOGRAPHS", "TAKE PHOTOS"]
+                // "jawaban" => ["TAKING", "PHOTOGRAPHS", "TAKE PHOTOS"]
+                "jawaban" => ["TAKING PHOTOGRAPHS", "TAKE PHOTOGRAPHS"]
+                
             ],
             [
                 "no" => 11,
