@@ -48,7 +48,7 @@
                                                     <button type="button" class="btn bg-gradient-info w-100 btnSignIn">Log In</button>
                                                 </div>
                                             </div>
-                                            <div id="formData" style="display: nones">
+                                            <div id="formData" style="display: none">
                                                 <div class="mb-2 mt-3">
                                                     <div class="row">
                                                         <div class="col">
@@ -91,7 +91,7 @@
         
     
                 <div id="worksheet">
-                    <div class="page page-center" id="transisi-sesi-1" style="display: nones">
+                    <div class="page page-center" id="transisi-sesi-1" style="display: none">
                         <div class="container py-7">
                             <div class="row">
                                 <div class="col-xl-5 col-lg-6 col-md-7 d-flex flex-column mx-auto">
@@ -114,7 +114,7 @@
                         </div>
                     </div>
             
-                    <div class="page page-center" id="transisi-sesi-2" style="display: nones">
+                    <div class="page page-center" id="transisi-sesi-2" style="display: none">
                         <div class="container py-7">
                             <div class="row">
                                 <div class="col-xl-5 col-lg-6 col-md-7 d-flex flex-column mx-auto">
@@ -137,7 +137,7 @@
                         </div>
                     </div>
             
-                    <div class="page page-center" id="transisi-sesi-3" style="display: nones">
+                    <div class="page page-center" id="transisi-sesi-3" style="display: none">
                         <div class="container py-7">
                             <div class="row">
                                 <div class="col-xl-5 col-lg-6 col-md-7 d-flex flex-column mx-auto">
@@ -160,14 +160,14 @@
                         </div>
                     </div>
             
-                    <div id="soal_tes" style="display: nones; color: black;">
+                    <div id="soal_tes" style="display: none; color: black;">
                         <div class="wrapper" id="elementtoScrollToID">
                             <div class="page-wrapper" id="">
                                 <div class="page-body">
                                     <!-- <div class="container-xl"> -->
-                                        <input type="text" name="id_tes" value="<?= $id_tes?>">
+                                        <input type="hidden" name="id_tes" value="<?= $id_tes?>">
             
-                                        <div class="sesi-listening" style="display: nones">
+                                        <div class="sesi-listening" style="display: none">
                                             
                                             <?= $this->renderSection('sesi-listening') ?>
             
@@ -176,7 +176,7 @@
                                             </div>
                                         </div>
             
-                                        <div class="sesi-reading" style="display: nones">
+                                        <div class="sesi-reading" style="display: none">
                                             
                                             <?= $this->renderSection('sesi-reading') ?>
             
@@ -185,7 +185,7 @@
                                             </div>
                                         </div>
             
-                                        <div class="sesi-writing" style="display: nones">
+                                        <div class="sesi-writing" style="display: none">
                                             <?= $this->renderSection('sesi-writing') ?>
             
                                             <div class="d-flex justify-content-end">
