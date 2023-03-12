@@ -75,6 +75,20 @@ class Tes extends BaseController
                     'required' => '{field} harus diisi'
                 ]
             ],
+            't4_lahir' => [
+                'label' => 'Tempat Lahir',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi'
+                ]
+            ],
+            'tgl_lahir' => [
+                'label' => 'Tgl Lahir',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi'
+                ]
+            ],
             'email' => [
                 'label' => 'Email',
                 'rules' => 'required',
@@ -89,12 +103,16 @@ class Tes extends BaseController
             $id = $this->request->getPost('id');
             $first_name = $this->request->getPost('first_name');
             $last_name = $this->request->getPost('last_name');
+            $t4_lahir = $this->request->getPost('t4_lahir');
+            $tgl_lahir = $this->request->getPost('tgl_lahir');
             $email = $this->request->getPost('email');
             $link_speaking = $this->request->getPost('link_speaking');
 
             $data = [
                 'first_name' => $first_name,
                 'last_name' => $last_name,
+                't4_lahir' => $t4_lahir,
+                'tgl_lahir' => $tgl_lahir,
                 'email' => $email,
                 'link_speaking' => $link_speaking,
             ];
@@ -498,8 +516,22 @@ class Tes extends BaseController
             $data['title'] = $data['nama_tes'];
             $data['logo'] = base_url().'/public/assets/logo-client/'.$data['logo'];
             
-            if($data['tipe_soal'] == 'Soal_002'){
+            if($data['tipe_soal'] == "Soal_002"){
                 return view('pages/soal/soal-ielts-002', $data);
+            } else if($data['tipe_soal'] == "Soal_GT_002"){
+                return view('pages/soal/soal-ielts-gt-002', $data);
+            } else if($data['tipe_soal'] == "Soal_GT_003"){
+                return view('pages/soal/soal-ielts-gt-003', $data);
+            } else if($data['tipe_soal'] == "Soal_003"){
+                return view('pages/soal/soal-ielts-003', $data);
+            } else if($data['tipe_soal'] == "Soal_Academic_Post_Test"){
+                return view('pages/soal/soal-ielts-academic-post-test', $data);
+            } else if($data['tipe_soal'] == "Soal_Academic_Pretest"){
+                return view('pages/soal/soal-ielts-academic-pretest', $data);
+            } else if($data['tipe_soal'] == "Soal_General_Post_Test"){
+                return view('pages/soal/soal-ielts-general-post-test', $data);
+            } else if($data['tipe_soal'] == "Soal_General_Pretest"){
+                return view('pages/soal/soal-ielts-general-pretest', $data);
             }
         }
     }

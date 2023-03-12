@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use \Hermawan\DataTables\DataTable;
 use App\Models\PesertaIeltsModel;
 
+use \Mpdf\Mpdf;
 // library qrcode & pdf 
 use Endroid\QrCode\Color\Color;
 use Endroid\QrCode\Encoding\Encoding;
@@ -39,6 +40,8 @@ class PesertaIelts extends BaseController
 
     public function addJawabanIelts(){
         $session = session();
+        $db = db_connect();
+        
         $data = $this->add_jawaban_soal_002();
         $session->setFlashdata('msg', $data['msg']);
         return redirect()->to(base_url("/$data[url]/$data[id_tes]"));
@@ -46,401 +49,56 @@ class PesertaIelts extends BaseController
 
     public function add_jawaban_soal_002(){
         $db = db_connect();
+        helper("kuncijawaban_helper");
         
-        $jawaban_listening = [
-            [
-                "no" => 1,
-                "jawaban" => ["7.50"],
-            ],
-            [
-                "no" => 2,
-                "jawaban" => ["Park Square"],
-            ],
-            [
-                "no" => 3,
-                "jawaban" => ["Media"],
-            ],
-            [
-                "no" => 4,
-                "jawaban" => ["Weather"],
-            ],
-            [
-                "no" => 5,
-                "jawaban" => ["First Letter"],
-            ],
-            [
-                "no" => 6,
-                "jawaban" => ["social bonds"],
-            ],
-            [
-                "no" => 7,
-                "jawaban" => ["brains"],
-            ],
-            [
-                "no" => 8,
-                "jawaban" => ["sound"],
-            ],
-            [
-                "no" => 9,
-                "jawaban" => ["silent singing"],
-            ],
-            [
-                "no" => 10,
-                "jawaban" => ["feet"],
-            ],
-            [
-                "no" => 11,
-                "jawaban" => ["the playground", "playground"],
-            ],
-            [
-                "no" => 12,
-                "jawaban" => ["feedback"],
-            ],
-            [
-                "no" => 13,
-                "jawaban" => ["update"],
-            ],
-            [
-                "no" => 14,
-                "jawaban" => ["extra space"],
-            ],
-            [
-                "no" => 15,
-                "jawaban" => ["C"],
-            ],
-            [
-                "no" => 16,
-                "jawaban" => ["G"],
-            ],
-            [
-                "no" => 17,
-                "jawaban" => ["I"],
-            ],
-            [
-                "no" => 18,
-                "jawaban" => ["E"],
-            ],
-            [
-                "no" => 19,
-                "jawaban" => ["D"],
-            ],
-            [
-                "no" => 20,
-                "jawaban" => ["B"],
-            ],
-            [
-                "no" => 21,
-                "jawaban" => ["<b>C.</b> she had been inspired by a particular book"],
-            ],
-            [
-                "no" => 22,
-                "jawaban" => ["<b>A.</b> the effect of teacher discipline"],
-            ],
-            [
-                "no" => 23,
-                "jawaban" => ["<b>B.</b> girls were more negative about school than boys"],
-            ],
-            [
-                "no" => 24,
-                "jawaban" => ["<b>A.</b> teachers should be flexible in unpredictable ways"],
-            ],
-            [
-                "no" => 25,
-                "jawaban" => ["<b>B.</b> reflect on her own research experience in an interesting way"],
-            ],
-            [
-                "no" => 26,
-                "jawaban" => ["E"],
-            ],
-            [
-                "no" => 27,
-                "jawaban" => ["G"],
-            ],
-            [
-                "no" => 28,
-                "jawaban" => ["A"],
-            ],
-            [
-                "no" => 29,
-                "jawaban" => ["D"],
-            ],
-            [
-                "no" => 30,
-                "jawaban" => ["B"],
-            ],
-            [
-                "no" => 31,
-                "jawaban" => ["<b>C.</b> not be known for many, many years"],
-            ],
-            [
-                "no" => 32,
-                "jawaban" => ["<b>A.</b> an existing problem even worse"],
-            ],
-            [
-                "no" => 33,
-                "jawaban" => ["3", "three"],
-            ],
-            [
-                "no" => 34,
-                "jawaban" => ["Greenland"],
-            ],
-            [
-                "no" => 35,
-                "jawaban" => ["snow"],
-            ],
-            [
-                "no" => 36,
-                "jawaban" => ["freshwater"],
-            ],
-            [
-                "no" => 37,
-                "jawaban" => ["12", "twelve"],
-            ],
-            [
-                "no" => 38,
-                "jawaban" => ["cattle"],
-            ],
-            [
-                "no" => 39,
-                "jawaban" => ["time"],
-            ],
-            [
-                "no" => 40,
-                "jawaban" => ["expensive"],
-            ],
-        ];
-
-        $jawaban_reading = [
-            [
-                "no" => 1,
-                "jawaban" => ["VIII"],
-            ],
-            [
-                "no" => 2,
-                "jawaban" => ["I"],
-            ],
-            [
-                "no" => 3,
-                "jawaban" => ["VI"],
-            ],
-            [
-                "no" => 4,
-                "jawaban" => ["III"],
-            ],
-            [
-                "no" => 5,
-                "jawaban" => ["VII"],
-            ],
-            [
-                "no" => 6,
-                "jawaban" => ["IV"],
-            ],
-            [
-                "no" => 7,
-                "jawaban" => ["farming"],
-            ],
-            [
-                "no" => 8,
-                "jawaban" => ["sea mammals", "fish"],
-            ],
-            [
-                "no" => 9,
-                "jawaban" => ["sea mammals", "fish"],
-            ],
-            [
-                "no" => 10,
-                "jawaban" => ["thule"],
-            ],
-            [
-                "no" => 11,
-                "jawaban" => ["islands"],
-            ],
-            [
-                "no" => 12,
-                "jawaban" => ["nomadic"],
-            ],
-            [
-                "no" => 13,
-                "jawaban" => ["nature"],
-            ],
-            [
-                "no" => 14,
-                "jawaban" => ["imported"],
-            ],
-            [
-                "no" => 15,
-                "jawaban" => ["failure"],
-            ],
-            [
-                "no" => 16,
-                "jawaban" => ["garage"],
-            ],
-            [
-                "no" => 17,
-                "jawaban" => ["anatomy"],
-            ],
-            [
-                "no" => 18,
-                "jawaban" => ["puppets"],
-            ],
-            [
-                "no" => 19,
-                "jawaban" => ["special service"],
-            ],
-            [
-                "no" => 20,
-                "jawaban" => ["sword fight"],
-            ],
-            [
-                "no" => 21,
-                "jawaban" => ["FALSE"],
-            ],
-            [
-                "no" => 22,
-                "jawaban" => ["TRUE"],
-            ],
-            [
-                "no" => 23,
-                "jawaban" => ["NOT GIVEN"],
-            ],
-            [
-                "no" => 24,
-                "jawaban" => ["FALSE"],
-            ],
-            [
-                "no" => 25,
-                "jawaban" => ["NOT GIVEN"],
-            ],
-            [
-                "no" => 26,
-                "jawaban" => ["FALSE"],
-            ],
-            [
-                "no" => 27,
-                "jawaban" => ["TRUE"],
-            ],
-            [
-                "no" => 28,
-                "jawaban" => ["C. 7.22"],
-            ],
-            [
-                "no" => 29,
-                "jawaban" => ["D. Exercise after breakfast"],
-            ],
-            [
-                "no" => 30,
-                "jawaban" => ["B. Taking supplements at breakfast"],
-            ],
-            [
-                "no" => 31,
-                "jawaban" => ["A. Mid-afternoon"],
-            ],
-            [
-                "no" => 32,
-                "jawaban" => ["D. Eat a light meal"],
-            ],
-            [
-                "no" => 33,
-                "jawaban" => ["C. To introduce chronobiology and describe some practical applications"],
-            ],
-            [
-                "no" => 34,
-                "jawaban" => ["oil content"],
-            ],
-            [
-                "no" => 35,
-                "jawaban" => ["fertiliser enhanced"],
-            ],
-            [
-                "no" => 36,
-                "jawaban" => ["centrifugation"],
-            ],
-            [
-                "no" => 37,
-                "jawaban" => ["floatation"],
-            ],
-            [
-                "no" => 38,
-                "jawaban" => ["destabilized"],
-            ],
-            [
-                "no" => 39,
-                "jawaban" => ["pulling"],
-            ],
-            [
-                "no" => 40,
-                "jawaban" => ["thicker"],
-            ],
-        ];
-
-        $jawaban_ietls = "";
-
-        $benar_listening = 0;
-        foreach ($this->request->getPost('jawaban_listening') as $i => $jawaban) {
-            $data_jawaban = [];
-
-            foreach ($jawaban_listening[$i]['jawaban'] as $j => $data_jawaban_listening) {
-                $data_jawaban[$j] = strtolower($data_jawaban_listening);
-            }
-
-            if (in_array(trim(strtolower($jawaban)), $data_jawaban)){
-                $status = "Benar";
-                $benar_listening++;
-            } else {
-                $status = "Salah";
-            }
-
-            $jawaban_ietls .= 'Listening&&&'.trim(str_replace('"', "&quot;", $jawaban)).'&&&'.$status.'|||';
-        }
-
-        $benar_reading = 0;
-        foreach ($this->request->getPost('jawaban_reading') as $i => $jawaban) {
-            $data_jawaban = [];
-
-            foreach ($jawaban_reading[$i]['jawaban'] as $j => $data_jawaban_reading) {
-                $data_jawaban[$j] = strtolower($data_jawaban_reading);
-            }
-
-            if($i == 8){
-                if(strtolower($_POST['jawaban_reading'][7]) == 'sea mammals' && strtolower($_POST['jawaban_reading'][8]) == 'fish'){
-                    $jawaban_ietls .= 'Reading&&&sea mammals&&&Benar|||Reading&&&fish&&&Benar|||';
-                    $benar_reading = $benar_reading + 2;
-                } else if(strtolower($_POST['jawaban_reading'][7]) == 'fish' && strtolower($_POST['jawaban_reading'][8]) == 'sea mammals'){
-                    $jawaban_ietls .= 'Reading&&&fish&&&Benar|||Reading&&&sea mammals&&&Benar|||';
-                    $benar_reading = $benar_reading + 2;
-                } else if(strtolower($_POST['jawaban_reading'][7]) == 'fish'){
-                    $jawaban_ietls .= 'Reading&&&fish&&&Benar|||Reading&&&'.trim(str_replace('"', "&quot;", $_POST['jawaban_reading'][8])).'&&&Salah|||';
-                    $benar_reading++;
-                } else if(strtolower($_POST['jawaban_reading'][7]) == 'sea mammals'){
-                    $jawaban_ietls .= 'Reading&&&sea mammals&&&Benar|||Reading&&&'.trim(str_replace('"', "&quot;", $_POST['jawaban_reading'][8])).'&&&Salah|||';
-                    $benar_reading++;
-                } else if(strtolower($_POST['jawaban_reading'][8]) == 'fish'){
-                    $jawaban_ietls .= 'Reading&&&'.trim(str_replace('"', "&quot;", $_POST['jawaban_reading'][7])).'&&&Salah|||Reading&&&fish&&&Benar|||';
-                    $benar_reading++;
-                } else if(strtolower($_POST['jawaban_reading'][8]) == 'sea mammals'){
-                    $jawaban_ietls .= 'Reading&&&'.trim(str_replace('"', "&quot;", $_POST['jawaban_reading'][7])).'&&&Salah|||Reading&&&sea mammals&&&Benar|||';
-                    $benar_reading++;
-                } else {
-                    $jawaban_ietls .= 'Reading&&&'.trim(str_replace('"', "&quot;", $_POST['jawaban_reading'][7])).'&&&Salah|||Reading&&&'.trim(str_replace('"', "&quot;", $_POST['jawaban_reading'][8])).'&&&Salah|||';
-                }
-            } else if($i != 7) {
-                if (in_array(trim(strtolower($jawaban)), $data_jawaban)){
-                    $status = "Benar";
-                    $benar_reading++;
-                } else {
-                    $status = "Salah";
-                }
-    
-                $jawaban_ietls .= 'Reading&&&'.trim(str_replace('"', "&quot;", $jawaban)).'&&&'.$status.'|||';
-            }
-        }
-
-        $jawaban_ietls = substr($jawaban_ietls, 0, -3);
-
         $id_tes = $this->request->getPost("id_tes");
 
         $tes = $db->query("SELECT * FROM tes WHERE id_tes = '$id_tes'")->getRowArray();
         $client = $db->query("SELECT * FROM client WHERE id_client = $tes[fk_id_client]")->getRowArray();
+
+        $jawaban_ietls = "";
+
+        if($tes['tipe_soal'] == "Soal_002"){
+            $data_koreksi = soal_002($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
+            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $benar_listening = $data_koreksi['benar_listening'];
+            $benar_reading = $data_koreksi['benar_reading'];
+        } else if($tes['tipe_soal'] == "Soal_GT_002"){
+            $data_koreksi = soal_gt_002($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
+            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $benar_listening = $data_koreksi['benar_listening'];
+            $benar_reading = $data_koreksi['benar_reading'];
+        } else if($tes['tipe_soal'] == "Soal_GT_003"){
+            $data_koreksi = soal_gt_003($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
+            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $benar_listening = $data_koreksi['benar_listening'];
+            $benar_reading = $data_koreksi['benar_reading'];
+        } else if($tes['tipe_soal'] == "Soal_003"){
+            $data_koreksi = soal_003($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
+            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $benar_listening = $data_koreksi['benar_listening'];
+            $benar_reading = $data_koreksi['benar_reading'];
+        } else if($tes['tipe_soal'] == "Soal_Academic_Post_Test"){
+            $data_koreksi = soal_academic_post_test($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
+            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $benar_listening = $data_koreksi['benar_listening'];
+            $benar_reading = $data_koreksi['benar_reading'];
+        } else if($tes['tipe_soal'] == "Soal_Academic_Pretest"){
+            $data_koreksi = soal_academic_pretest($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
+            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $benar_listening = $data_koreksi['benar_listening'];
+            $benar_reading = $data_koreksi['benar_reading'];
+        } else if($tes['tipe_soal'] == "Soal_General_Post_Test"){
+            $data_koreksi = soal_general_post_test($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
+            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $benar_listening = $data_koreksi['benar_listening'];
+            $benar_reading = $data_koreksi['benar_reading'];
+        } else if($tes['tipe_soal'] == "Soal_General_Pretest"){
+            $data_koreksi = soal_general_pretest($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
+            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $benar_listening = $data_koreksi['benar_listening'];
+            $benar_reading = $data_koreksi['benar_reading'];
+        }
 
         $writing_text = $this->request->getPost("text_writing");
         $text_writing = "";
@@ -464,6 +122,8 @@ class PesertaIelts extends BaseController
             "id_tes" => $tes['id_tes'],
             "first_name" => $this->request->getPost("first_name"),
             "last_name" => $this->request->getPost("last_name"),
+            "t4_lahir" => $this->request->getPost("t4_lahir"),
+            "tgl_lahir" => $this->request->getPost("tgl_lahir"),
             "email" => $this->request->getPost("email"),
             "nilai_listening" => $benar_listening,
             "nilai_reading" => $benar_reading,
@@ -500,6 +160,68 @@ class PesertaIelts extends BaseController
     }
     
     public function pdfIelts($id_peserta){
+        $db = db_connect();
+        $data = $db->query("SELECT * FROM peserta_ielts as a JOIN tes as b ON a.id_tes = b.id_tes JOIN client as c ON b.fk_id_client = c.id_client WHERE md5(id) = '$id_peserta'")->getRowArray();
+
+        $data['no_doc'] = no_doc($data['no_doc']);
+        $data['hari'] = date('d', strtotime($data['tgl_tes']));
+        $data['tahun'] = date('y', strtotime($data['tgl_tes']));
+        $data['bulan'] = getHurufBulan(date('m', strtotime($data['tgl_tes'])));
+        $writer = new PngWriter();
+
+        // Create QR code
+        $qrCode = QrCode::create(base_url()."c/ielts/".$data['url']."/".$id_peserta)
+            ->setEncoding(new Encoding('UTF-8'))
+            ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
+            ->setSize(300)
+            ->setMargin(10)
+            ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
+            ->setForegroundColor(new Color(0, 0, 0));
+
+        // Create generic logo
+        $logo = Logo::create( FCPATH .'/public/assets/logo-client/'.$data['logo'])
+            ->setResizeToWidth(150);
+
+        $result = $writer->write($qrCode, $logo);
+        
+        $data['barcode'] = $result->getDataUri();
+
+        $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
+        $fontDirs = $defaultConfig['fontDir'];
+
+        $defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
+        $fontData = $defaultFontConfig['fontdata'];
+
+        // Create an instance of the class:
+        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L',
+            'fontDir' => array_merge($fontDirs, [
+                __DIR__ . '/lucida-calligraphy-italic.ttf',
+            ]),
+            'fontdata' => $fontData + [ // lowercase letters only in font key
+                'lucida-calligraphy-italic' => [
+                    'R' => 'lucida-calligraphy-italic.ttf'
+                ],
+                'Montserrat-SemiBold' => [
+                    'R' => 'Montserrat-SemiBold.otf'
+                ]
+            ],
+            'default_font' => 'Montserrat-SemiBold'
+        ]);
+
+        $html = view('pages/pdfIelts', $data);
+
+        // Write some HTML code:
+        $mpdf->WriteHTML($html);
+
+        // $mpdf->Output();
+
+        // Output a PDF file directly to the browser
+        // return redirect()->to($mpdf->Output());
+        $this->response->setHeader('Content-Type', 'application/pdf');
+		$mpdf->Output("$data[first_name]-$data[last_name]-$data[tgl_tes]-IELTS.pdf", "I"); // opens in browser
+    }
+
+    public function spdfIelts($id_peserta){
         $db = db_connect();
         $data = $db->query("SELECT * FROM peserta_ielts as a JOIN tes as b ON a.id_tes = b.id_tes JOIN client as c ON b.fk_id_client = c.id_client WHERE md5(id) = '$id_peserta'")->getRowArray();
 
@@ -576,27 +298,49 @@ class PesertaIelts extends BaseController
         
         $data['barcode'] = $result->getDataUri();
 
-        $dompdf = new \Dompdf\Dompdf(); 
-        $dompdf->loadHtml(view('pages/feedbackIelts', $data));
-        $dompdf->setPaper('A4', 'potrait');
-        $dompdf->render();
-        // $dompdf->stream();
-        $dompdf->stream("$data[first_name] $data[last_name] - $data[tgl_tes] - IELTS Feedback.pdf", array("Attachment" => false));
-        exit(0);
+        $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
+        $fontDirs = $defaultConfig['fontDir'];
 
-        // $Pdfgenerator = new Pdfgenerator();
-        // // filename dari pdf ketika didownload
-        // $file_pdf = "$data[first_name] $data[last_name] - $data[tgl_tes]";
-        // // setting paper
-        // $paper = 'A4';
-        // //orientasi paper potrait / landscape
-        // $orientation = "potrait";
+        $defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
+        $fontData = $defaultFontConfig['fontdata'];
 
-        // $html = view('pages/feedbackIelts', $data);
+        // Create an instance of the class:
+        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L',
+            'fontDir' => array_merge($fontDirs, [
+                __DIR__ . '/lucida-calligraphy-italic.ttf',
+            ]),
+            'fontdata' => $fontData + [ // lowercase letters only in font key
+                'lucida-calligraphy-italic' => [
+                    'R' => 'lucida-calligraphy-italic.ttf'
+                ],
+                'Montserrat-SemiBold' => [
+                    'R' => 'Montserrat-SemiBold.otf'
+                ],
+                'GothamBook' => [
+                    'R' => 'GothamBook.ttf'
+                ]
+            ],
+            'default_font' => 'Montserrat-SemiBold'
+        ]);
 
-        // // run dompdf
-        // $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+        $html = view('pages/feedback/feedback-writing-1', $data);
+        $mpdf->WriteHTML($html);
 
-        // return view('pages/pdfIelts', $data);
+        $mpdf->AddPage();
+
+        $html = view('pages/feedback/feedback-writing-2', $data);
+        $mpdf->WriteHTML($html);
+
+        $mpdf->AddPage();
+
+        $html = view('pages/feedback/feedback-speaking', $data);
+        $mpdf->WriteHTML($html);
+
+        // $mpdf->Output();
+
+        // Output a PDF file directly to the browser
+        // return redirect()->to($mpdf->Output());
+        $this->response->setHeader('Content-Type', 'application/pdf');
+		$mpdf->Output("$data[first_name]-$data[last_name]-$data[tgl_tes]-Feedback.pdf", "I"); // opens in browser
     }
 }

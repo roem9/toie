@@ -221,6 +221,20 @@ class ClientArea extends BaseController
                     'required' => '{field} harus diisi'
                 ]
             ],
+            't4_lahir' => [
+                'label' => 'Tempat Lahir',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi'
+                ]
+            ],
+            'tgl_lahir' => [
+                'label' => 'Tgl Lahir',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi'
+                ]
+            ],
             'email' => [
                 'label' => 'Email',
                 'rules' => 'required',
@@ -235,12 +249,16 @@ class ClientArea extends BaseController
             $id = $this->request->getPost('id');
             $first_name = $this->request->getPost('first_name');
             $last_name = $this->request->getPost('last_name');
+            $t4_lahir = $this->request->getPost('t4_lahir');
+            $tgl_lahir = $this->request->getPost('tgl_lahir');
             $email = $this->request->getPost('email');
             $link_speaking = $this->request->getPost('link_speaking');
 
             $data = [
                 'first_name' => $first_name,
                 'last_name' => $last_name,
+                't4_lahir' => $t4_lahir,
+                'tgl_lahir' => $tgl_lahir,
                 'email' => $email,
                 'link_speaking' => $link_speaking,
             ];

@@ -1,119 +1,117 @@
-<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title><?= $first_name?> <?= $last_name?></title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 
-<?php
-        $path = base_url().'public/assets/sertifikat/sertifikat-ielts.jpg';
-        $type = pathinfo($path, PATHINFO_EXTENSION);
-        $data = file_get_contents($path);
-        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-?>
 <style>
 
-    @page { margin: 0; }
+  @page { margin: 0; }
 
-    body {
-      background-image: url('<?= $base64?>');
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
-    
-    .barcode {
-      position: absolute;
-      top: 50px;
-      right: 50px;
-    }
+  body {
+  }
 
-    .no_doc {
-      position: absolute;
-      top: 50px;
-      left: 50px;
-    }
+  .barcode {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+  }
 
-    .nama {
-      font-family: 'times';
-      font-size: 40px;
-      position: absolute;
-      top: 430px;
-      /* background-color: red; */
-      width: 100%;
-    }
+  .no_doc {
+    font-family: 'Montserrat-SemiBold';
+    position: absolute;
+    top: 50px;
+    left: 50px;
+  }
 
-    .nilai_listening {
-      font-family: 'times';
-      font-size: 24px;
-      position: absolute;
-      top: 652px;
-      left: 460px;
-      /* background-color: red; */
-      width: 240px;
-    }
+  .nama {
+    font-family: 'lucida-calligraphy-italic';
+    font-size: 40px;
+    position: absolute;
+    top: 340px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+  }
 
-    .nilai_reading {
-      font-family: 'times';
-      font-size: 24px;
-      position: absolute;
-      top: 694px;
-      left: 460px;
-      /* background-color: red; */
-      width: 240px;
-    }
+  .nilai_listening {
+    font-family: 'Montserrat-SemiBold';
+    font-size: 24px;
+    position: absolute;
+    bottom: 266px;
+    left: 167px;
+    /* background-color: red; */
+    width: 75px;
+    text-align: center;
+  }
 
-    .nilai_writing {
-      font-family: 'times';
-      font-size: 24px;
-      position: absolute;
-      top: 734px;
-      left: 460px;
-      /* background-color: red; */
-      width: 240px;
-    }
+  .nilai_reading {
+    font-family: 'Montserrat-SemiBold';
+    font-size: 24px;
+    position: absolute;
+    bottom: 266px;
+    left: 379px;
+    /* background-color: red; */
+    width: 75px;
+    text-align: center;
+  }
 
-    .nilai_speaking {
-      font-family: 'times';
-      font-size: 24px;
-      position: absolute;
-      top: 775px;
-      left: 460px;
-      /* background-color: red; */
-      width: 240px;
-    }
+  .nilai_writing {
+    font-family: 'Montserrat-SemiBold';
+    font-size: 24px;
+    position: absolute;
+    bottom: 266px;
+    left: 591px;
+    /* background-color: red; */
+    width: 75px;
+    text-align: center;
+  }
 
-    .overall {
-      font-family: 'times';
-      font-size: 24px;
-      position: absolute;
-      top: 821px;
-      left: 460px;
-      /* background-color: red; */
-      width: 240px;
-    }
+  .nilai_speaking {
+    font-family: 'Montserrat-SemiBold';
+    font-size: 24px;
+    position: absolute;
+    bottom: 266px;
+    left: 800px;
+    /* background-color: red; */
+    width: 75px;
+    text-align: center;
+  }
 
-    .tgl_tes {
-      font-family: 'times';
-      font-size: 20px;
-      position: absolute;
-      bottom: 225px;
-      /* background-color: red; */
-      width: 100%;
-    }
+  .overall {
+    font-family: 'Montserrat-SemiBold';
+    font-size: 24px;
+    position: absolute;
+    bottom: 266px;
+    left: 1012px;
+    /* background-color: red; */
+    width: 75px;
+    text-align: center;
+  }
+
+  .tgl_tes {
+    font-family: 'Montserrat-SemiBold';
+    font-size: 20px;
+    position: absolute;
+    bottom: 205px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+  }
 
 </style>
 <body>
 
-  <div>
-    <div class="barcode">
-      <img src="<?= $barcode?>" alt="" width="100px">
-    </div>
+  <div style="position: absolute; left:0; right: 0; top: 0; bottom: 0;">
+      <img src="public/assets/sertifikat/sertifikat-ielts.png"
+          style="width: 210mm; height: 297mm; margin: 0;" />
+  </div>
 
-    <div class="no_doc">
-      im.I.<?= $no_doc?><?= $hari?><?= $bulan?><?= $tahun?>
-    </div>
+  <div class="barcode">
+    <img src="<?= $barcode?>" alt="" width="100px">
+  </div>
+
+  <div class="no_doc">
+    im.I.<?= $no_doc?><?= $hari?><?= $bulan?><?= $tahun?>
   </div>
 
   <div class="nama">
@@ -149,7 +147,7 @@
   </div>
 
   <div class="tgl_tes">
-    <center>Jakarta, <?= date('d M Y', strtotime($tgl_tes))?></center>
+    <center>Jakarta, <?= date('d/m/y', strtotime($tgl_tes))?></center>
   </div>
   
 </body>

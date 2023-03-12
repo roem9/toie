@@ -14,7 +14,7 @@ class PesertaIeltsModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_tes', 'no_doc', 'first_name', 'last_name', 'email', 'link_speaking', 'text_listening_reading', 'text_writing', 'nilai_speaking', 'nilai_listening', 'nilai_reading', 'nilai_writing', 'kriteria_ta_1', 'nilai_ta_1', 'kriteria_cc_1', 'nilai_cc_1', 'kriteria_gra_1', 'nilai_gra_1', 'kriteria_lr_1', 'nilai_lr_1', 'kriteria_ta_2', 'nilai_ta_2', 'kriteria_cc_2', 'nilai_cc_2', 'kriteria_gra_2','nilai_gra_2', 'kriteria_lr_2', 'nilai_lr_2','kriteria_topic', 'nilai_topic', 'kriteria_fluency', 'nilai_fluency', 'kriteria_grammar', 'nilai_grammar', 'kriteria_vocabulary', 'nilai_vocabulary'];
+    protected $allowedFields    = ['id_tes', 'no_doc', 'first_name', 'last_name', 't4_lahir', 'tgl_lahir', 'email', 'link_speaking', 'text_listening_reading', 'text_writing', 'nilai_speaking', 'nilai_listening', 'nilai_reading', 'nilai_writing', 'kriteria_ta_1', 'nilai_ta_1', 'kriteria_cc_1', 'nilai_cc_1', 'kriteria_gra_1', 'nilai_gra_1', 'kriteria_lr_1', 'nilai_lr_1', 'kriteria_ta_2', 'nilai_ta_2', 'kriteria_cc_2', 'nilai_cc_2', 'kriteria_gra_2','nilai_gra_2', 'kriteria_lr_2', 'nilai_lr_2','kriteria_topic', 'nilai_topic', 'kriteria_fluency', 'nilai_fluency', 'kriteria_grammar', 'nilai_grammar', 'kriteria_vocabulary', 'nilai_vocabulary'];
 
     // Dates
     protected $useTimestamps = false;

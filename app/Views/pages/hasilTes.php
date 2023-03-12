@@ -74,6 +74,14 @@
             <input name="last_name" class="multisteps-form__input form-control" type="text" placeholder="last name">
           </div>
           <div class="col-12 mb-3">
+            <label>Tempat Lahir</label>
+            <input name="t4_lahir" class="multisteps-form__input form-control" type="text" placeholder="tempat lahir">
+          </div>
+          <div class="col-12 mb-3">
+            <label>Tgl Lahir</label>
+            <input name="tgl_lahir" class="multisteps-form__input form-control" type="date" placeholder="tgl lahir">
+          </div>
+          <div class="col-12 mb-3">
             <label>Email</label>
             <input name="email" class="multisteps-form__input form-control" type="text" placeholder="email">
           </div>
@@ -467,6 +475,8 @@
           $(`#formHasilTes [name='id']`).val($obj.id);
           $(`#formHasilTes [name='first_name']`).val($obj.first_name);
           $(`#formHasilTes [name='last_name']`).val($obj.last_name);
+          $(`#formHasilTes [name='t4_lahir']`).val($obj.t4_lahir);
+          $(`#formHasilTes [name='tgl_lahir']`).val($obj.tgl_lahir);
           $(`#formHasilTes [name='email']`).val($obj.email);
           $(`#formHasilTes [name='link_speaking']`).val($obj.link_speaking);
           $(`#formHasilTes [name='nilai_speaking']`).val(ielts_speaking($obj.nilai_topic,$obj.nilai_fluency,$obj.nilai_grammar,$obj.nilai_vocabulary));
@@ -485,6 +495,8 @@
     let id = $(`#formHasilTes [name='id']`).val();
     let first_name = $(`#formHasilTes [name='first_name']`).val();
     let last_name = $(`#formHasilTes [name='last_name']`).val();
+    let t4_lahir = $(`#formHasilTes [name='t4_lahir']`).val();
+    let tgl_lahir = $(`#formHasilTes [name='tgl_lahir']`).val();
     let email = $(`#formHasilTes [name='email']`).val();
     let link_speaking = $(`#formHasilTes [name='link_speaking']`).val();
 
@@ -496,6 +508,8 @@
         id: id,
         first_name: first_name,
         last_name: last_name,
+        t4_lahir: t4_lahir,
+        tgl_lahir: tgl_lahir,
         email: email,
         link_speaking: link_speaking
       },

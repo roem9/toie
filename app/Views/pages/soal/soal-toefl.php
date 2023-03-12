@@ -174,6 +174,26 @@
             </div>
         </div>
     <?php endif;?>
+
+    <div class="modal modal-blur fade bg-danger" id="alertModal" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Alert</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Leaving the worksheet is not allowed. You'll lose your progress and your test result will be unvalid</p>
+                    <p>You will lose your progress in <span id="count">10</span> seconds</p>
+                </div>
+                <div class="modal-footer">
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn me-auto mr-3 btn-primary" data-bs-dismiss="modal">Stay on the Worksheet</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
 <?= $this->endSection() ?>
 
 <?= $this->section('js-script') ?>
@@ -198,12 +218,14 @@
 
                 if($obj === null){
                     Swal.fire({
+                        target: '#soal_tes',
                         icon: 'error',
                         title: 'Oops...',
                         text: 'Invalid password. Try again.'
                     })
                 } else {
                     Swal.fire({
+                        target: '#soal_tes',
                         icon: 'success',
                         title: '',
                         text: 'Success!',
@@ -239,6 +261,7 @@
             
             if(eror == 1){
                 Swal.fire({
+                    target: '#soal_tes',
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Please complete all of the fields and input valid e-mail address. ',
@@ -251,10 +274,10 @@
                     method: "POST",
                     success: function(result){
                         var $obj = $.parseJSON(result);
-                        console.log($obj)
 
                         if($obj !== null){
                             Swal.fire({
+                                target: '#soal_tes',
                                 icon: 'error',
                                 title: 'Oops...',
                                 text: 'Email Anda telah digunakan',
@@ -262,6 +285,7 @@
                         } else {
                             if(click == false) {
                                 Swal.fire({
+                                    target: '#soal_tes',
                                     icon: 'question',
                                     html: 'Start the session now?',
                                     showCloseButton: true,
@@ -270,6 +294,8 @@
                                     cancelButtonText: 'No'
                                 }).then(function (result) {
                                     if (result.value) {
+                                        start = true;
+
                                         // hide all id 
                                         $("#navbarTes").show();
 
@@ -326,6 +352,7 @@
 
                 if(id == 'sesi-2'){
                     Swal.fire({
+                        target: '#soal_tes',
                         icon: 'question',
                         html: `You haven't submitted your answer. Are you sure you want to move to the next session?<br><small style="font-size: 0.70em" class="form-text text-danger">You will not be able to return to this session</small>`,
                         showCloseButton: true,
@@ -374,6 +401,7 @@
                     })
                 } else {
                     Swal.fire({
+                        target: '#soal_tes',
                         icon: 'error',
                         title: 'Oops...',
                         text: 'You haven’t submitted your answer in this session',
@@ -381,6 +409,7 @@
                 }
             } else {
                 Swal.fire({
+                    target: '#soal_tes',
                     icon: 'question',
                     html: 'Move to the next session?<br><small style="font-size: 0.70em" class="form-text text-danger">You will not be able to return to this session</small>',
                     showCloseButton: true,
@@ -456,12 +485,14 @@
             })
 
             Swal.fire({
+                target: '#soal_tes',
                 icon: 'error',
                 title: 'Oops...',
                 text: 'You haven’t submitted your answer in this session',
             })
         } else {
             Swal.fire({
+                target: '#soal_tes',
                 icon: 'question',
                 html: 'Finish the test?',
                 showCloseButton: true,
@@ -471,6 +502,7 @@
             }).then(function (result) {
                 if (result.value) {
                     swal.fire({
+                        target: '#soal_tes',
                         html: '<h4>Saving your answer ...</h4>',
                         allowOutsideClick: false,
                         showConfirmButton: false,
@@ -506,6 +538,7 @@
             if(id == 'sesi-2'){
                 clearInterval(countDown);
                 Swal.fire({
+                    target: '#soal_tes',
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Waktu Anda telah habis untuk mengerjakan soal structure',
@@ -541,6 +574,7 @@
                 }
 
                 swal.fire({
+                    target: '#soal_tes',
                     title: 'Waktu Anda Telah Habis',
                     html: '<h4>Saving your answer ...</h4>',
                     allowOutsideClick: false,
@@ -573,5 +607,31 @@
             }  
         }  
     }, true);
+
+    let countdownInterval;
+
+    function showAlertWithCountdown(seconds) {
+        if(start){
+            clearInterval(countdownInterval);
+            $("#count").html(`<b>10</b>`);
+            $("#alertModal").modal('show');
+            countdownInterval = setInterval(() => {
+                $("#count").html(`<b>${seconds}</b>`);
+                seconds--;
+    
+                if(seconds === 0){
+                    clearInterval(countdownInterval);
+                    location.reload();
+                }
+            }, 1000);
+        }
+    }
+
+    function returnWorkSheet() {
+        if(start){
+            $("#alertModal").modal('hide');
+            clearInterval(countdownInterval);
+        }
+    }
 </script>
 <?= $this->endSection() ?>

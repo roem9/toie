@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\PesertaToeflModel;
 
+use \Mpdf\Mpdf;
 // library qrcode & pdf 
 use Endroid\QrCode\Color\Color;
 use Endroid\QrCode\Encoding\Encoding;
@@ -178,27 +179,90 @@ class PesertaToefl extends BaseController
         
         $data['barcode'] = $result->getDataUri();
 
-        $dompdf = new \Dompdf\Dompdf(); 
-        $dompdf->loadHtml(view('pages/pdfToefl', $data));
-        $dompdf->setPaper('A4', 'potrait');
-        $dompdf->render();
-        // $dompdf->stream();
-        $dompdf->stream("$data[nama] - $data[tgl_tes] - TOEFL.pdf", array("Attachment" => false));
-        exit(0);
+        $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
+        $fontDirs = $defaultConfig['fontDir'];
 
-        // $Pdfgenerator = new Pdfgenerator();
-        // // filename dari pdf ketika didownload
-        // $file_pdf = "$data[nama] - $data[tgl_tes]";
-        // // setting paper
-        // $paper = 'A4';
-        // //orientasi paper potrait / landscape
-        // $orientation = "potrait";
+        $defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
+        $fontData = $defaultFontConfig['fontdata'];
 
-        // $html = view('pages/pdfToefl', $data);
+        // Create an instance of the class:
+        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L',
+            'fontDir' => array_merge($fontDirs, [
+                __DIR__ . '/lucida-calligraphy-italic.ttf',
+            ]),
+            'fontdata' => $fontData + [ // lowercase letters only in font key
+                'lucida-calligraphy-italic' => [
+                    'R' => 'lucida-calligraphy-italic.ttf'
+                ],
+                'Montserrat-SemiBold' => [
+                    'R' => 'Montserrat-SemiBold.otf'
+                ]
+            ],
+            'default_font' => 'Montserrat-SemiBold'
+        ]);
 
-        // // run dompdf
-        // $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+        $html = view('pages/pdfToefl', $data);
 
-        // return view('pages/pdfIelts', $data);
+        // Write some HTML code:
+        $mpdf->WriteHTML($html);
+
+        // $mpdf->Output();
+
+        // Output a PDF file directly to the browser
+        // return redirect()->to($mpdf->Output());
+        $this->response->setHeader('Content-Type', 'application/pdf');
+		$mpdf->Output("$data[nama]-$data[tgl_tes]-TOEFL.pdf", "I"); // opens in browser
+    }
+
+    public function pdfToefls($id_peserta){
+        $db = db_connect();
+        $data = $db->query("SELECT * FROM peserta_toefl as a JOIN tes_toefl as b ON a.id_tes = b.id_tes JOIN client as c ON b.fk_id_client = c.id_client WHERE md5(id) = '$id_peserta'")->getRowArray();
+
+        
+        $data['no_doc'] = no_doc($data['no_doc']);
+        $data['hari'] = date('d', strtotime($data['tgl_tes']));
+        $data['tahun'] = date('y', strtotime($data['tgl_tes']));
+        $data['bulan'] = getHurufBulan(date('m', strtotime($data['tgl_tes'])));
+        $writer = new PngWriter();
+
+        // Create QR code
+        $qrCode = QrCode::create(base_url()."c/toefl/".$data['url']."/".$id_peserta)
+            ->setEncoding(new Encoding('UTF-8'))
+            ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
+            ->setSize(300)
+            ->setMargin(10)
+            ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
+            ->setForegroundColor(new Color(0, 0, 0));
+
+        // Create generic logo
+        $logo = Logo::create( FCPATH .'/public/assets/logo-client/'.$data['logo'])
+            ->setResizeToWidth(150);
+
+        $result = $writer->write($qrCode, $logo);
+        
+        $data['barcode'] = $result->getDataUri();
+
+        // $dompdf = new \Dompdf\Dompdf(); 
+        // $dompdf->loadHtml(view('pages/pdfToefl', $data));
+        // $dompdf->setPaper('A4', 'landscape');
+        // $dompdf->render();
+        // // $dompdf->stream();
+        // $dompdf->stream("$data[nama] - $data[tgl_tes] - TOEFL.pdf", array("Attachment" => false));
+        // exit(0);
+
+        $Pdfgenerator = new Pdfgenerator();
+        // filename dari pdf ketika didownload
+        $file_pdf = "$data[nama] - $data[tgl_tes]";
+        // setting paper
+        $paper = 'A4';
+        //orientasi paper potrait / landscape
+        $orientation = "landscape";
+
+        $html = view('pages/pdfToefl', $data);
+
+        // run dompdf
+        $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+
+        // return view('pages/pdfToefl', $data);
     }
 }

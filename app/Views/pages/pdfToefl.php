@@ -1,26 +1,11 @@
-<!doctype html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title><?= $nama?></title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
-
-<?php
-        $path = base_url().'public/assets/sertifikat/sertifikat-toefl.jpg';
-        $type = pathinfo($path, PATHINFO_EXTENSION);
-        $data = file_get_contents($path);
-        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-?>
-<style>
-
+<style>    
     @page { margin: 0; }
 
     body {
-      background-image: url('<?= $base64?>');
-      background-size: cover;
-      background-repeat: no-repeat;
     }
     
     .barcode {
@@ -30,90 +15,99 @@
     }
 
     .no_doc {
+      font-family: 'Montserrat-SemiBold';
       position: absolute;
       top: 50px;
       left: 50px;
     }
 
     .nama {
-      font-family: 'times';
+      font-family: 'lucida-calligraphy-italic';
       font-size: 40px;
       position: absolute;
-      top: 430px;
-      /* background-color: red; */
-      width: 100%;
+      top: 340px;
+      left: 0px;
+      right: 0px;
+      text-align: center;
     }
 
     .nilai_listening {
-      font-family: 'times';
+      font-family: 'Montserrat-SemiBold';
       font-size: 24px;
       position: absolute;
-      top: 652px;
-      left: 460px;
+      bottom: 260px;
+      left: 235px;
       /* background-color: red; */
-      width: 240px;
+      width: 75px;
+      text-align: center;
     }
 
     .nilai_structure {
-      font-family: 'times';
+      font-family: 'Montserrat-SemiBold';
       font-size: 24px;
       position: absolute;
-      top: 693px;
-      left: 460px;
+      bottom: 260px;
+      left: 508px;
       /* background-color: red; */
-      width: 240px;
+      width: 75px;
+      text-align: center;
     }
 
     .nilai_reading {
-      font-family: 'times';
+      font-family: 'Montserrat-SemiBold';
       font-size: 24px;
       position: absolute;
-      top: 734px;
-      left: 460px;
+      bottom: 260px;
+      left: 779px;
       /* background-color: red; */
-      width: 240px;
+      width: 75px;
+      text-align: center;
     }
 
     .overall {
-      font-family: 'times';
+      font-family: 'Montserrat-SemiBold';
       font-size: 24px;
       position: absolute;
-      top: 775px;
-      left: 460px;
+      bottom: 260px;
+      left: 995px;
       /* background-color: red; */
-      width: 240px;
+      width: 75px;
+      text-align: center;
     }
 
     .tgl_tes {
-      font-family: 'times';
+      font-family: 'Montserrat-SemiBold';
       font-size: 20px;
       position: absolute;
-      bottom: 225px;
-      /* background-color: red; */
-      width: 100%;
+      bottom: 205px;
+      left: 0px;
+      right: 0px;
+      text-align: center;
     }
 
 </style>
 <body>
-
-  <div>
-    <div class="barcode">
-      <img src="<?= $barcode?>" alt="" width="100px">
-    </div>
-
-    <div class="no_doc">
-      im.T.<?= $no_doc?><?= $hari?><?= $bulan?><?= $tahun?>
-    </div>
+  <div style="position: absolute; left:0; right: 0; top: 0; bottom: 0;">
+      <img src="public/assets/sertifikat/sertifikat-toefl.png"
+          style="width: 210mm; height: 297mm; margin: 0;" />
   </div>
 
-  <div class="nama">
-    <center><b><?= $nama?></b></center>
+  <div class="barcode">
+    <img src="<?= $barcode?>" alt="" width="100px">
   </div>
 
+  <div class="no_doc">
+    im.T.<?= $no_doc?><?= $hari?><?= $bulan?><?= $tahun?>
+  </div>
+
+  <div class="nama" text-align="center">
+    <b><?= $nama?></b>
+  </div>
+  
   <div class="nilai_listening">
     <center><b><?= poin('listening', $nilai_listening)?></b></center>
   </div>
-
+  
   <div class="nilai_structure">
     <center><b><?= poin('structure', $nilai_structure)?></b></center>
   </div>
@@ -127,9 +121,9 @@
   </div>
 
   <div class="tgl_tes">
-    <center>Jakarta, <?= date('d M Y', strtotime($tgl_tes))?></center>
+    <center>Jakarta, <?= date('d/m/Y', strtotime($tgl_tes))?></center>
   </div>
-  
 </body>
 </html>
-
+  
+  

@@ -48,7 +48,7 @@
                                                     <button type="button" class="btn bg-gradient-info w-100 btnSignIn">Log In</button>
                                                 </div>
                                             </div>
-                                            <div id="formData" style="display: none">
+                                            <div id="formData" style="display: nones">
                                                 <div class="mb-2 mt-3">
                                                     <div class="row">
                                                         <div class="col">
@@ -63,6 +63,14 @@
                                                                 <label for="">Last Name</label>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" name="t4_lahir" class="form form-control required">
+                                                        <label for="">Tempat Lahir</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <input type="date" name="tgl_lahir" class="form form-control required">
+                                                        <label for="">Tgl Lahir</label>
                                                     </div>
                                                     <div class="form-floating mb-3">
                                                         <input type="text" name="email" class="form form-control required">
@@ -83,7 +91,7 @@
         
     
                 <div id="worksheet">
-                    <div class="page page-center" id="transisi-sesi-1" style="display: none">
+                    <div class="page page-center" id="transisi-sesi-1" style="display: nones">
                         <div class="container py-7">
                             <div class="row">
                                 <div class="col-xl-5 col-lg-6 col-md-7 d-flex flex-column mx-auto">
@@ -106,7 +114,7 @@
                         </div>
                     </div>
             
-                    <div class="page page-center" id="transisi-sesi-2" style="display: none">
+                    <div class="page page-center" id="transisi-sesi-2" style="display: nones">
                         <div class="container py-7">
                             <div class="row">
                                 <div class="col-xl-5 col-lg-6 col-md-7 d-flex flex-column mx-auto">
@@ -129,7 +137,7 @@
                         </div>
                     </div>
             
-                    <div class="page page-center" id="transisi-sesi-3" style="display: none">
+                    <div class="page page-center" id="transisi-sesi-3" style="display: nones">
                         <div class="container py-7">
                             <div class="row">
                                 <div class="col-xl-5 col-lg-6 col-md-7 d-flex flex-column mx-auto">
@@ -152,14 +160,14 @@
                         </div>
                     </div>
             
-                    <div id="soal_tes" style="display: none; color: black;">
+                    <div id="soal_tes" style="display: nones; color: black;">
                         <div class="wrapper" id="elementtoScrollToID">
                             <div class="page-wrapper" id="">
                                 <div class="page-body">
                                     <!-- <div class="container-xl"> -->
-                                        <input type="hidden" name="id_tes" value="<?= $id_tes?>">
+                                        <input type="text" name="id_tes" value="<?= $id_tes?>">
             
-                                        <div class="sesi-listening" style="display:none">
+                                        <div class="sesi-listening" style="display: nones">
                                             
                                             <?= $this->renderSection('sesi-listening') ?>
             
@@ -168,7 +176,7 @@
                                             </div>
                                         </div>
             
-                                        <div class="sesi-reading" style="display:none">
+                                        <div class="sesi-reading" style="display: nones">
                                             
                                             <?= $this->renderSection('sesi-reading') ?>
             
@@ -177,7 +185,7 @@
                                             </div>
                                         </div>
             
-                                        <div class="sesi-writing" style="display:none">
+                                        <div class="sesi-writing" style="display: nones">
                                             <?= $this->renderSection('sesi-writing') ?>
             
                                             <div class="d-flex justify-content-end">
@@ -291,9 +299,11 @@
         var first_name = $("[name='first_name']").val();
         var last_name = $("[name='last_name']").val();
         var email = $("[name='email']").val();
+        var t4_lahir = $("[name='t4_lahir']").val();
+        var tgl_lahir = $("[name='tgl_lahir']").val();
         var id_tes = $("[name='id_tes']").val();
 
-        if(first_name == "" || last_name == "" || email == ""){
+        if(first_name == "" || last_name == "" || email == "" || t4_lahir == "" || tgl_lahir == ""){
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -636,6 +646,29 @@
         
         text = text.replace("((u))", "<u>");
         text = text.replace("((/u))", "</u>");
+
+        text = text.replace("((p))", "<p>");
+        text = text.replace("((/p))", "</p>");
+
+        text = text.replace("((br))", "</br>");
+        text = text.replace("((hr))", "</hr>");
+
+        for (let z = 0; z < 50; z++) {
+            text = text.replace("((i"+z+"))", "<i>");
+            text = text.replace("((/i"+z+"))", "</i>");
+    
+            text = text.replace("((b"+z+"))", "<b>");
+            text = text.replace("((/b"+z+"))", "</b>");
+            
+            text = text.replace("((u"+z+"))", "<u>");
+            text = text.replace("((/u"+z+"))", "</u>");
+    
+            text = text.replace("((p"+z+"))", "<p>");
+            text = text.replace("((/p"+z+"))", "</p>");
+    
+            text = text.replace("((br"+z+"))", "</br>");
+            text = text.replace("((hr"+z+"))", "</hr>");
+        }
 
         $( ".reading-"+i ).first().html( "<span>" + text + "</span>" );
     }
