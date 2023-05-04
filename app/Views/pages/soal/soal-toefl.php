@@ -299,7 +299,7 @@
                                         // hide all id 
                                         $("#navbarTes").show();
 
-                                        $("div[id^='sesi-'").hide();
+                                        $("div[id^='sesi-']").hide();
                                         // show sesi 
                                         $("#"+id).show();
                                         
@@ -316,7 +316,7 @@
                                 })
                             } else {
                                 // hide all id 
-                                $("div[id^='sesi-'").hide();
+                                $("div[id^='sesi-']").hide();
                                 // show sesi 
                                 $("#"+id).show();
                                 
@@ -387,7 +387,7 @@
                             }, 1000);
 
                             // hide all id 
-                            $("div[id^='sesi-'").hide();
+                            $("div[id^='sesi-']").hide();
                             // show sesi 
                             $("#"+id).show();
                             
@@ -444,7 +444,7 @@
                         }, 1000);
 
                         // hide all id 
-                        $("div[id^='sesi-'").hide();
+                        $("div[id^='sesi-']").hide();
                         // show sesi 
                         $("#"+id).show();
                         
@@ -462,7 +462,7 @@
     
     $(".btnBack").click(function(){
         let id = $(this).data("id");
-        $("div[id^='sesi-'").hide();
+        $("div[id^='sesi-']").hide();
         $("#"+id).show();
     })
 
@@ -553,7 +553,7 @@
                     }
 
                     // hide all id 
-                    $("div[id^='sesi-'").hide();
+                    $("div[id^='sesi-']").hide();
                     // show sesi 
                     $("#sesi-3").show();
 

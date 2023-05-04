@@ -19,7 +19,7 @@
     font-size: 25px;
     position: absolute;
     top: 160px;
-    left: 420px;
+    left: 250px;
     width: 500px;
     /* background-color: red; */
   }
@@ -125,7 +125,7 @@
     ?>
 
   <div style="position: absolute; left:0; right: 0; top: 0; bottom: 0;">
-    <img src="public/assets/sertifikat/feedback-writing.png" style="width: 210mm; height: 297mm; margin: 0;" />
+    <img src="public/assets/sertifikat/feedback-writing-2.png" style="width: 210mm; height: 297mm; margin: 0;" />
   </div>
   
   <div class="name">
