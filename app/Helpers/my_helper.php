@@ -26,7 +26,7 @@ function list_soal_toefl()
 
 // soal ielts 
     function soal_isian_ielts($name){
-        return '<input type="text" class="form-control form-control-sm form-autosize" style="background: #DBE7F6 !important;width: 50px;display: inline; font-size: 14px" name="'.$name.'">';
+        return '<input type="text" class="form-control form-control-sm form-autosize" style="background: #DBE7F6 !important;width: 50px;display: inline; font-size: 14px" name="'.$name.'" autocomplete="off">';
     }
 
     function soal_pg_ielts($data_soal){
