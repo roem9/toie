@@ -943,7 +943,7 @@
 
             <div class="">
                 <center>
-                    <img src="<?= base_url()?>public/assets/img-soal/writing-002.jpg" alt="" height="550px">
+                    <img src="<?= base_url()?>public/assets/img-soal/writing-002.jpeg" alt="" height="550px">
                 </center>
             </div>
 
