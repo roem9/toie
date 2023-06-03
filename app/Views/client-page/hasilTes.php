@@ -581,7 +581,7 @@
             $(".score_ta").html('Score TA (Task Achievement)');
           } else if(task == 2){
             var formattedText = text_writing[1].replace(/\t/g, '&#9;').replace(/\n/g, '<br>');
-            var wordCount = $.trim(text_writing).length ? text_writing.match(/\S+/g).length : 0;
+            var wordCount = $.trim(text_writing[1]).length ? text_writing[1].match(/\S+/g).length : 0;
 
             $("#text-writing").html(
               writing($obj.tipe_soal, task, base_url) + '<br>' + '<b>Answer</b> <br>' +
