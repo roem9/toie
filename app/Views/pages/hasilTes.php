@@ -146,11 +146,11 @@
                   <input type="hidden" name="id" id="id">
                   <input type="hidden" name="task" id="task">
                   <div class="form-group">
-                    <label for="kriteria_ta">Evaluation TA (Task Achievement)</label>
+                    <label for="kriteria_ta"><span class="kriteria_ta">Evaluation TA (Task Achievement)</span></label>
                     <textarea name="kriteria_ta" class="form-control" id="kriteria_ta" rows="3"></textarea>
                   </div>
                   <div class="form-group">
-                    <label>Score TA (Task Achievement)</label>
+                    <label><span class="score_ta">Score TA (Task Achievement)</span></label>
                     <input name="nilai_ta" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
                   </div>
                   <div class="form-group">
@@ -559,9 +559,12 @@
 
           let base_url = '<?= base_url()?>'
           if(task == 1){
+            var formattedText = text_writing[0].replace(/\t/g, '&#9;').replace(/\n/g, '<br>');
+            var wordCount = $.trim(text_writing[0]).length ? text_writing[0].match(/\S+/g).length : 0;
+            
             $("#text-writing").html(
               writing($obj.tipe_soal, task, base_url) + '<br>' + '<b>Answer</b> <br>' +
-              text_writing[0]
+              `<b>Word Count : ${wordCount}</b> <br><br> ${formattedText}`
             );
             CKEDITOR.instances['kriteria_ta'].setData($obj.kriteria_ta_1);
             $(`#formFeedbackWriting [name='nilai_ta']`).val($obj.nilai_ta_1);
@@ -571,10 +574,16 @@
             $(`#formFeedbackWriting [name='nilai_gra']`).val($obj.nilai_gra_1);
             CKEDITOR.instances['kriteria_lr'].setData($obj.kriteria_lr_1);
             $(`#formFeedbackWriting [name='nilai_lr']`).val($obj.nilai_lr_1);
+
+            $(".kriteria_ta").html('Evaluation TA (Task Achievement)');
+            $(".score_ta").html('Score TA (Task Achievement)');
           } else if(task == 2){
+            var formattedText = text_writing[1].replace(/\t/g, '&#9;').replace(/\n/g, '<br>');
+            var wordCount = $.trim(text_writing).length ? text_writing.match(/\S+/g).length : 0;
+
             $("#text-writing").html(
               writing($obj.tipe_soal, task, base_url) + '<br>' + '<b>Answer</b> <br>' +
-              text_writing[1]
+              `<b>Word Count : ${wordCount}</b> <br><br> ${formattedText}`
             );
             CKEDITOR.instances['kriteria_ta'].setData($obj.kriteria_ta_2);
             $(`#formFeedbackWriting [name='nilai_ta']`).val($obj.nilai_ta_2);
@@ -584,6 +593,9 @@
             $(`#formFeedbackWriting [name='nilai_gra']`).val($obj.nilai_gra_2);
             CKEDITOR.instances['kriteria_lr'].setData($obj.kriteria_lr_2);
             $(`#formFeedbackWriting [name='nilai_lr']`).val($obj.nilai_lr_2);
+
+            $(".kriteria_ta").html('Evaluation TR (Task Response)');
+            $(".score_ta").html('Score TR (Task Response)');
           }
         }
       }
