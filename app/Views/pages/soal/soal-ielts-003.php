@@ -953,7 +953,7 @@
 
             <table class="tableSoal">
                 <tr>
-                    <td>
+                    <td class="text-wrap">
                         Many museums and historical sites are mainly visited by tourists but not local people. Why is this the case and what can be done to attract more local people to visit these places?
                     </td>
                 </tr>

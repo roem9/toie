@@ -974,7 +974,7 @@
 
             <table class="table">
                 <tr>
-                    <td>
+                    <td class="text-wrap">
                         <p>
                             <b>Some people think that older school children should learn a wide range of subjects and develop knowledge. Others think that they should only study a small number of subjects in details. </b>
                         </p>
