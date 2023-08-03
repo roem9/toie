@@ -192,23 +192,42 @@ class PesertaIelts extends BaseController
         $defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
         $fontData = $defaultFontConfig['fontdata'];
 
-        // Create an instance of the class:
-        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L',
-            'fontDir' => array_merge($fontDirs, [
-                __DIR__ . '/lucida-calligraphy-italic.ttf',
-            ]),
-            'fontdata' => $fontData + [ // lowercase letters only in font key
-                'lucida-calligraphy-italic' => [
-                    'R' => 'lucida-calligraphy-italic.ttf'
+        if($data['url'] == 'transforme'){
+            // Create an instance of the class:
+            $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L',
+                'fontDir' => array_merge($fontDirs, [
+                    __DIR__ . '/lucida-calligraphy-italic.ttf',
+                ]),
+                'fontdata' => $fontData + [ // lowercase letters only in font key
+                    'lucida-calligraphy-italic' => [
+                        'R' => 'lucida-calligraphy-italic.ttf'
+                    ],
+                    'Montserrat-SemiBold' => [
+                        'R' => 'Montserrat-SemiBold.otf'
+                    ]
                 ],
-                'Montserrat-SemiBold' => [
-                    'R' => 'Montserrat-SemiBold.otf'
-                ]
-            ],
-            'default_font' => 'Montserrat-SemiBold'
-        ]);
+                'default_font' => 'Montserrat-SemiBold'
+            ]);
 
-        $html = view('pages/pdfIelts', $data);
+            $html = view('pages/pdfIelts', $data);
+        } else {
+            $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-P',
+                'fontDir' => array_merge($fontDirs, [
+                    __DIR__ . '/lucida-calligraphy-italic.ttf',
+                ]),
+                'fontdata' => $fontData + [ // lowercase letters only in font key
+                    'lucida-calligraphy-italic' => [
+                        'R' => 'lucida-calligraphy-italic.ttf'
+                    ],
+                    'Montserrat-SemiBold' => [
+                        'R' => 'Montserrat-SemiBold.otf'
+                    ]
+                ],
+                'default_font' => 'Montserrat-SemiBold'
+            ]);
+
+            $html = view('pages/pdfIeltsDinamic', $data);
+        }
 
         // Write some HTML code:
         $mpdf->WriteHTML($html);
@@ -219,56 +238,6 @@ class PesertaIelts extends BaseController
         // return redirect()->to($mpdf->Output());
         $this->response->setHeader('Content-Type', 'application/pdf');
 		$mpdf->Output("$data[first_name]-$data[last_name]-$data[tgl_tes]-IELTS.pdf", "I"); // opens in browser
-    }
-
-    public function spdfIelts($id_peserta){
-        $db = db_connect();
-        $data = $db->query("SELECT * FROM peserta_ielts as a JOIN tes as b ON a.id_tes = b.id_tes JOIN client as c ON b.fk_id_client = c.id_client WHERE md5(id) = '$id_peserta'")->getRowArray();
-
-        $data['no_doc'] = no_doc($data['no_doc']);
-        $data['hari'] = date('d', strtotime($data['tgl_tes']));
-        $data['tahun'] = date('y', strtotime($data['tgl_tes']));
-        $data['bulan'] = getHurufBulan(date('m', strtotime($data['tgl_tes'])));
-        $writer = new PngWriter();
-
-        // Create QR code
-        $qrCode = QrCode::create(base_url()."c/ielts/".$data['url']."/".$id_peserta)
-            ->setEncoding(new Encoding('UTF-8'))
-            ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
-            ->setSize(300)
-            ->setMargin(10)
-            ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
-            ->setForegroundColor(new Color(0, 0, 0));
-
-        // Create generic logo
-        $logo = Logo::create( FCPATH .'/public/assets/logo-client/'.$data['logo'])
-            ->setResizeToWidth(150);
-
-        $result = $writer->write($qrCode, $logo);
-        
-        $data['barcode'] = $result->getDataUri();
-
-        $dompdf = new \Dompdf\Dompdf(); 
-        $dompdf->loadHtml(view('pages/pdfIelts', $data));
-        $dompdf->setPaper('A4', 'potrait');
-        $dompdf->render();
-        // $dompdf->stream();
-        $dompdf->stream("$data[first_name] $data[last_name] - $data[tgl_tes] - IELTS.pdf", array("Attachment" => false));
-        exit(0);
-        // $Pdfgenerator = new Pdfgenerator();
-        // // filename dari pdf ketika didownload
-        // $file_pdf = "$data[first_name] $data[last_name] - $data[tgl_tes]";
-        // // setting paper
-        // $paper = 'A4';
-        // //orientasi paper potrait / landscape
-        // $orientation = "potrait";
-
-        // $html = view('pages/pdfIelts', $data);
-
-        // // run dompdf
-        // $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
-
-        // return view('pages/pdfIelts', $data);
     }
 
     public function feedbackIelts($id_peserta){
@@ -304,37 +273,71 @@ class PesertaIelts extends BaseController
         $defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
         $fontData = $defaultFontConfig['fontdata'];
 
-        // Create an instance of the class:
-        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L',
-            'fontDir' => array_merge($fontDirs, [
-                __DIR__ . '/lucida-calligraphy-italic.ttf',
-            ]),
-            'fontdata' => $fontData + [ // lowercase letters only in font key
-                'lucida-calligraphy-italic' => [
-                    'R' => 'lucida-calligraphy-italic.ttf'
+        if($data['url'] == 'transforme'){
+            // Create an instance of the class:
+            $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L',
+                'fontDir' => array_merge($fontDirs, [
+                    __DIR__ . '/lucida-calligraphy-italic.ttf',
+                ]),
+                'fontdata' => $fontData + [ // lowercase letters only in font key
+                    'lucida-calligraphy-italic' => [
+                        'R' => 'lucida-calligraphy-italic.ttf'
+                    ],
+                    'Montserrat-SemiBold' => [
+                        'R' => 'Montserrat-SemiBold.otf'
+                    ],
+                    'GothamBook' => [
+                        'R' => 'GothamBook.ttf'
+                    ]
                 ],
-                'Montserrat-SemiBold' => [
-                    'R' => 'Montserrat-SemiBold.otf'
+                'default_font' => 'Montserrat-SemiBold'
+            ]);
+
+            $html = view('pages/feedback/feedback-writing-1', $data);
+            $mpdf->WriteHTML($html);
+
+            $mpdf->AddPage();
+
+            $html = view('pages/feedback/feedback-writing-2', $data);
+            $mpdf->WriteHTML($html);
+
+            $mpdf->AddPage();
+
+            $html = view('pages/feedback/feedback-speaking', $data);
+            $mpdf->WriteHTML($html);
+        } else {
+            // Create an instance of the class:
+            $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-P',
+                'fontDir' => array_merge($fontDirs, [
+                    __DIR__ . '/lucida-calligraphy-italic.ttf',
+                ]),
+                'fontdata' => $fontData + [ // lowercase letters only in font key
+                    'lucida-calligraphy-italic' => [
+                        'R' => 'lucida-calligraphy-italic.ttf'
+                    ],
+                    'Montserrat-SemiBold' => [
+                        'R' => 'Montserrat-SemiBold.otf'
+                    ],
+                    'GothamBook' => [
+                        'R' => 'GothamBook.ttf'
+                    ]
                 ],
-                'GothamBook' => [
-                    'R' => 'GothamBook.ttf'
-                ]
-            ],
-            'default_font' => 'Montserrat-SemiBold'
-        ]);
+                'default_font' => 'Montserrat-SemiBold'
+            ]);
 
-        $html = view('pages/feedback/feedback-writing-1', $data);
-        $mpdf->WriteHTML($html);
+            $html = view('pages/feedback/dynamic-feedback-writing-1', $data);
+            $mpdf->WriteHTML($html);
 
-        $mpdf->AddPage();
+            $mpdf->AddPage();
 
-        $html = view('pages/feedback/feedback-writing-2', $data);
-        $mpdf->WriteHTML($html);
+            $html = view('pages/feedback/dynamic-feedback-writing-2', $data);
+            $mpdf->WriteHTML($html);
 
-        $mpdf->AddPage();
+            $mpdf->AddPage();
 
-        $html = view('pages/feedback/feedback-speaking', $data);
-        $mpdf->WriteHTML($html);
+            $html = view('pages/feedback/dynamic-feedback-speaking', $data);
+            $mpdf->WriteHTML($html);
+        }
 
         // $mpdf->Output();
 

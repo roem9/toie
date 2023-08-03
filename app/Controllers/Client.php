@@ -43,59 +43,71 @@ class Client extends BaseController
     {
         $validasi  = \Config\Services::validation();
         $logo = $this->request->getFile('logo');
+        $toefl_pdf = $this->request->getFile('toefl_pdf');
+        $ielts_pdf = $this->request->getFile('ielts_pdf');
+        $fs_pdf = $this->request->getFile('fs_pdf');
+        $fw_1_pdf = $this->request->getFile('fw_1_pdf');
+        $fw_2_pdf = $this->request->getFile('fw_2_pdf');
 
         if ($logo != null) {
-            // menentukan aturan jika form logo terisi
             $aturan = [
-                'nama_client' => [
-                    'label' => 'Nama Client',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{field} harus diisi'
-                    ]
-                ],
-                'url' => [
-                    'label' => 'URL Client',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{field} harus diisi',
-                    ]
-                ],
-                'alamat' => [
-                    'label' => 'Alamat Client',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{field} harus diisi',
-                    ]
-                ],
                 'logo' => 'uploaded[logo]|max_size[logo,1024]|ext_in[logo,png,jpg,jpeg],'
             ];
-        } else {
-            // menentukan aturan jika form logo tidak terisi
+        }
+
+        if ($toefl_pdf != null) {
             $aturan = [
-                'nama_client' => [
-                    'label' => 'Nama Client',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{field} harus diisi'
-                    ]
-                ],
-                'url' => [
-                    'label' => 'URL Client',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{field} harus diisi',
-                    ]
-                ],
-                'alamat' => [
-                    'label' => 'Alamat Client',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{field} harus diisi',
-                    ]
-                ]
+                'toefl_pdf' => 'uploaded[toefl_pdf]|max_size[toefl_pdf,20480]|ext_in[toefl_pdf,png,jpg,jpeg],'
             ];
         }
+
+        if ($ielts_pdf != null) {
+            $aturan = [
+                'ielts_pdf' => 'uploaded[ielts_pdf]|max_size[ielts_pdf,20480]|ext_in[ielts_pdf,png,jpg,jpeg],'
+            ];
+        }
+
+        if ($fs_pdf != null) {
+            $aturan = [
+                'fs_pdf' => 'uploaded[fs_pdf]|max_size[fs_pdf,20480]|ext_in[fs_pdf,png,jpg,jpeg],'
+            ];
+        }
+
+        if ($fw_1_pdf != null) {
+            $aturan = [
+                'fw_1_pdf' => 'uploaded[fw_1_pdf]|max_size[fw_1_pdf,20480]|ext_in[fw_1_pdf,png,jpg,jpeg],'
+            ];
+        }
+
+        if ($fw_2_pdf != null) {
+            $aturan = [
+                'fw_2_pdf' => 'uploaded[fw_2_pdf]|max_size[fw_2_pdf,20480]|ext_in[fw_2_pdf,png,jpg,jpeg],'
+            ];
+        }
+
+        $aturan = [
+            'nama_client' => [
+                'label' => 'Nama Client',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi'
+                ]
+            ],
+            'url' => [
+                'label' => 'URL Client',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+                ]
+            ],
+            'alamat' => [
+                'label' => 'Alamat Client',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+                ]
+            ]
+        ];
         
         $validasi->setRules($aturan);
         if ($validasi->withRequest($this->request)->run()) {
@@ -133,29 +145,151 @@ class Client extends BaseController
                             // Store file in public/uploads/ folder
                             $logo->move('public/assets/logo-client', $newName);
                             $data['logo'] = $newName;
-
-                            $model->update($id_client, $data);
-                            $hasil['sukses'] = "Berhasil mengubah data";
-                            $hasil['error'] = true;
-                            $hasil['edit'] = true;
-                            $hasil['logo'] = $data['logo'];
                         } else {
                             // Response
                             $hasil['sukses'] = false;
                             $hasil['error'] = "Gagal mengupload file";
+                            
+                            return json_encode($hasil);
                         }
                     } else {
                         // Response
                         $hasil['sukses'] = false;
                         $hasil['error'] = "Gagal mengupload file";
+
+                        return json_encode($hasil);
                     }
-                } else {
-                    $model->update($id_client, $data);
-                    $hasil['sukses'] = "Berhasil mengubah data";
-                    $hasil['error'] = true;
-                    $hasil['edit'] = true;
-                    $hasil['logo'] = $searchClient['logo'];
+                } 
+
+                if ($toefl_pdf != null) {
+                    if ($toefl_pdf = $this->request->getFile('toefl_pdf')) {
+                        if ($toefl_pdf->isValid() && !$toefl_pdf->hasMoved()) {
+                            // Get random file name
+                            $newName = $toefl_pdf->getRandomName();
+
+                            // Store file in public/uploads/ folder
+                            $toefl_pdf->move('public/assets/pdf/toefl', $newName);
+                            $data['toefl_pdf'] = $newName;
+                        } else {
+                            // Response
+                            $hasil['sukses'] = false;
+                            $hasil['error'] = "Gagal mengupload file";
+                            
+                            return json_encode($hasil);
+                        }
+                    } else {
+                        // Response
+                        $hasil['sukses'] = false;
+                        $hasil['error'] = "Gagal mengupload file";
+
+                        return json_encode($hasil);
+                    }
                 }
+
+                if ($ielts_pdf != null) {
+                    if ($ielts_pdf = $this->request->getFile('ielts_pdf')) {
+                        if ($ielts_pdf->isValid() && !$ielts_pdf->hasMoved()) {
+                            // Get random file name
+                            $newName = $ielts_pdf->getRandomName();
+
+                            // Store file in public/uploads/ folder
+                            $ielts_pdf->move('public/assets/pdf/ielts', $newName);
+                            $data['ielts_pdf'] = $newName;
+                        } else {
+                            // Response
+                            $hasil['sukses'] = false;
+                            $hasil['error'] = "Gagal mengupload file";
+                            
+                            return json_encode($hasil);
+                        }
+                    } else {
+                        // Response
+                        $hasil['sukses'] = false;
+                        $hasil['error'] = "Gagal mengupload file";
+
+                        return json_encode($hasil);
+                    }
+                }
+
+                if ($fs_pdf != null) {
+                    if ($fs_pdf = $this->request->getFile('fs_pdf')) {
+                        if ($fs_pdf->isValid() && !$fs_pdf->hasMoved()) {
+                            // Get random file name
+                            $newName = $fs_pdf->getRandomName();
+
+                            // Store file in public/uploads/ folder
+                            $fs_pdf->move('public/assets/pdf/fs', $newName);
+                            $data['fs_pdf'] = $newName;
+                        } else {
+                            // Response
+                            $hasil['sukses'] = false;
+                            $hasil['error'] = "Gagal mengupload file";
+                            
+                            return json_encode($hasil);
+                        }
+                    } else {
+                        // Response
+                        $hasil['sukses'] = false;
+                        $hasil['error'] = "Gagal mengupload file";
+
+                        return json_encode($hasil);
+                    }
+                }
+
+                if ($fw_1_pdf != null) {
+                    if ($fw_1_pdf = $this->request->getFile('fw_1_pdf')) {
+                        if ($fw_1_pdf->isValid() && !$fw_1_pdf->hasMoved()) {
+                            // Get random file name
+                            $newName = $fw_1_pdf->getRandomName();
+
+                            // Store file in public/uploads/ folder
+                            $fw_1_pdf->move('public/assets/pdf/fw1', $newName);
+                            $data['fw_1_pdf'] = $newName;
+                        } else {
+                            // Response
+                            $hasil['sukses'] = false;
+                            $hasil['error'] = "Gagal mengupload file";
+                            
+                            return json_encode($hasil);
+                        }
+                    } else {
+                        // Response
+                        $hasil['sukses'] = false;
+                        $hasil['error'] = "Gagal mengupload file";
+
+                        return json_encode($hasil);
+                    }
+                }
+
+                if ($fw_2_pdf != null) {
+                    if ($fw_2_pdf = $this->request->getFile('fw_2_pdf')) {
+                        if ($fw_2_pdf->isValid() && !$fw_2_pdf->hasMoved()) {
+                            // Get random file name
+                            $newName = $fw_2_pdf->getRandomName();
+
+                            // Store file in public/uploads/ folder
+                            $fw_2_pdf->move('public/assets/pdf/fw2', $newName);
+                            $data['fw_2_pdf'] = $newName;
+                        } else {
+                            // Response
+                            $hasil['sukses'] = false;
+                            $hasil['error'] = "Gagal mengupload file";
+                            
+                            return json_encode($hasil);
+                        }
+                    } else {
+                        // Response
+                        $hasil['sukses'] = false;
+                        $hasil['error'] = "Gagal mengupload file";
+
+                        return json_encode($hasil);
+                    }
+                }
+
+                $model->update($id_client, $data);
+                $hasil['sukses'] = "Berhasil mengubah data";
+                $hasil['error'] = true;
+                $hasil['edit'] = true;
             } else {
                 if ($logo != null) {
                     if ($logo = $this->request->getFile('logo')) {
@@ -170,27 +304,151 @@ class Client extends BaseController
                             // Store file in public/uploads/ folder
                             $logo->move('public/assets/logo-client', $newName);
                             $data['logo'] = $newName;
-
-                            $model->save($data);
-                            $hasil['sukses'] = "Berhasil memasukkan data";
-                            $hasil['error'] = true;
-                            $hasil['edit'] = false;
                         } else {
                             // Response
                             $hasil['sukses'] = false;
                             $hasil['error'] = "Gagal mengupload file";
+
+                            return json_encode($hasil);
                         }
                     } else {
                         // Response
                         $hasil['sukses'] = false;
                         $hasil['error'] = "Gagal mengupload file";
+
+                        return json_encode($hasil);
                     }
-                } else {
-                    $model->save($data);
-                    $hasil['sukses'] = "Berhasil memasukkan data";
-                    $hasil['error'] = true;
-                    $hasil['edit'] = false;
                 }
+
+                if ($toefl_pdf != null) {
+                    if ($toefl_pdf = $this->request->getFile('toefl_pdf')) {
+                        if ($toefl_pdf->isValid() && !$toefl_pdf->hasMoved()) {
+                            // Get random file name
+                            $newName = $toefl_pdf->getRandomName();
+
+                            // Store file in public/uploads/ folder
+                            $toefl_pdf->move('public/assets/pdf/toefl', $newName);
+                            $data['toefl_pdf'] = $newName;
+                        } else {
+                            // Response
+                            $hasil['sukses'] = false;
+                            $hasil['error'] = "Gagal mengupload file";
+                            
+                            return json_encode($hasil);
+                        }
+                    } else {
+                        // Response
+                        $hasil['sukses'] = false;
+                        $hasil['error'] = "Gagal mengupload file";
+
+                        return json_encode($hasil);
+                    }
+                }
+
+                if ($ielts_pdf != null) {
+                    if ($ielts_pdf = $this->request->getFile('ielts_pdf')) {
+                        if ($ielts_pdf->isValid() && !$ielts_pdf->hasMoved()) {
+                            // Get random file name
+                            $newName = $ielts_pdf->getRandomName();
+
+                            // Store file in public/uploads/ folder
+                            $ielts_pdf->move('public/assets/pdf/ielts', $newName);
+                            $data['ielts_pdf'] = $newName;
+                        } else {
+                            // Response
+                            $hasil['sukses'] = false;
+                            $hasil['error'] = "Gagal mengupload file";
+                            
+                            return json_encode($hasil);
+                        }
+                    } else {
+                        // Response
+                        $hasil['sukses'] = false;
+                        $hasil['error'] = "Gagal mengupload file";
+
+                        return json_encode($hasil);
+                    }
+                }
+
+                if ($fs_pdf != null) {
+                    if ($fs_pdf = $this->request->getFile('fs_pdf')) {
+                        if ($fs_pdf->isValid() && !$fs_pdf->hasMoved()) {
+                            // Get random file name
+                            $newName = $fs_pdf->getRandomName();
+
+                            // Store file in public/uploads/ folder
+                            $fs_pdf->move('public/assets/pdf/fs', $newName);
+                            $data['fs_pdf'] = $newName;
+                        } else {
+                            // Response
+                            $hasil['sukses'] = false;
+                            $hasil['error'] = "Gagal mengupload file";
+                            
+                            return json_encode($hasil);
+                        }
+                    } else {
+                        // Response
+                        $hasil['sukses'] = false;
+                        $hasil['error'] = "Gagal mengupload file";
+
+                        return json_encode($hasil);
+                    }
+                }
+
+                if ($fw_1_pdf != null) {
+                    if ($fw_1_pdf = $this->request->getFile('fw_1_pdf')) {
+                        if ($fw_1_pdf->isValid() && !$fw_1_pdf->hasMoved()) {
+                            // Get random file name
+                            $newName = $fw_1_pdf->getRandomName();
+
+                            // Store file in public/uploads/ folder
+                            $fw_1_pdf->move('public/assets/pdf/fw1', $newName);
+                            $data['fw_1_pdf'] = $newName;
+                        } else {
+                            // Response
+                            $hasil['sukses'] = false;
+                            $hasil['error'] = "Gagal mengupload file";
+                            
+                            return json_encode($hasil);
+                        }
+                    } else {
+                        // Response
+                        $hasil['sukses'] = false;
+                        $hasil['error'] = "Gagal mengupload file";
+
+                        return json_encode($hasil);
+                    }
+                }
+
+                if ($fw_2_pdf != null) {
+                    if ($fw_2_pdf = $this->request->getFile('fw_2_pdf')) {
+                        if ($fw_2_pdf->isValid() && !$fw_2_pdf->hasMoved()) {
+                            // Get random file name
+                            $newName = $fw_2_pdf->getRandomName();
+
+                            // Store file in public/uploads/ folder
+                            $fw_2_pdf->move('public/assets/pdf/fw2', $newName);
+                            $data['fw_2_pdf'] = $newName;
+                        } else {
+                            // Response
+                            $hasil['sukses'] = false;
+                            $hasil['error'] = "Gagal mengupload file";
+                            
+                            return json_encode($hasil);
+                        }
+                    } else {
+                        // Response
+                        $hasil['sukses'] = false;
+                        $hasil['error'] = "Gagal mengupload file";
+
+                        return json_encode($hasil);
+                    }
+                }
+
+                $model->save($data);
+                $hasil['sukses'] = "Berhasil memasukkan data";
+                $hasil['error'] = true;
+                $hasil['edit'] = false;
             }
         } else {
             $hasil['sukses'] = false;

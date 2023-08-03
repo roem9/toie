@@ -57,6 +57,31 @@
             <div id="logo_client" style="display:none" class="text-center mb-3"></div>
             <input name="logo" class="form-control" type="file" id="logo">
           </div>
+          <div class="mb-3">
+            <label for="toefl_pdf" class="form-label">PDF TOEFL</label>
+            <div id="toefl" style="display:none" class="text-center mb-3"></div>
+            <input name="toefl_pdf" class="form-control" type="file" id="toefl_pdf">
+          </div>
+          <div class="mb-3">
+            <label for="ielts_pdf" class="form-label">PDF IELTS</label>
+            <div id="ielts" style="display:none" class="text-center mb-3"></div>
+            <input name="ielts_pdf" class="form-control" type="file" id="ielts_pdf">
+          </div>
+          <div class="mb-3">
+            <label for="fs_pdf" class="form-label">PDF Speaking</label>
+            <div id="fs" style="display:none" class="text-center mb-3"></div>
+            <input name="fs_pdf" class="form-control" type="file" id="fs_pdf">
+          </div>
+          <div class="mb-3">
+            <label for="fw_1_pdf" class="form-label">PDF Writing 1</label>
+            <div id="fw_1" style="display:none" class="text-center mb-3"></div>
+            <input name="fw_1_pdf" class="form-control" type="file" id="fw_1_pdf">
+          </div>
+          <div class="mb-3">
+            <label for="fw_2_pdf" class="form-label">PDF Writing 2</label>
+            <div id="fw_2" style="display:none" class="text-center mb-3"></div>
+            <input name="fw_2_pdf" class="form-control" type="file" id="fw_2_pdf">
+          </div>
         </form>
       </div>
       <div class="modal-footer">
@@ -96,6 +121,11 @@
     $("#formTambahClient")[0].reset();
     $(`#formTambahClient [name='id_client']`).val('');
     $("#logo_client").hide();
+    $("#toefl").hide();
+    $("#ielts").hide();
+    $("#fs").hide();
+    $("#fw_1").hide();
+    $("#fw_2").hide();
 
     $('.alert-error').hide();
     $('.alert-sukses').hide();
@@ -197,6 +227,11 @@
     let alamat = $(`#formTambahClient [name='alamat']`).val();
     let url = $(`#formTambahClient [name='url']`).val();
     let logo = $(`#formTambahClient #logo`)[0].files;
+    let toefl_pdf = $(`#formTambahClient #toefl_pdf`)[0].files;
+    let ielts_pdf = $(`#formTambahClient #ielts_pdf`)[0].files;
+    let fs_pdf = $(`#formTambahClient #fs_pdf`)[0].files;
+    let fw_1_pdf = $(`#formTambahClient #fw_1_pdf`)[0].files;
+    let fw_2_pdf = $(`#formTambahClient #fw_2_pdf`)[0].files;
     var fd = new FormData();
 
     // Append data 
@@ -206,6 +241,11 @@
     fd.append('url', url);
     fd.append('password', password);
     fd.append('logo', logo[0]);
+    fd.append('toefl_pdf', toefl_pdf[0]);
+    fd.append('ielts_pdf', ielts_pdf[0]);
+    fd.append('fs_pdf', fs_pdf[0]);
+    fd.append('fw_1_pdf', fw_1_pdf[0]);
+    fd.append('fw_2_pdf', fw_2_pdf[0]);
 
     $.ajax({
       url: "<?= base_url()?>client/simpan",
@@ -227,10 +267,20 @@
 
           if ($obj.edit == false) {
             $("#formTambahClient")[0].reset();
+
+            $("#modalFormClient").modal('hide');
+            
+            Toast.fire({
+              icon: 'success',
+              title: `Berhasil menambahkan client`
+            })
           } else {
-            $(`#logo_client`).html(
-              `<img src="<?= base_url()?>public/assets/logo-client/${$obj.logo}" alt="" class="img-fluid" width="30%">`
-            )
+            $("#modalFormClient").modal('hide');
+            
+            Toast.fire({
+              icon: 'success',
+              title: `Berhasil mengubah data client`
+            })
           }
 
           showData();
@@ -243,6 +293,8 @@
   }
 
   function editClient($id) {
+    $("#formTambahClient")[0].reset();
+
     $.ajax({
       url: "<?= base_url()?>/client/getClient/" + $id,
       type: "get",
@@ -259,9 +311,35 @@
           $(`#formTambahClient [name='alamat']`).val(obj.alamat);
           $(`#formTambahClient [name='url']`).val(obj.url);
           $(`#formTambahClient [name='password']`).val('');
+          
           $(`#logo_client`).show();
           $(`#logo_client`).html(
             `<img src="<?= base_url()?>public/assets/logo-client/${obj.logo}" alt="" class="img-fluid" width="30%">`
+          )
+          
+          $(`#toefl`).show();
+          $(`#toefl`).html(
+            `<img src="<?= base_url()?>public/assets/pdf/toefl/${obj.toefl_pdf}" alt="" class="img-fluid" width="30%">`
+          )
+
+          $(`#ielts`).show();
+          $(`#ielts`).html(
+            `<img src="<?= base_url()?>public/assets/pdf/ielts/${obj.ielts_pdf}" alt="" class="img-fluid" width="30%">`
+          )
+
+          $(`#fs`).show();
+          $(`#fs`).html(
+            `<img src="<?= base_url()?>public/assets/pdf/fs/${obj.fs_pdf}" alt="" class="img-fluid" width="30%">`
+          )
+          
+          $(`#fw_1`).show();
+          $(`#fw_1`).html(
+            `<img src="<?= base_url()?>public/assets/pdf/fw1/${obj.fw_1_pdf}" alt="" class="img-fluid" width="30%">`
+          )
+
+          $(`#fw_2`).show();
+          $(`#fw_2`).html(
+            `<img src="<?= base_url()?>public/assets/pdf/fw2/${obj.fw_2_pdf}" alt="" class="img-fluid" width="30%">`
           )
         }
       }

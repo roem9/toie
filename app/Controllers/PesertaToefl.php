@@ -185,23 +185,42 @@ class PesertaToefl extends BaseController
         $defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
         $fontData = $defaultFontConfig['fontdata'];
 
-        // Create an instance of the class:
-        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L',
-            'fontDir' => array_merge($fontDirs, [
-                __DIR__ . '/lucida-calligraphy-italic.ttf',
-            ]),
-            'fontdata' => $fontData + [ // lowercase letters only in font key
-                'lucida-calligraphy-italic' => [
-                    'R' => 'lucida-calligraphy-italic.ttf'
+        if($data['url'] == 'transforme'){
+            // Create an instance of the class:
+            $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L',
+                'fontDir' => array_merge($fontDirs, [
+                    __DIR__ . '/lucida-calligraphy-italic.ttf',
+                ]),
+                'fontdata' => $fontData + [ // lowercase letters only in font key
+                    'lucida-calligraphy-italic' => [
+                        'R' => 'lucida-calligraphy-italic.ttf'
+                    ],
+                    'Montserrat-SemiBold' => [
+                        'R' => 'Montserrat-SemiBold.otf'
+                    ]
                 ],
-                'Montserrat-SemiBold' => [
-                    'R' => 'Montserrat-SemiBold.otf'
-                ]
-            ],
-            'default_font' => 'Montserrat-SemiBold'
-        ]);
+                'default_font' => 'Montserrat-SemiBold'
+            ]);
 
-        $html = view('pages/pdfToefl', $data);
+            $html = view('pages/pdfToefl', $data);
+        } else {
+            $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-P',
+                'fontDir' => array_merge($fontDirs, [
+                    __DIR__ . '/lucida-calligraphy-italic.ttf',
+                ]),
+                'fontdata' => $fontData + [ // lowercase letters only in font key
+                    'lucida-calligraphy-italic' => [
+                        'R' => 'lucida-calligraphy-italic.ttf'
+                    ],
+                    'Montserrat-SemiBold' => [
+                        'R' => 'Montserrat-SemiBold.otf'
+                    ]
+                ],
+                'default_font' => 'Montserrat-SemiBold'
+            ]);
+
+            $html = view('pages/pdfToeflDinamic', $data);
+        }
 
         // Write some HTML code:
         $mpdf->WriteHTML($html);

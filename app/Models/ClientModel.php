@@ -14,7 +14,20 @@ class ClientModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama_client', 'url', 'password', 'alamat', 'logo', 'cookie', 'hapus'];
+    protected $allowedFields    = [
+        'nama_client'
+        , 'url'
+        , 'password'
+        , 'alamat'
+        , 'logo'
+        , 'cookie'
+        , 'hapus'
+        , 'toefl_pdf'
+        , 'ielts_pdf'
+        , 'fs_pdf'
+        , 'fw_1_pdf'
+        , 'fw_2_pdf'
+    ];
 
     // Dates
     protected $useTimestamps = false;
