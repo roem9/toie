@@ -180,7 +180,7 @@ class PesertaIelts extends BaseController
 
         // Create generic logo
         $logo = Logo::create( FCPATH .'/public/assets/logo-client/'.$data['logo'])
-            ->setResizeToWidth(150);
+            ->setResizeToWidth(50);
 
         $result = $writer->write($qrCode, $logo);
         
@@ -261,7 +261,7 @@ class PesertaIelts extends BaseController
 
         // Create generic logo
         $logo = Logo::create( FCPATH .'/public/assets/logo-client/'.$data['logo'])
-            ->setResizeToWidth(150);
+            ->setResizeToWidth(50);
 
         $result = $writer->write($qrCode, $logo);
         
