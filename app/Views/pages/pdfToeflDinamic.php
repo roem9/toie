@@ -13,7 +13,7 @@
   .barcode {
     position: absolute;
     bottom: 140px;
-    left: 135px;
+    left: 132px;
   }
 
   .no_doc {
@@ -41,7 +41,7 @@
     left: 0px;
     right: 0px;
     text-align: center;
-    background-color: white;
+    /* background-color: white; */
   }
 
   .nilai_listening {
