@@ -221,7 +221,7 @@
         </div>
     <?php endif;?>
 
-    <div class="modal modal-blur fade bg-danger" id="alertModal" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal modal-blur bg-danger" id="alertModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -245,6 +245,14 @@
 <?= $this->section('js-script') ?>
 <script>
     let start = false;
+
+    $(document).mouseleave(function () {
+        showAlertWithCountdown(10)
+    });
+
+    $(document).mouseenter(function () {
+        returnWorkSheet()
+    });
 
     $(".btnSignIn").click(function(){
         let id_tes = $("input[name='id_tes']").val();
@@ -742,7 +750,7 @@
 
     function returnWorkSheet() {
         if(start){
-            $("#alertModal").modal('hide');
+            // $("#alertModal").modal('hide');
             clearInterval(countdownInterval);
         }
     }

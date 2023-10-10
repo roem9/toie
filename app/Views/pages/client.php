@@ -58,27 +58,27 @@
             <input name="logo" class="form-control" type="file" id="logo">
           </div>
           <div class="mb-3">
-            <label for="toefl_pdf" class="form-label">PDF TOEFL</label>
+            <label for="toefl_pdf" class="form-label">Image TOEFL</label>
             <div id="toefl" style="display:none" class="text-center mb-3"></div>
             <input name="toefl_pdf" class="form-control" type="file" id="toefl_pdf">
           </div>
           <div class="mb-3">
-            <label for="ielts_pdf" class="form-label">PDF IELTS</label>
+            <label for="ielts_pdf" class="form-label">Image IELTS</label>
             <div id="ielts" style="display:none" class="text-center mb-3"></div>
             <input name="ielts_pdf" class="form-control" type="file" id="ielts_pdf">
           </div>
           <div class="mb-3">
-            <label for="fs_pdf" class="form-label">PDF Speaking</label>
+            <label for="fs_pdf" class="form-label">Image Speaking</label>
             <div id="fs" style="display:none" class="text-center mb-3"></div>
             <input name="fs_pdf" class="form-control" type="file" id="fs_pdf">
           </div>
           <div class="mb-3">
-            <label for="fw_1_pdf" class="form-label">PDF Writing 1</label>
+            <label for="fw_1_pdf" class="form-label">Image Writing 1</label>
             <div id="fw_1" style="display:none" class="text-center mb-3"></div>
             <input name="fw_1_pdf" class="form-control" type="file" id="fw_1_pdf">
           </div>
           <div class="mb-3">
-            <label for="fw_2_pdf" class="form-label">PDF Writing 2</label>
+            <label for="fw_2_pdf" class="form-label">Image Writing 2</label>
             <div id="fw_2" style="display:none" class="text-center mb-3"></div>
             <input name="fw_2_pdf" class="form-control" type="file" id="fw_2_pdf">
           </div>

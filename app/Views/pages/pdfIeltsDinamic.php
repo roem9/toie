@@ -159,7 +159,7 @@
   </div>
 
   <div class="description">
-    Achieved the following scores on the IELTS Academic <br>
+    Achieved the following scores on the <?= $tipe_tes?> Prediction Test<br>
     held on <?= date('d M Y', strtotime($tgl_tes))?>
   </div>
   

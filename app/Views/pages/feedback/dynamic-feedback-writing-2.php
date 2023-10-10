@@ -5,20 +5,21 @@
 
 <style>
   .name {
-    font-family: 'lucida-calligraphy-italic';
+    font-family: 'Montserrat-SemiBold';
     font-size: 25px;
     position: absolute;
-    top: 205px;
+    top: 80px;
     left: 170px;
     width: 553px;
     /* background-color: red; */
+    text-align: right;
   }
   
   .nilai_ta {
     font-family: 'Montserrat-SemiBold';
     font-size: 25px;
     position: absolute;
-    top: 365px;
+    top: <?= 365 - 10?>px;
     left: 648px;
     width: 50px;
     /* background-color: red; */
@@ -29,10 +30,10 @@
     font-family: 'GothamBook';
     font-size: 14px;
     position: absolute;
-    top: 263px;
+    top: <?= 263 - 10?>px;
     left: 68px;
     width: 540px;
-    height: 170px;
+    height: 166px;
     /* background-color: red; */
     padding: 3px;
   }
@@ -41,7 +42,7 @@
     font-family: 'Montserrat-SemiBold';
     font-size: 25px;
     position: absolute;
-    top: 535px;
+    top: <?= 535 - 0?>px;
     /* left: 420px; + 250 */
     left: 648px;
     width: 50px;
@@ -53,10 +54,10 @@
     font-family: 'GothamBook';
     font-size: 14px;
     position: absolute;
-    top: 435px;
+    top: <?= 435 - 2?>px;
     left: 68px;
     width: 540px;
-    height: 170px;
+    height: 166px;
     /* background-color: red; */
     padding: 3px;
   }
@@ -65,7 +66,7 @@
     font-family: 'Montserrat-SemiBold';
     font-size: 25px;
     position: absolute;
-    top: 705px;
+    top: <?= 705 + 10?>px;
     /* left: 420px; + 250 */
     left: 648px;
     width: 50px;
@@ -77,10 +78,10 @@
     font-family: 'GothamBook';
     font-size: 14px;
     position: absolute;
-    top: 607px;
+    top: <?= 607 + 8?>px;
     left: 68px;
     width: 540px;
-    height: 170px;
+    height: 166px;
     /* background-color: red; */
     padding: 3px;
   }
@@ -89,7 +90,7 @@
     font-family: 'Montserrat-SemiBold';
     font-size: 25px;
     position: absolute;
-    top: 875px;
+    top: <?= 875 + 25?>px;
     /* left: 420px; + 250 */
     left: 648px;
     width: 50px;
@@ -101,10 +102,10 @@
     font-family: 'GothamBook';
     font-size: 14px;
     position: absolute;
-    top: 779px;
+    top: <?= 779 + 20?>px;
     left: 68px;
     width: 540px;
-    height: 170px;
+    height: 166px;
     /* background-color: red; */
     padding: 3px;
   }
@@ -135,7 +136,7 @@
   </div>
   
   <div class="name">
-    <?= $first_name .' '. $last_name?>
+    <b><?= $first_name .' '. $last_name?></b>
   </div>
 
   <div class="nilai_ta">
