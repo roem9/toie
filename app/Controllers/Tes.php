@@ -44,7 +44,7 @@ class Tes extends BaseController
 
     public function getHasilTesIelts($id_tes){
         $db = db_connect();
-        $builder = $db->table('peserta_ielts')->where(["peserta_ielts.id_tes" => $id_tes])->select('id, first_name, last_name, email, nilai_speaking, nilai_listening, nilai_reading, nilai_writing, tipe_tes, md5(id) as id_peserta, nilai_ta_1,nilai_cc_1, nilai_gra_1, nilai_lr_1, nilai_ta_2, nilai_cc_2, nilai_gra_2, nilai_lr_2, nilai_topic, nilai_fluency, nilai_grammar, nilai_vocabulary')->join('tes', 'peserta_ielts.id_tes = tes.id_tes');
+        $builder = $db->table('peserta_ielts')->where(["peserta_ielts.id_tes" => $id_tes])->select('id, first_name, last_name, email, nilai_speaking, nilai_listening, nilai_reading, nilai_writing, tipe_tes, md5(id) as id_peserta, nilai_ta_1,nilai_cc_1, nilai_gra_1, nilai_lr_1, nilai_ta_2, nilai_cc_2, nilai_gra_2, nilai_lr_2, nilai_topic, nilai_fluency, nilai_grammar, nilai_vocabulary, DATE_FORMAT(peserta_ielts.created_at, "%Y-%m-%d") as created_at')->join('tes', 'peserta_ielts.id_tes = tes.id_tes');
 
         return DataTable::of($builder)->toJson(true);
     }
@@ -532,6 +532,10 @@ class Tes extends BaseController
                 return view('pages/soal/soal-ielts-general-post-test', $data);
             } else if($data['tipe_soal'] == "Soal_General_Pretest"){
                 return view('pages/soal/soal-ielts-general-pretest', $data);
+            } else if($data['tipe_soal'] == "Transforme_GT_03"){
+                return view('pages/soal/transforme/transforme-gt-03', $data);
+            } else if($data['tipe_soal'] == "Transforme_AC_03"){
+                return view('pages/soal/transforme/transforme-ac-03', $data);
             }
         }
     }

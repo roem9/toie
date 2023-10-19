@@ -112,6 +112,8 @@
               <option value="Soal_Academic_Pretest">Soal_Academic_Pretest</option>
               <option value="Soal_General_Post_Test">Soal_General_Post_Test</option>
               <option value="Soal_General_Pretest">Soal_General_Pretest</option>
+              <option value="Transforme_GT_03">Transforme_GT_03</option>
+              <option value="Transforme_AC_03">Transforme_AC_03</option>
             </select>
           </div>
           <div class="col-12 mb-3">

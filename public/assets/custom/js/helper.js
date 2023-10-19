@@ -128,25 +128,29 @@ function ielts_writing(
   nilai_ta_2,
   nilai_cc_2,
   nilai_gra_2,
-  nilai_lr_2
+  nilai_lr_2,
+  date
 ) {
   let task_1 = pembulatan_skor_ielts(
     (parseFloat(nilai_ta_1) +
       parseFloat(nilai_cc_1) +
       parseFloat(nilai_gra_1) +
       parseFloat(nilai_lr_1)) /
-      4
+      4,
+    date
   );
   let task_2 = pembulatan_skor_ielts(
     (parseFloat(nilai_ta_2) +
       parseFloat(nilai_cc_2) +
       parseFloat(nilai_gra_2) +
       parseFloat(nilai_lr_2)) /
-      4
+      4,
+    date
   );
 
   let nilai_writing = pembulatan_skor_ielts(
-    (parseFloat(task_1) + parseFloat(task_2) + parseFloat(task_2)) / 3
+    (parseFloat(task_1) + parseFloat(task_2) + parseFloat(task_2)) / 3,
+    date
   );
 
   return nilai_writing;
@@ -156,31 +160,46 @@ function ielts_speaking(
   nilai_topic,
   nilai_fluency,
   nilai_grammar,
-  nilai_vocabulary
+  nilai_vocabulary,
+  date
 ) {
   let nilai_speaking = pembulatan_skor_ielts(
     (parseFloat(nilai_topic) +
       parseFloat(nilai_fluency) +
       parseFloat(nilai_grammar) +
       parseFloat(nilai_vocabulary)) /
-      4
+      4,
+    date
   );
 
   return nilai_speaking;
 }
 
-function pembulatan_skor_ielts(angka) {
+function pembulatan_skor_ielts(angka, date) {
   var decimal = angka - Math.floor(angka); // hitung nilai desimal
 
-  if (decimal <= 0.25) {
-    // jika desimal < 0.25
-    return Math.floor(angka); // bulatkan ke bawah menjadi 0
-  } else if (decimal > 0.25 && decimal <= 0.75) {
-    // jika desimal >= 0.25 dan < 0.75
-    return Math.floor(angka) + 0.5; // bulatkan menjadi 0.5
+  if (date < "2023-10-12") {
+    if (decimal <= 0.25) {
+      // jika desimal < 0.25
+      return Math.floor(angka); // bulatkan ke bawah menjadi 0
+    } else if (decimal > 0.25 && decimal <= 0.75) {
+      // jika desimal >= 0.25 dan < 0.75
+      return Math.floor(angka) + 0.5; // bulatkan menjadi 0.5
+    } else {
+      // jika desimal > 0.75
+      return Math.ceil(angka); // bulatkan ke atas menjadi 1
+    }
   } else {
-    // jika desimal > 0.75
-    return Math.ceil(angka); // bulatkan ke atas menjadi 1
+    if (decimal < 0.25) {
+      // jika desimal < 0.25
+      return Math.floor(angka); // bulatkan ke bawah menjadi 0
+    } else if (decimal >= 0.25 && decimal <= 0.75) {
+      // jika desimal >= 0.25 dan < 0.75
+      return Math.floor(angka) + 0.5; // bulatkan menjadi 0.5
+    } else if (decimal > 0.75) {
+      // jika desimal > 0.75
+      return Math.ceil(angka); // bulatkan ke atas menjadi 1
+    }
   }
 }
 

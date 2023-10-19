@@ -185,24 +185,25 @@ function list_soal_toefl()
         $nilai_ta_2,
         $nilai_cc_2,
         $nilai_gra_2,
-        $nilai_lr_2
+        $nilai_lr_2,
+        $date
       ) {
         $task_1 = pembulatan_skor_ielts(
           (floatval($nilai_ta_1) +
             floatval($nilai_cc_1) +
             floatval($nilai_gra_1) +
             floatval($nilai_lr_1)) /
-            4
+            4, $date
         );
         $task_2 = pembulatan_skor_ielts(
           (floatval($nilai_ta_2) +
             floatval($nilai_cc_2) +
             floatval($nilai_gra_2) +
             floatval($nilai_lr_2)) /
-            4
+            4, $date
         );
       
-        $nilai_writing = pembulatan_skor_ielts((floatval($task_1) + floatval($task_2) + floatval($task_2)) / 3);
+        $nilai_writing = pembulatan_skor_ielts((floatval($task_1) + floatval($task_2) + floatval($task_2)) / 3, $date);
       
         return $nilai_writing;
     }
@@ -211,31 +212,48 @@ function list_soal_toefl()
         $nilai_topic,
         $nilai_fluency,
         $nilai_grammar,
-        $nilai_vocabulary
+        $nilai_vocabulary,
+        $date
       ) {
         $nilai_speaking = pembulatan_skor_ielts(
           (floatval($nilai_topic) +
             floatval($nilai_fluency) +
             floatval($nilai_grammar) +
             floatval($nilai_vocabulary)) /
-            4
+            4, $date
         );
       
         return $nilai_speaking;
     }
 
-    function pembulatan_skor_ielts($angka) {
-        $decimal = $angka - floor($angka); // hitung nilai desimal
-      
-        if ($decimal <= 0.25) {
-          // jika desimal < 0.25
-          return floor($angka); // bulatkan ke bawah menjadi 0
-        } else if ($decimal > 0.25 && $decimal <= 0.75) {
-          // jika desimal >= 0.25 dan < 0.75
-          return floor($angka) + 0.5; // bulatkan menjadi 0.5
+    function pembulatan_skor_ielts($angka, $date) {
+
+        if($date < '2023-10-12'){
+            $decimal = $angka - floor($angka); // hitung nilai desimal
+          
+            if ($decimal <= 0.25) {
+              // jika desimal < 0.25
+              return floor($angka); // bulatkan ke bawah menjadi 0
+            } else if ($decimal > 0.25 && $decimal <= 0.75) {
+              // jika desimal >= 0.25 dan < 0.75
+              return floor($angka) + 0.5; // bulatkan menjadi 0.5
+            } else {
+              // jika desimal > 0.75
+              return ceil($angka); // bulatkan ke atas menjadi 1
+            }
         } else {
-          // jika desimal > 0.75
-          return ceil($angka); // bulatkan ke atas menjadi 1
+            $decimal = $angka - floor($angka); // hitung nilai desimal
+          
+            if ($decimal < 0.25) {
+              // jika desimal < 0.25
+              return floor($angka); // bulatkan ke bawah menjadi 0
+            } else if ($decimal >= 0.25 && $decimal <= 0.75) {
+              // jika desimal >= 0.25 dan <= 0.75
+              return floor($angka) + 0.5; // bulatkan menjadi 0.5
+            } else if ($decimal > 0.75){
+              // jika desimal > 0.75
+              return ceil($angka); // bulatkan ke atas menjadi 1
+            }
         }
     }
 // soal ielts 

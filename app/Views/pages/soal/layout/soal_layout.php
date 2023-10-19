@@ -673,6 +673,10 @@
     
             text = text.replace("((p"+z+"))", "<p>");
             text = text.replace("((/p"+z+"))", "</p>");
+
+            
+            text = text.replace("((sup"+z+"))", "<sup>");
+            text = text.replace("((/sup"+z+"))", "</sup>");
     
             text = text.replace("((br"+z+"))", "</br>");
             text = text.replace("((hr"+z+"))", "</hr>");

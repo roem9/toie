@@ -98,6 +98,16 @@ class PesertaIelts extends BaseController
             $jawaban_ietls = $data_koreksi['jawaban_ietls'];
             $benar_listening = $data_koreksi['benar_listening'];
             $benar_reading = $data_koreksi['benar_reading'];
+        } else if($tes['tipe_soal'] == "Transforme_GT_03"){
+            $data_koreksi = transforme_gt_03($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
+            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $benar_listening = $data_koreksi['benar_listening'];
+            $benar_reading = $data_koreksi['benar_reading'];
+        } else if($tes['tipe_soal'] == "Transforme_AC_03"){
+            $data_koreksi = transforme_ac_03($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
+            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $benar_listening = $data_koreksi['benar_listening'];
+            $benar_reading = $data_koreksi['benar_reading'];
         }
 
         $writing_text = $this->request->getPost("text_writing");
@@ -161,7 +171,7 @@ class PesertaIelts extends BaseController
     
     public function pdfIelts($id_peserta){
         $db = db_connect();
-        $data = $db->query("SELECT * FROM peserta_ielts as a JOIN tes as b ON a.id_tes = b.id_tes JOIN client as c ON b.fk_id_client = c.id_client WHERE md5(id) = '$id_peserta'")->getRowArray();
+        $data = $db->query("SELECT *, DATE_FORMAT(a.created_at, '%Y-%m-%d') as created_at FROM peserta_ielts as a JOIN tes as b ON a.id_tes = b.id_tes JOIN client as c ON b.fk_id_client = c.id_client WHERE md5(id) = '$id_peserta'")->getRowArray();
 
         $data['no_doc'] = no_doc($data['no_doc']);
         $data['hari'] = date('d', strtotime($data['tgl_tes']));
