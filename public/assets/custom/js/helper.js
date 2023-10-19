@@ -178,7 +178,7 @@ function ielts_speaking(
 function pembulatan_skor_ielts(angka, date) {
   var decimal = angka - Math.floor(angka); // hitung nilai desimal
 
-  if (date < "2023-10-12") {
+  if (date < "2023-10-20") {
     if (decimal <= 0.25) {
       // jika desimal < 0.25
       return Math.floor(angka); // bulatkan ke bawah menjadi 0

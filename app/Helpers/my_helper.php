@@ -228,7 +228,7 @@ function list_soal_toefl()
 
     function pembulatan_skor_ielts($angka, $date) {
 
-        if($date < '2023-10-12'){
+        if($date < '2023-10-20'){
             $decimal = $angka - floor($angka); // hitung nilai desimal
           
             if ($decimal <= 0.25) {
