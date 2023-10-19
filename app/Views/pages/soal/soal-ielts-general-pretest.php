@@ -954,55 +954,69 @@
 <?= $this->section('sesi-writing') ?>
     <div class="card mb-3">
         <div class="card-body">
-            <p class="question mb-3">
-                IELTS WRITING TASK ONE<br>
-                You should spend about 20 minutes on this task 
-            </p>
+            <div class="row">
+                <div class="col-6">
+                    <p class="question mb-3">
+                        IELTS WRITING TASK ONE<br>
+                        You should spend about 20 minutes on this task 
+                    </p>
+        
+                    <table class="tableSoal">
+                        <tr>
+                            <td>
+                                <i>
+                                    You have a penfriend living in another country and he/she is curious to know about the major news items in your country.<br>
+                                    Briefly describe ONE news story that has been on TV, on the TV radio, or in the newspapers in your country, and explain why people are interested in it. 
+                                </i>
+                            </td>
+                        </tr>
+                    </table>
+        
+                    <p>
+                        You should write at least 150 words.<br>
+                        You do NOT need to write your own address. <br>
+                        Begin your letter as follows:<br>
+                        Dear, __________________________
+                    </p>
+                </div>
 
-            <table class="tableSoal">
-                <tr>
-                    <td>
-                        <i>
-                            You have a penfriend living in another country and he/she is curious to know about the major news items in your country.<br>
-                            Briefly describe ONE news story that has been on TV, on the TV radio, or in the newspapers in your country, and explain why people are interested in it. 
-                        </i>
-                    </td>
-                </tr>
-            </table>
+                <div class="col-6">
+                    <span>Type your answer here</span>
+                    <textarea id="textarea-1" class="form-control mb-3" name="text_writing[0]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
+                    <center>Total word Count : <span id="count-textarea-1">0</span></center>
+                </div>
+            </div>
 
-            <p>
-                You should write at least 150 words.<br>
-                You do NOT need to write your own address. <br>
-                Begin your letter as follows:<br>
-                Dear, __________________________
-            </p>
-
-            <span>Type your answer here</span>
-            <textarea id="textarea-1" class="form-control mb-3" name="text_writing[0]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
-            <center>Total word Count : <span id="count-textarea-1">0</span></center>
         </div>
     </div>
 
     <div class="card mb-3">
         <div class="card-body">
-            <p class="question mb-3">
-                IELTS WRITING TASK TWO<br>
-                You should spend about 40 minutes on this task<br>
-            </p>
+            <div class="row">
+                <div class="col-6">
+                    <p class="question mb-3">
+                        IELTS WRITING TASK TWO<br>
+                        You should spend about 40 minutes on this task<br>
+                    </p>
+        
+                    <table class="tableSoal">
+                        <tr>
+                            <td>
+                                <i>Some people believe that living in big cities is becoming more difficult. Others believe that it is getting easier. Discuss both views and give your own opinion.</i>
+                            </td>
+                        </tr>
+                    </table>
+        
+                    <p>Write at least 250 words.</p>
+                </div>
 
-            <table class="tableSoal">
-                <tr>
-                    <td>
-                        <i>Some people believe that living in big cities is becoming more difficult. Others believe that it is getting easier. Discuss both views and give your own opinion.</i>
-                    </td>
-                </tr>
-            </table>
+                <div class="col-6">
+                    <span>Type your answer here</span>
+                    <textarea id="textarea-2" class="form-control mb-3" name="text_writing[1]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
+                    <center>Total word Count : <span id="count-textarea-2">0</span></span></center>
+                </div>
+            </div>
 
-            <p>Write at least 250 words.</p>
-
-            <span>Type your answer here</span>
-            <textarea id="textarea-2" class="form-control mb-3" name="text_writing[1]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
-            <center>Total word Count : <span id="count-textarea-2">0</span></span></center>
         </div>
     </div>
 <?= $this->endSection()?>

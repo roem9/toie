@@ -989,41 +989,54 @@
 <?= $this->section('sesi-writing') ?>
     <div class="card mb-3">
         <div class="card-body">
-            <img src="<?= base_url()?>public/assets/img-soal/writing-academic-post-test-001.png" alt="" class="img-fluid">
+            <div class="row">
+                <div class="col-6">
+                    <img src="<?= base_url()?>public/assets/img-soal/writing-academic-post-test-001.png" alt="" class="img-fluid">
+                </div>
 
-            <p><span>Type your answer here</span></p>
-            <textarea id="textarea-1" class="form-control mb-3" name="text_writing[0]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
-            <center>Total word Count : <span id="count-textarea-1">0</span></center>
+                <div class="col-6">
+                    <p><span>Type your answer here</span></p>
+                    <textarea id="textarea-1" class="form-control mb-3" name="text_writing[0]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
+                    <center>Total word Count : <span id="count-textarea-1">0</span></center>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="card mb-3">
         <div class="card-body">
-            <p class="question mb-3">
-                IELTS WRITING TASK TWO<br>
-                You should spend about 40 minutes on this task<br>
-            </p>
-            
-            <p>Write about the following topic:</p>
-            <table class="tableSoal w-100 mb-3">
-                <tr>
-                    <td>
-                        <i>
-                            Being a celebrity-such as a famous film star or sports personality-brings problems as well as benefits. <br>
-                            Do you think that being a celebrity brings more benefits or more problems?
-                        </i>
-                    </td>
-                </tr>
-            </table>
+            <div class="row">
+                <div class="col-6">
+                    <p class="question mb-3">
+                        IELTS WRITING TASK TWO<br>
+                        You should spend about 40 minutes on this task<br>
+                    </p>
+                    
+                    <p>Write about the following topic:</p>
+                    <table class="tableSoal w-100 mb-3">
+                        <tr>
+                            <td>
+                                <i>
+                                    Being a celebrity-such as a famous film star or sports personality-brings problems as well as benefits. <br>
+                                    Do you think that being a celebrity brings more benefits or more problems?
+                                </i>
+                            </td>
+                        </tr>
+                    </table>
+        
+                    <p>
+                        Give reasons for your answer and include any relevant examples from your own knowledge or experience<br>
+                        Write at least 250 words.
+                    </p>
+                </div>
 
-            <p>
-                Give reasons for your answer and include any relevant examples from your own knowledge or experience<br>
-                Write at least 250 words.
-            </p>
+                <div class="col-6">
+                    <span>Type your answer here</span>
+                    <textarea id="textarea-2" class="form-control mb-3" name="text_writing[1]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
+                    <center>Total word Count : <span id="count-textarea-2">0</span></span></center>
+                </div>
+            </div>
 
-            <span>Type your answer here</span>
-            <textarea id="textarea-2" class="form-control mb-3" name="text_writing[1]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
-            <center>Total word Count : <span id="count-textarea-2">0</span></span></center>
         </div>
     </div>
 <?= $this->endSection()?>

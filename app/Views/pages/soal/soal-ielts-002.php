@@ -906,88 +906,68 @@
 <?= $this->section('sesi-writing')?>
     <div class="card mb-3">
         <div class="card-body">
-            <p class="question mb-3">
-                Writing Task 1
-            </p>
+            <div class="row">
+                <div class="col-6">
+                    <p class="question mb-3">
+                        Writing Task 1
+                    </p>
+        
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <p>
+                                    <b>The chart below shows the unemployment rate and the number of people leaving Ireland from 1988 to 2008.</b>
+                                </p>
+                            </td>
+        
+                        </tr>
+                    </table>
+        
+                    <div class="">
+                        <center>
+                            <img src="<?= base_url()?>public/assets/img-soal/writing-002.jpeg" alt="" height="550px">
+                        </center>
+                    </div>
+                </div>
 
-            <!-- <table class="table">
-                <tr>
-                    <td>
-                        <p>
-                            <b>The diagram below shows the process for recycling plastic bottles.</b>
-                        </p>
-                        <p>
-                            <i>Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</i>
-                        </p>
-                    </td>
-
-                </tr>
-            </table>
-
-            <div class="">
-                <center>
-                    <img src="<?= base_url()?>public/assets/img-soal/writing-002.jpg" alt="" height="550px">
-                </center>
-            </div> -->
-
-            <table class="table">
-                <tr>
-                    <td>
-                        <p>
-                            <b>The chart below shows the unemployment rate and the number of people leaving Ireland from 1988 to 2008.</b>
-                        </p>
-                    </td>
-
-                </tr>
-            </table>
-
-            <div class="">
-                <center>
-                    <img src="<?= base_url()?>public/assets/img-soal/writing-002.jpeg" alt="" height="550px">
-                </center>
+                <div class="col-6">
+                    <span>Type your answer here</span>
+                    <textarea id="textarea-1" class="form-control mb-3" name="text_writing[0]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
+                    <center>Total word Count : <span id="count-textarea-1">0</span></center>
+                </div>
             </div>
 
-            <span>Type your answer here</span>
-            <textarea id="textarea-1" class="form-control mb-3" name="text_writing[0]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
-            <center>Total word Count : <span id="count-textarea-1">0</span></center>
         </div>
     </div>
 
     <div class="card mb-3">
         <div class="card-body">
-            <p class="question mb-3">
-                Writing Task 2
-            </p>
+            <div class="row">
+                <div class="col-6">
+                    <p class="question mb-3">
+                        Writing Task 2
+                    </p>
+        
+                    <table class="table">
+                        <tr>
+                            <td class="text-wrap">
+                                <p>
+                                    <b>Some people think that older school children should learn a wide range of subjects and develop knowledge. Others think that they should only study a small number of subjects in details. </b>
+                                </p>
+                                <p>
+                                    <b>Discuss both views and give your opinion.</b>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-6">
+                    <span>Type your answer here</span>
+                    <textarea id="textarea-2" class="form-control mb-3" name="text_writing[1]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
+                    <center>Total word Count : <span id="count-textarea-2">0</span></center>
+                </div>
+            </div>
 
-            <!-- <table class="table">
-                <tr>
-                    <td>
-                        <p>
-                            <i>Some people claim that too much focus and resources have been spent to protect wild animals and birds. </i>
-                        </p>
-                        <p>
-                            <i>To what extent do you agree or disagree?</i>
-                        </p>
-                    </td>
-                </tr>
-            </table> -->
-
-            <table class="table">
-                <tr>
-                    <td class="text-wrap">
-                        <p>
-                            <b>Some people think that older school children should learn a wide range of subjects and develop knowledge. Others think that they should only study a small number of subjects in details. </b>
-                        </p>
-                        <p>
-                            <b>Discuss both views and give your opinion.</b>
-                        </p>
-                    </td>
-                </tr>
-            </table>
-
-            <span>Type your answer here</span>
-            <textarea id="textarea-2" class="form-control mb-3" name="text_writing[1]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
-            <center>Total word Count : <span id="count-textarea-2">0</span></center>
         </div>
     </div>
 <?= $this->endSection()?>

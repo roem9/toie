@@ -395,7 +395,7 @@
         $jawaban_ielts = substr($jawaban_ielts, 0, -3);
 
         $data_koreksi = [
-            'jawaban_ietls' =>  $jawaban_ielts,
+            'jawaban_ielts' =>  $jawaban_ielts,
             'benar_listening' =>  $benar_listening,
             'benar_reading' =>  $benar_reading
         ];
@@ -773,7 +773,7 @@
         $jawaban_ielts = substr($jawaban_ielts, 0, -3);
 
         $data_koreksi = [
-            'jawaban_ietls' =>  $jawaban_ielts,
+            'jawaban_ielts' =>  $jawaban_ielts,
             'benar_listening' =>  $benar_listening,
             'benar_reading' =>  $benar_reading
         ];
@@ -1151,7 +1151,7 @@
         $jawaban_ielts = substr($jawaban_ielts, 0, -3);
 
         $data_koreksi = [
-            'jawaban_ietls' =>  $jawaban_ielts,
+            'jawaban_ielts' =>  $jawaban_ielts,
             'benar_listening' =>  $benar_listening,
             'benar_reading' =>  $benar_reading
         ];
@@ -1578,7 +1578,7 @@
         $jawaban_ielts = substr($jawaban_ielts, 0, -3);
 
         $data_koreksi = [
-            'jawaban_ietls' =>  $jawaban_ielts,
+            'jawaban_ielts' =>  $jawaban_ielts,
             'benar_listening' =>  $benar_listening,
             'benar_reading' =>  $benar_reading
         ];
@@ -1950,7 +1950,7 @@
         $jawaban_ielts = substr($jawaban_ielts, 0, -3);
 
         $data_koreksi = [
-            'jawaban_ietls' =>  $jawaban_ielts,
+            'jawaban_ielts' =>  $jawaban_ielts,
             'benar_listening' =>  $benar_listening,
             'benar_reading' =>  $benar_reading
         ];
@@ -2326,7 +2326,7 @@
         $jawaban_ielts = substr($jawaban_ielts, 0, -3);
 
         $data_koreksi = [
-            'jawaban_ietls' =>  $jawaban_ielts,
+            'jawaban_ielts' =>  $jawaban_ielts,
             'benar_listening' =>  $benar_listening,
             'benar_reading' =>  $benar_reading
         ];
@@ -2702,7 +2702,7 @@
         $jawaban_ielts = substr($jawaban_ielts, 0, -3);
 
         $data_koreksi = [
-            'jawaban_ietls' =>  $jawaban_ielts,
+            'jawaban_ielts' =>  $jawaban_ielts,
             'benar_listening' =>  $benar_listening,
             'benar_reading' =>  $benar_reading
         ];
@@ -3078,7 +3078,7 @@
         $jawaban_ielts = substr($jawaban_ielts, 0, -3);
 
         $data_koreksi = [
-            'jawaban_ietls' =>  $jawaban_ielts,
+            'jawaban_ielts' =>  $jawaban_ielts,
             'benar_listening' =>  $benar_listening,
             'benar_reading' =>  $benar_reading
         ];
@@ -3462,7 +3462,7 @@
         $jawaban_ielts = substr($jawaban_ielts, 0, -3);
 
         $data_koreksi = [
-            'jawaban_ietls' =>  $jawaban_ielts,
+            'jawaban_ielts' =>  $jawaban_ielts,
             'benar_listening' =>  $benar_listening,
             'benar_reading' =>  $benar_reading
         ];
@@ -3856,7 +3856,7 @@
         $jawaban_ielts = substr($jawaban_ielts, 0, -3);
 
         $data_koreksi = [
-            'jawaban_ietls' =>  $jawaban_ielts,
+            'jawaban_ielts' =>  $jawaban_ielts,
             'benar_listening' =>  $benar_listening,
             'benar_reading' =>  $benar_reading
         ];
@@ -3897,84 +3897,68 @@
     }
 
     function empat_nomor_tidak_boleh_sama_reading($jawaban_no_1, $jawaban_no_2, $jawaban_no_3, $jawaban_no_4, $kunci_no_1, $kunci_no_2, $kunci_no_3, $kunci_no_4) {
-        $benar_reading = 0;
+        // Masukkan semua kunci ke dalam array
+        $kunci = [$kunci_no_1, $kunci_no_2, $kunci_no_3, $kunci_no_4];
+        
         $jawaban_ielts = '';
+        $benar_reading = 0;
     
-        $jawaban_array = array(strtolower($jawaban_no_1), strtolower($jawaban_no_2), strtolower($jawaban_no_3), strtolower($jawaban_no_4));
-        $kunci_array = array(strtolower($kunci_no_1), strtolower($kunci_no_2), strtolower($kunci_no_3), strtolower($kunci_no_4));
-    
-        sort($jawaban_array);
-        sort($kunci_array);
-    
-        if ($jawaban_array == $kunci_array) {
-            // Semua jawaban benar
-            $jawaban_ielts = 'Reading&&&' . implode('&&&Benar|||Reading&&&', array_map('trim', array_map('str_replace', array_fill(0, 4, '"'), array_fill(0, 4, '&quot;'), array($jawaban_no_1, $jawaban_no_2, $jawaban_no_3, $jawaban_no_4)))) . '&&&Benar|||';
-            $benar_reading = 4;
-        } else {
-            // Cek setiap kemungkinan
-            for ($i = 1; $i <= 4; $i++) {
-                for ($j = 1; $j <= 4; $j++) {
-                    if ($i != $j) {
-                        $current_jawaban = ${"jawaban_no_" . $i};
-                        $current_kunci = ${"kunci_no_" . $j};
-    
-                        if (strtolower($current_jawaban) == strtolower($current_kunci)) {
-                            $jawaban_ielts .= 'Reading&&&' . $current_jawaban . '&&&Benar|||';
-                            $benar_reading++;
-                        } else {
-                            $jawaban_ielts .= 'Reading&&&' . $current_jawaban . '&&&Salah|||';
-                        }
-                    }
-                }
+        // Iterasi melalui jawaban
+        for ($i = 1; $i <= 4; $i++) {
+            $current_jawaban = ${"jawaban_no_" . $i}; // Mengambil jawaban saat ini
+            
+            // Cek jika jawaban ada di dalam kunci
+            $key = array_search(strtolower($current_jawaban), array_map('strtolower', $kunci));
+            
+            if ($key !== false) {
+                // Jawaban ditemukan dalam kunci
+                $jawaban_ielts .= 'Reading&&&' . $current_jawaban . '&&&Benar|||';
+                $benar_reading++;
+                
+                // Hapus jawaban dari kunci agar tidak dihitung lagi
+                unset($kunci[$key]);
+            } else {
+                $jawaban_ielts .= 'Reading&&&' . $current_jawaban . '&&&Salah|||';
             }
         }
     
-        $data = [
+        // Now you have $jawaban_ielts and $benar_reading with the correct values.
+        return [
             "jawaban_ielts" => $jawaban_ielts,
             "benar_reading" => $benar_reading
         ];
-    
-        return $data;
     }
 
     function tiga_nomor_tidak_boleh_sama_listening($jawaban_no_1, $jawaban_no_2, $jawaban_no_3, $kunci_no_1, $kunci_no_2, $kunci_no_3) {
-        $benar_listening = 0;
+        // Masukkan semua kunci ke dalam array
+        $kunci = [$kunci_no_1, $kunci_no_2, $kunci_no_3];
+        
         $jawaban_ielts = '';
+        $benar_listening = 0;
     
-        $jawaban_array = array(strtolower($jawaban_no_1), strtolower($jawaban_no_2), strtolower($jawaban_no_3));
-        $kunci_array = array(strtolower($kunci_no_1), strtolower($kunci_no_2), strtolower($kunci_no_3));
-    
-        sort($jawaban_array);
-        sort($kunci_array);
-    
-        if ($jawaban_array == $kunci_array) {
-            // Semua jawaban benar
-            $jawaban_ielts = 'Listening&&&' . implode('&&&Benar|||Listening&&&', array_map('trim', array_map('str_replace', array_fill(0, 3, '"'), array_fill(0, 3, '&quot;'), array($jawaban_no_1, $jawaban_no_2, $jawaban_no_3)))) . '&&&Benar|||';
-            $benar_listening = 3;
-        } else {
-            // Cek setiap kemungkinan
-            for ($i = 1; $i <= 3; $i++) {
-                for ($j = 1; $j <= 3; $j++) {
-                    if ($i != $j) {
-                        $current_jawaban = ${"jawaban_no_" . $i};
-                        $current_kunci = ${"kunci_no_" . $j};
-    
-                        if (strtolower($current_jawaban) == strtolower($current_kunci)) {
-                            $jawaban_ielts .= 'Listening&&&' . $current_jawaban . '&&&Benar|||';
-                            $benar_listening++;
-                        } else {
-                            $jawaban_ielts .= 'Listening&&&' . $current_jawaban . '&&&Salah|||';
-                        }
-                    }
-                }
+        // Iterasi melalui jawaban
+        for ($i = 1; $i <= 3; $i++) {
+            $current_jawaban = ${"jawaban_no_" . $i}; // Mengambil jawaban saat ini
+            
+            // Cek jika jawaban ada di dalam kunci
+            $key = array_search(strtolower($current_jawaban), array_map('strtolower', $kunci));
+            
+            if ($key !== false) {
+                // Jawaban ditemukan dalam kunci
+                $jawaban_ielts .= 'Listening&&&' . $current_jawaban . '&&&Benar|||';
+                $benar_listening++;
+                
+                // Hapus jawaban dari kunci agar tidak dihitung lagi
+                unset($kunci[$key]);
+            } else {
+                $jawaban_ielts .= 'Listening&&&' . $current_jawaban . '&&&Salah|||';
             }
         }
     
-        $data = [
+        // Now you have $jawaban_ielts and $benar_listening with the correct values.
+        return [
             "jawaban_ielts" => $jawaban_ielts,
             "benar_listening" => $benar_listening
         ];
-    
-        return $data;
     }
 ?>

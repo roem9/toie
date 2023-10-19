@@ -854,38 +854,51 @@
 <?= $this->section('sesi-writing') ?>
     <div class="card mb-3">
         <div class="card-body">
-            <p class="question mb-3">
-                Writing Task 1<br>
-                You should spend about 20 minutes on this task.
-            </p>
+            <div class="row">
+                <div class="col-6">
+                    <p class="question mb-3">
+                        Writing Task 1<br>
+                        You should spend about 20 minutes on this task.
+                    </p>
+        
+                    <p>You have a penfriend living in another country and he/she is curious to know about the major news items in your country.</p>
+                    <p>Briefly describe ONE news story that has been on TV, onl the radio, or in the newspapers in your country, and explain why people are interested in it.</p>
+                    <p>You should write at least 150 words.</p>
+                    <p>You do NOT need to write your own address. Begin your letter as follows:</p>
+                    <p>Dear _______,</p>
+                </div>
 
-            <p>You have a penfriend living in another country and he/she is curious to know about the major news items in your country.</p>
-            <p>Briefly describe ONE news story that has been on TV, onl the radio, or in the newspapers in your country, and explain why people are interested in it.</p>
-            <p>You should write at least 150 words.</p>
-            <p>You do NOT need to write your own address. Begin your letter as follows:</p>
-            <p>Dear _______,</p>
+                <div class="col-6">
+                    <span>Type your answer here</span>
+                    <textarea id="textarea-1" class="form-control mb-3" name="text_writing[0]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
+                    <center>Total word Count : <span id="count-textarea-1">0</span></center>
 
-            <span>Type your answer here</span>
-            <textarea id="textarea-1" class="form-control mb-3" name="text_writing[0]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
-            <center>Total word Count : <span id="count-textarea-1">0</span></center>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="card mb-3">
         <div class="card-body">
-            <p class="question mb-3">
-                Writing Task 2<br>
-                You should spend about 40 minutes on this task.
-            </p>
+            <div class="row">
+                <div class="col-6">
+                    <p class="question mb-3">
+                        Writing Task 2<br>
+                        You should spend about 40 minutes on this task.
+                    </p>
+        
+                    <p>As part of a class assignment you have to write about the following topic.</p>
+                    <p>A healthy person is often described as someone who has a good diet, gets lots of exercise, and avoids stress.</p>
+                    <p>What do people do to stay healthy in your country?</p>
+                    <p>You should write at least 250 words.</p>
+                </div>
 
-            <p>As part of a class assignment you have to write about the following topic.</p>
-            <p>A healthy person is often described as someone who has a good diet, gets lots of exercise, and avoids stress.</p>
-            <p>What do people do to stay healthy in your country?</p>
-            <p>You should write at least 250 words.</p>
-
-            <span>Type your answer here</span>
-            <textarea id="textarea-2" class="form-control mb-3" name="text_writing[1]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
-            <center>Total word Count : <span id="count-textarea-2">0</span></center>
+                <div class="col-6">
+                    <span>Type your answer here</span>
+                    <textarea id="textarea-2" class="form-control mb-3" name="text_writing[1]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
+                    <center>Total word Count : <span id="count-textarea-2">0</span></center>
+                </div>
+            </div>
         </div>
     </div>
 <?= $this->endSection()?>

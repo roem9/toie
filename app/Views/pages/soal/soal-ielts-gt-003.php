@@ -834,55 +834,70 @@
 <?= $this->section('sesi-writing') ?>
     <div class="card mb-3">
         <div class="card-body">
-            <p class="question mb-3">
-                IELTS WRITING TASK ONE<br>
-                You should spend about 20 minutes on this task 
-            </p>
+            <div class="row">
+                <div class="col-6">
 
-            <table class="tableSoal">
-                <tr>
-                    <td>
-                        <p>Your neighbour keeps his/her animal in the garden. Write to him/her about it and the inconvenience it causes you and your family. In your </p>letter:
-                        <p>• tell them what the problem is</p>
-                        <p>• explain why it causes inconvenience</p>
-                        <p>• suggest a possible solution to it</p>
-                        <p>• say what actions you might take if the need arises.</p>
-                    </td>
-                </tr>
-            </table>
+                    <p class="question mb-3">
+                        IELTS WRITING TASK ONE<br>
+                        You should spend about 20 minutes on this task 
+                    </p>
+        
+                    <table class="tableSoal">
+                        <tr>
+                            <td>
+                                <p>Your neighbour keeps his/her animal in the garden. Write to him/her about it and the inconvenience it causes you and your family. In your </p>letter:
+                                <p>• tell them what the problem is</p>
+                                <p>• explain why it causes inconvenience</p>
+                                <p>• suggest a possible solution to it</p>
+                                <p>• say what actions you might take if the need arises.</p>
+                            </td>
+                        </tr>
+                    </table>
+        
+                    <p>You should write at least 150 words </p>
+                    <p>You do NOT need to write any addresses </p>
+                    <p>Begin your letter as follows:</p>
+                    <p>Dear……….,</p>
+                </div>
 
-            <p>You should write at least 150 words </p>
-            <p>You do NOT need to write any addresses </p>
-            <p>Begin your letter as follows:</p>
-            <p>Dear……….,</p>
-            <span>Type your answer here</span>
-            <textarea id="textarea-1" class="form-control mb-3" name="text_writing[0]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
-            <center>Total word Count : <span id="count-textarea-1">0</span></center>
+                <div class="col-6">
+                    <span>Type your answer here</span>
+                    <textarea id="textarea-1" class="form-control mb-3" name="text_writing[0]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
+                    <center>Total word Count : <span id="count-textarea-1">0</span></center>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="card mb-3">
         <div class="card-body">
-            <p class="question mb-3">
-                IELTS WRITING TASK TWO<br>
-                You should spend about 40 minutes on this task<br>
-                Write about the following topic:
-            </p>
+            <div class="row">
+                <div class="col-6">
+                    <p class="question mb-3">
+                        IELTS WRITING TASK TWO<br>
+                        You should spend about 40 minutes on this task<br>
+                        Write about the following topic:
+                    </p>
+        
+                    <table class="tableSoal">
+                        <tr>
+                            <td>
+                                In many countries, as people are earning more these days, they are also spending money in buying more and more items. Do you think it is positive or a negative development?
+                            </td>
+                        </tr>
+                    </table>
+        
+                    <p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p>
+                    <p>Write at least 250 words.</p>
+                </div>
 
-            <table class="tableSoal">
-                <tr>
-                    <td>
-                        In many countries, as people are earning more these days, they are also spending money in buying more and more items. Do you think it is positive or a negative development?
-                    </td>
-                </tr>
-            </table>
+                <div class="col-6">
+                    <span>Type your answer here</span>
+                    <textarea id="textarea-2" class="form-control mb-3" name="text_writing[1]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
+                    <center>Total word Count : <span id="count-textarea-2">0</span></span></center>
+                </div>
+            </div>
 
-            <p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p>
-            <p>Write at least 250 words.</p>
-
-            <span>Type your answer here</span>
-            <textarea id="textarea-2" class="form-control mb-3" name="text_writing[1]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
-            <center>Total word Count : <span id="count-textarea-2">0</span></span></center>
         </div>
     </div>
 <?= $this->endSection()?>

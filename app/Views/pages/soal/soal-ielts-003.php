@@ -929,42 +929,55 @@
 <?= $this->section('sesi-writing') ?>
     <div class="card mb-3">
         <div class="card-body">
-            <p class="question mb-3">
-                IELTS WRITING TASK ONE<br>
-                You should spend about 20 minutes on this task 
-            </p>
+            <div class="row">
+                <div class="col-6">
+                    <p class="question mb-3">
+                        IELTS WRITING TASK ONE<br>
+                        You should spend about 20 minutes on this task 
+                    </p>
+        
+                    <center><img src="<?= base_url()?>public/assets/img-soal/writing-003.png" alt="" class="img-fluid"></center>
+        
+                    <p><i>The diagrams show a structure that is used to generate electricity from wave power. Write a report for a university lecturer describing the information Write at least 150 words.</i></p>
+                </div>
 
-            <center><img src="<?= base_url()?>public/assets/img-soal/writing-003.png" alt="" class="img-fluid"></center>
-
-            <p><i>The diagrams show a structure that is used to generate electricity from wave power. Write a report for a university lecturer describing the information Write at least 150 words.</i></p>
-            <span>Type your answer here</span>
-            <textarea id="textarea-1" class="form-control mb-3" name="text_writing[0]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
-            <center>Total word Count : <span id="count-textarea-1">0</span></center>
+                <div class="col-6">
+                    <span>Type your answer here</span>
+                    <textarea id="textarea-1" class="form-control mb-3" name="text_writing[0]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
+                    <center>Total word Count : <span id="count-textarea-1">0</span></center>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="card mb-3">
         <div class="card-body">
-            <p class="question mb-3">
-                IELTS WRITING TASK TWO<br>
-                You should spend about 40 minutes on this task<br>
-                Write about the following topic:
-            </p>
+            <div class="row">
+                <div class="col-6">
+                    <p class="question mb-3">
+                        IELTS WRITING TASK TWO<br>
+                        You should spend about 40 minutes on this task<br>
+                        Write about the following topic:
+                    </p>
+        
+                    <table class="tableSoal">
+                        <tr>
+                            <td class="text-wrap">
+                                Many museums and historical sites are mainly visited by tourists but not local people. Why is this the case and what can be done to attract more local people to visit these places?
+                            </td>
+                        </tr>
+                    </table>
+        
+                    <p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p>
+                    <p>Write at least 250 words.</p>
+                </div>
 
-            <table class="tableSoal">
-                <tr>
-                    <td class="text-wrap">
-                        Many museums and historical sites are mainly visited by tourists but not local people. Why is this the case and what can be done to attract more local people to visit these places?
-                    </td>
-                </tr>
-            </table>
-
-            <p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p>
-            <p>Write at least 250 words.</p>
-
-            <span>Type your answer here</span>
-            <textarea id="textarea-2" class="form-control mb-3" name="text_writing[1]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
-            <center>Total word Count : <span id="count-textarea-2">0</span></span></center>
+                <div class="col-6">
+                    <span>Type your answer here</span>
+                    <textarea id="textarea-2" class="form-control mb-3" name="text_writing[1]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
+                    <center>Total word Count : <span id="count-textarea-2">0</span></span></center>
+                </div>
+            </div>
         </div>
     </div>
 <?= $this->endSection()?>

@@ -56,56 +56,56 @@ class PesertaIelts extends BaseController
         $tes = $db->query("SELECT * FROM tes WHERE id_tes = '$id_tes'")->getRowArray();
         $client = $db->query("SELECT * FROM client WHERE id_client = $tes[fk_id_client]")->getRowArray();
 
-        $jawaban_ietls = "";
+        $jawaban_ielts = "";
 
         if($tes['tipe_soal'] == "Soal_002"){
             $data_koreksi = soal_002($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
-            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $jawaban_ielts = $data_koreksi['jawaban_ielts'];
             $benar_listening = $data_koreksi['benar_listening'];
             $benar_reading = $data_koreksi['benar_reading'];
         } else if($tes['tipe_soal'] == "Soal_GT_002"){
             $data_koreksi = soal_gt_002($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
-            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $jawaban_ielts = $data_koreksi['jawaban_ielts'];
             $benar_listening = $data_koreksi['benar_listening'];
             $benar_reading = $data_koreksi['benar_reading'];
         } else if($tes['tipe_soal'] == "Soal_GT_003"){
             $data_koreksi = soal_gt_003($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
-            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $jawaban_ielts = $data_koreksi['jawaban_ielts'];
             $benar_listening = $data_koreksi['benar_listening'];
             $benar_reading = $data_koreksi['benar_reading'];
         } else if($tes['tipe_soal'] == "Soal_003"){
             $data_koreksi = soal_003($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
-            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $jawaban_ielts = $data_koreksi['jawaban_ielts'];
             $benar_listening = $data_koreksi['benar_listening'];
             $benar_reading = $data_koreksi['benar_reading'];
         } else if($tes['tipe_soal'] == "Soal_Academic_Post_Test"){
             $data_koreksi = soal_academic_post_test($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
-            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $jawaban_ielts = $data_koreksi['jawaban_ielts'];
             $benar_listening = $data_koreksi['benar_listening'];
             $benar_reading = $data_koreksi['benar_reading'];
         } else if($tes['tipe_soal'] == "Soal_Academic_Pretest"){
             $data_koreksi = soal_academic_pretest($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
-            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $jawaban_ielts = $data_koreksi['jawaban_ielts'];
             $benar_listening = $data_koreksi['benar_listening'];
             $benar_reading = $data_koreksi['benar_reading'];
         } else if($tes['tipe_soal'] == "Soal_General_Post_Test"){
             $data_koreksi = soal_general_post_test($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
-            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $jawaban_ielts = $data_koreksi['jawaban_ielts'];
             $benar_listening = $data_koreksi['benar_listening'];
             $benar_reading = $data_koreksi['benar_reading'];
         } else if($tes['tipe_soal'] == "Soal_General_Pretest"){
             $data_koreksi = soal_general_pretest($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
-            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $jawaban_ielts = $data_koreksi['jawaban_ielts'];
             $benar_listening = $data_koreksi['benar_listening'];
             $benar_reading = $data_koreksi['benar_reading'];
         } else if($tes['tipe_soal'] == "Transforme_GT_03"){
             $data_koreksi = transforme_gt_03($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
-            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $jawaban_ielts = $data_koreksi['jawaban_ielts'];
             $benar_listening = $data_koreksi['benar_listening'];
             $benar_reading = $data_koreksi['benar_reading'];
         } else if($tes['tipe_soal'] == "Transforme_AC_03"){
             $data_koreksi = transforme_ac_03($this->request->getPost('jawaban_listening'), $this->request->getPost('jawaban_reading'));
-            $jawaban_ietls = $data_koreksi['jawaban_ietls'];
+            $jawaban_ielts = $data_koreksi['jawaban_ielts'];
             $benar_listening = $data_koreksi['benar_listening'];
             $benar_reading = $data_koreksi['benar_reading'];
         }
@@ -137,7 +137,7 @@ class PesertaIelts extends BaseController
             "email" => $this->request->getPost("email"),
             "nilai_listening" => $benar_listening,
             "nilai_reading" => $benar_reading,
-            "text_listening_reading" => $jawaban_ietls,
+            "text_listening_reading" => $jawaban_ielts,
             "text_writing" => $text_writing,
             "no_doc" => $no
         ];

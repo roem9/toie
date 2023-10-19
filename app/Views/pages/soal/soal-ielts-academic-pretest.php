@@ -998,42 +998,57 @@
 <?= $this->section('sesi-writing') ?>
     <div class="card mb-3">
         <div class="card-body">
-            <p class="question mb-3">
-                IELTS WRITING TASK ONE<br>
-                You should spend about 20 minutes on this task 
-            </p>
+            <div class="row">
+                <div class="col-6">
+                    <p class="question mb-3">
+                        IELTS WRITING TASK ONE<br>
+                        You should spend about 20 minutes on this task 
+                    </p>
+        
+                    <p><i>The graph below shows unemployment rates in the US and Japan from March 1993 to 1999. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</i></p>
+                    <p>Write at least 150 words.</p>
+                    <img src="<?= base_url()?>public/assets/img-soal/writing-academic-pretest-001.jpg" alt="" class="img-fluid">
 
-            <p><i>The graph below shows unemployment rates in the US and Japan from March 1993 to 1999. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</i></p>
-            <p>Write at least 150 words.</p>
+                </div>
 
-            <img src="<?= base_url()?>public/assets/img-soal/writing-academic-pretest-001.jpg" alt="" class="img-fluid">
+                <div class="col-6">
+                    <span>Type your answer here</span>
+                    <textarea id="textarea-1" class="form-control mb-3" name="text_writing[0]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
+                    <center>Total word Count : <span id="count-textarea-1">0</span></center>
+                </div>
+            </div>
 
-            <span>Type your answer here</span>
-            <textarea id="textarea-1" class="form-control mb-3" name="text_writing[0]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
-            <center>Total word Count : <span id="count-textarea-1">0</span></center>
+
         </div>
     </div>
 
     <div class="card mb-3">
         <div class="card-body">
-            <p class="question mb-3">
-                IELTS WRITING TASK TWO<br>
-                You should spend about 40 minutes on this task<br>
-            </p>
+            <div class="row">
+                <div class="col-6">
+                    <p class="question mb-3">
+                        IELTS WRITING TASK TWO<br>
+                        You should spend about 40 minutes on this task<br>
+                    </p>
+        
+                    <table class="tableSoal">
+                        <tr>
+                            <td>
+                                Some people believe that living in big cities is becoming more difficult. Others believe that it is getting easier. Discuss both views and give your own opinion.
+                            </td>
+                        </tr>
+                    </table>
+        
+                    <p>Write at least 250 words.</p>
+                </div>
 
-            <table class="tableSoal">
-                <tr>
-                    <td>
-                        Some people believe that living in big cities is becoming more difficult. Others believe that it is getting easier. Discuss both views and give your own opinion.
-                    </td>
-                </tr>
-            </table>
+                <div class="col-6">
+                    <span>Type your answer here</span>
+                    <textarea id="textarea-2" class="form-control mb-3" name="text_writing[1]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
+                    <center>Total word Count : <span id="count-textarea-2">0</span></span></center>
+                </div>
+            </div>
 
-            <p>Write at least 250 words.</p>
-
-            <span>Type your answer here</span>
-            <textarea id="textarea-2" class="form-control mb-3" name="text_writing[1]" data-bs-toggle="autosize" placeholder="" style="height: 300px;"></textarea>
-            <center>Total word Count : <span id="count-textarea-2">0</span></span></center>
         </div>
     </div>
 <?= $this->endSection()?>
