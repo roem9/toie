@@ -912,7 +912,7 @@
                         Writing Task 1
                     </p>
         
-                    <table class="table">
+                    <table class="tableSoal">
                         <tr>
                             <td>
                                 <p>
@@ -925,7 +925,7 @@
         
                     <div class="">
                         <center>
-                            <img src="<?= base_url()?>public/assets/img-soal/writing-002.jpeg" alt="" height="550px">
+                            <img src="<?= base_url()?>public/assets/img-soal/writing-002.jpeg" alt="" class="img-fluid">
                         </center>
                     </div>
                 </div>
