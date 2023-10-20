@@ -246,13 +246,13 @@
 <script>
     let start = false;
 
-    $(document).mouseleave(function () {
-        showAlertWithCountdown(10)
-    });
+    // $(document).mouseleave(function () {
+    //     showAlertWithCountdown(10)
+    // });
 
-    $(document).mouseenter(function () {
-        returnWorkSheet()
-    });
+    // $(document).mouseenter(function () {
+    //     returnWorkSheet()
+    // });
 
     $(".btnSignIn").click(function(){
         let id_tes = $("input[name='id_tes']").val();

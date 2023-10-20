@@ -483,6 +483,82 @@ function writing(tipe_soal, task, url) {
         <p>Write at least 250 words.</p>
       `;
     }
+  } else if (tipe_soal == "Transforme_GT_03") {
+    if (task == 1) {
+      return `
+        <p class="question mb-3">
+            Writing Task 1<br>
+            You should spend about 20 minutes on this task.
+        </p>
+
+        <div class="ps-4">
+            <p><b>You have recently started work in a new company.</b></p>
+            <p><b>Write a letter to an English-speaking friend. In your letter</b></p>
+            <ul>
+                <li>
+                    <b>explain why you changed jobs</b>
+                </li>
+                <li>
+                    <b>describe your new job</b>
+                </li>
+                <li>
+                    <b>tell him/her your other news</b>
+                </li>
+            </ul>
+        </div>
+
+        <p>You should write at least 150 words.</p>
+        <p>You do <b>NOT</b> need to write your own address. Begin your letter as follows:</p>
+        <p><b>Dear …………….,</b></p>
+      `;
+    } else if (task == 2) {
+      return `
+        <p class="question mb-3">
+            Writing Task 2<br>
+            You should spend about 40 minutes on this task.
+        </p>
+        <p>Write about the following topic:</p>
+        <div class="ps-4">
+            <p><b>Some people prefer to live in a house, while others feel that there are more advantages to living in an apartment.</b></p>
+            <p><b>Are there more advantages than disadvantages of living in a house compared with living in an apartment?</b></p>
+        </div>
+        <p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p>
+        <p>Write at least 250 words</p>
+      `;
+    }
+  } else if (tipe_soal == "Transforme_AC_03") {
+    if (task == 1) {
+      return `
+        <p class="question mb-3">
+            WRITING TASK 1<br>
+        </p>
+        <p>
+            You should spend about 20 minutes on this task 
+        </p>
+
+        <p class="ps-3"><b><i>The charts below show the main reasons for study among students of different age groups and the amount of support they received from employers.</i></b></p>
+        <p class="ps-3"><b><i>Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</i></b></p>
+        <p>Write at least 150 words.</p>
+
+        <img src="${url}public/assets/img-soal/transforme/ac-03/w-1.png" alt="" class="img-fluid">
+      `;
+    } else if (task == 2) {
+      return `
+        <p class="question mb-3">
+            WRITING TASK 2<br>
+        </p>
+        <p>
+            You should spend about 40 minutes on this task<br>
+            Write about the following topic:
+        </p>
+
+        <p class="ps-3"><b><i>In some countries, young people are encouraged to work or travel for a year between finishing high school and starting university studies.</i></b></p>
+        <p class="ps-3"><b><i>Discuss the advantages and disadvantages for young people who decide to do this.</i></b></p>
+        
+        <p>Give reasons for your answer and include any relevant examples from your own knowledge or experience. </p>
+        <p>Write at least 250 words.</p>
+      `;
+    }
   }
 }
 
