@@ -105,6 +105,10 @@
             <label>Nilai Speaking</label>
             <input name="nilai_speaking" class="multisteps-form__input form-control" type="text" placeholder="nilai speaking" disabled>
           </div>
+          <div class="col-12 mb-3">
+            <label>Jawaban Peserta</label>
+            <textarea name="text_listening_reading" class="form-control" id="text_listening_reading" rows="3" readonly></textarea>
+          </div>
         </form>
       </div>
       <div class="modal-footer">
@@ -491,6 +495,10 @@
           $(`#formHasilTes [name='nilai_listening']`).val(ielts_listening($obj.nilai_listening));
           $(`#formHasilTes [name='nilai_reading']`).val(ielts_reading($obj.nilai_reading, $obj.tipe_tes));
           $(`#formHasilTes [name='nilai_writing']`).val(ielts_writing($obj.nilai_ta_1,$obj.nilai_cc_1,$obj.nilai_gra_1,$obj.nilai_lr_1,$obj.nilai_ta_2,$obj.nilai_cc_2,$obj.nilai_gra_2,$obj.nilai_lr_2));
+          
+          // Assuming $obj.text_listening_reading contains the original text
+          let text_listening_reading = $obj.text_listening_reading.replace(/\|\|\|/g, '\n').replace(/&&&/g, '-');
+          $(`#formHasilTes [name='text_listening_reading']`).val(text_listening_reading);
         }
       }
 

@@ -14,7 +14,7 @@ class TesModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['fk_id_client', 'nama_tes', 'tgl_tes', 'tipe_tes', 'tipe_soal', 'catatan', 'kuota', 'password', 'message', 'status', 'hapus'];
+    protected $allowedFields    = ['fk_id_client', 'nama_tes', 'tgl_tes', 'tipe_tes', 'tipe_soal', 'listening', 'reading', 'writing', 'catatan', 'kuota', 'password', 'message', 'status', 'hapus'];
 
     // Dates
     protected $useTimestamps = false;

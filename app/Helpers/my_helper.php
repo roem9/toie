@@ -94,6 +94,10 @@ function list_soal_toefl()
             return 3;
         } else if($benar >= 4 && $benar <= 5){
             return 2.5;
+        } else if($benar >= 2 && $benar <= 3){
+            return 2;
+        } else if($benar == 1){
+            return 1;
         } else {
             return 0;
         }

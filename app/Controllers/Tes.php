@@ -437,6 +437,9 @@ class Tes extends BaseController
             $nama_tes = $this->request->getPost('nama_tes');
             $tipe_tes = $this->request->getPost('tipe_tes');
             $tipe_soal = $this->request->getPost('tipe_soal');
+            $listening = $this->request->getPost('listening');
+            $reading = $this->request->getPost('reading');
+            $writing = $this->request->getPost('writing');
             $catatan = $this->request->getPost('catatan');
             $kuota = $this->request->getPost('kuota');
             $password = $this->request->getPost('password');
@@ -448,6 +451,9 @@ class Tes extends BaseController
                 'nama_tes' => $nama_tes,
                 'tipe_tes' => $tipe_tes,
                 'tipe_soal' => $tipe_soal,
+                'listening' => ($listening == 'true') ? 1 : 0,
+                'reading' => ($reading == 'true') ? 1 : 0,
+                'writing' => ($writing == 'true') ? 1 : 0,
                 'catatan' => $catatan,
                 'kuota' => $kuota,
                 'password' => $password,

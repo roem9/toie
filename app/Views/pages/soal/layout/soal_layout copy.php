@@ -101,7 +101,7 @@
                                                 <a href="javascript:void()"><img src="<?= $logo?>" alt="" class="img-fluid" style="max-height: 60px"></a>
                                             </div>
                                             <center>
-                                                <p><b><span class="urutanSession">First</span> Session : LISTENING</b></p>
+                                                <p><b>First Session : LISTENING</b></p>
                                                 <p><i>Time : 40 Minutes</i></p>
                                             </center>
                                             <div class="form-footer">
@@ -124,7 +124,7 @@
                                                 <a href="javascript:void()"><img src="<?= $logo?>" alt="" class="img-fluid" style="max-height: 60px"></a>
                                             </div>
                                             <center>
-                                                <p><b><span class="urutanSession">Second</span> Session : READING</b></p>
+                                                <p><b>Second Session : READING</b></p>
                                                 <p><i>Time : 60 Minutes</i></p>
                                             </center>
                                             <div class="form-footer">
@@ -147,7 +147,7 @@
                                                 <a href="javascript:void()"><img src="<?= $logo?>" alt="" class="img-fluid" style="max-height: 60px"></a>
                                             </div>
                                             <center>
-                                                <p><b><span class="urutanSession">Third</span> Session : WRITING</b></p>
+                                                <p><b>Third Session : WRITING</b></p>
                                                 <p><i>Time : 60 Minutes</i></p>
                                             </center>
                                             <div class="form-footer">
@@ -172,7 +172,7 @@
                                             <?= $this->renderSection('sesi-listening') ?>
             
                                             <div class="d-flex justify-content-end">
-                                                <a href="javascript:void(0)" class="btn btn-success btnTransisiDua" id="btnTransisiDua">Next</a>
+                                                <a href="javascript:void(0)" class="btn btn-success btnTransisiDua">Next</a>
                                             </div>
                                         </div>
             
@@ -181,7 +181,7 @@
                                             <?= $this->renderSection('sesi-reading') ?>
             
                                             <div class="d-flex justify-content-end">
-                                                <a href="javascript:void(0)" class="btn btn-success btnTransisiTiga" id="btnTransisiTiga">Next</a>
+                                                <a href="javascript:void(0)" class="btn btn-success btnTransisiTiga">Next</a>
                                             </div>
                                         </div>
             
@@ -246,10 +246,6 @@
 <script>
     let start = false;
 
-    let listening = 0;
-    let reading = 0;
-    let writing = 0;
-
     $(document).mouseleave(function () {
         showAlertWithCountdown(10)
     });
@@ -285,34 +281,6 @@
                     })
                     $("#formLogin").hide();
                     $("#formData").show();
-
-                    listening = $obj.listening;
-                    reading = $obj.reading;
-                    writing = $obj.writing;
-
-                    if (listening != 1 || reading != 1 || writing != 1) {
-                        $(".urutanSession").hide();
-                    }
-
-                    if(listening == 1 && reading == 0 && writing == 0){
-                        $('#btnTransisiDua').removeClass('btnTransisiDua');
-                        $('#btnTransisiDua').removeClass('btn-success');
-                        $('#btnTransisiDua').addClass('btnSimpan');
-                        $('#btnTransisiDua').addClass('bg-gradient-info');
-                        $('#btnTransisiDua').html('Save');
-                    } else if((listening == 1 || listening == 0) && reading == 1 && writing == 0){
-                        $('#btnTransisiTiga').removeClass('btnTransisiTiga');
-                        $('#btnTransisiTiga').removeClass('btn-success');
-                        $('#btnTransisiTiga').addClass('btnSimpan');
-                        $('#btnTransisiTiga').addClass('bg-gradient-info');
-                        $('#btnTransisiTiga').html('Save');
-                    } else if(listening == 1 && reading == 0 && writing == 1){
-                        $('#btnTransisiDua').removeClass('btnTransisiDua');
-                        $('#btnTransisiDua').removeClass('btn-success');
-                        $('#btnTransisiDua').addClass('btnTransisiTiga');
-                        $('#btnTransisiDua').addClass('btn-success');
-                        $('#btnTransisiDua').html('Next');
-                    }
                 }
             }
 
@@ -366,14 +334,7 @@
                         })
                     } else {
                         $("#login").hide();
-                        // $("#transisi-sesi-1").show();
-                        if(listening == 0 && reading == 1){
-                            $("#transisi-sesi-2").show();
-                        } else if(listening == 0 && reading == 0 && writing == 1){
-                            $("#transisi-sesi-3").show();
-                        } else {
-                            $("#transisi-sesi-1").show();
-                        }
+                        $("#transisi-sesi-1").show();
                         start = true;
 
                         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -506,10 +467,7 @@
                     }, 1000);
                 }
         
-                // clearInterval(countDown);
-                if(listening == 1){
-                    clearInterval(countDown);
-                }
+                clearInterval(countDown);
 
                 sec = 60 * 60;
                 // sec = 40;
@@ -548,10 +506,7 @@
                     }, 1000);
                 }
         
-                // clearInterval(countDown);
-                if(reading == 1){
-                    clearInterval(countDown);
-                }
+                clearInterval(countDown);
 
                 sec = 60 * 60;
                 // sec = 40;

@@ -101,6 +101,22 @@
             </select>
           </div>
           <div class="col-12 mb-3">
+            <p class="text-xs text-dark"><b>Skills</b></p>
+            <p class="text-xxs text-danger">*pilih minimal satu</p>
+    
+            <input type="checkbox" id="listeningCheckbox">
+            <label for="listeningCheckbox">Listening</label>
+            <br>
+            
+            <input type="checkbox" id="readingCheckbox">
+            <label for="readingCheckbox">Reading</label>
+            <br>
+            
+            <input type="checkbox" id="writingCheckbox">
+            <label for="writingCheckbox">Writing</label>
+            <br>
+          </div>
+          <div class="col-12 mb-3">
             <label for="tipe_soal">Tipe Soal</label>
             <select name="tipe_soal" id="tipe_soal" class="multisteps-form__input form-control">
               <option value="">Pilih Tipe Soal</option>
@@ -350,6 +366,9 @@
     let tgl_tes = $(`#formTambahTes [name='tgl_tes']`).val();
     let nama_tes = $(`#formTambahTes [name='nama_tes']`).val();
     let tipe_tes = $(`#formTambahTes [name='tipe_tes']`).val();
+    let listeningValue = $("#listeningCheckbox").is(":checked");
+    let readingValue = $("#readingCheckbox").is(":checked");
+    let writingValue = $("#writingCheckbox").is(":checked");
     let tipe_soal = $(`#formTambahTes [name='tipe_soal']`).val();
     let kuota = $(`#formTambahTes [name='kuota']`).val();
     let password = $(`#formTambahTes [name='password']`).val();
@@ -357,48 +376,58 @@
     let message = CKEDITOR.instances['message'].getData();
 
     // console.log(id_tes, id_client, tgl_tes, nama_tes, tipe_tes, tipe_soal, kuota, catatan)
-    $.ajax({
-      url: "<?= base_url()?>/tes/simpan",
-      type: "POST",
-      data: {
-        id_tes: id_tes,
-        id_client: id_client,
-        tgl_tes: tgl_tes,
-        nama_tes: nama_tes,
-        tipe_tes: tipe_tes,
-        tipe_soal: tipe_soal,
-        kuota: kuota,
-        password: password,
-        catatan: catatan,
-        message: message
-      },
-      success: function(hasil) {
-        var $obj = $.parseJSON(hasil);
-        if ($obj.sukses == false) {
-          $('.alert-sukses').hide();
-          $('.alert-error').show();
-          $('.error').html($obj.error);
-        } else {
-          $('.alert-error').hide();
-          $('.alert-sukses').show();
-          $('.sukses').html($obj.sukses);
+    if(listeningValue === false && readingValue === false && writingValue === false){
+      Swal.fire("Error!", "Pilih minimal 1 skill!", "error");
+    } else {
+      $.ajax({
+        url: "<?= base_url()?>/tes/simpan",
+        type: "POST",
+        data: {
+          id_tes: id_tes,
+          id_client: id_client,
+          tgl_tes: tgl_tes,
+          nama_tes: nama_tes,
+          tipe_tes: tipe_tes,
+          tipe_soal: tipe_soal,
+          listening: listeningValue,
+          reading: readingValue,
+          writing: writingValue,
+          kuota: kuota,
+          password: password,
+          catatan: catatan,
+          message: message
+        },
+        success: function(hasil) {
+          var $obj = $.parseJSON(hasil);
+          if ($obj.sukses == false) {
+            $('.alert-sukses').hide();
+            $('.alert-error').show();
+            $('.error').html($obj.error);
+          } else {
+            $('.alert-error').hide();
+            $('.alert-sukses').show();
+            $('.sukses').html($obj.sukses);
 
-          if ($obj.edit == false) {
-            $("#formTambahTes")[0].reset();
-            CKEDITOR.instances['message'].setData('');
+            if ($obj.edit == false) {
+              $("#formTambahTes")[0].reset();
+              CKEDITOR.instances['message'].setData('');
+            }
+
+            $('#table-tes').DataTable().ajax.reload();
           }
 
-          $('#table-tes').DataTable().ajax.reload();
+          $('html, .modal-body').animate({
+            scrollTop: 0
+          }, 'slow');
         }
-
-        $('html, .modal-body').animate({
-          scrollTop: 0
-        }, 'slow');
-      }
-    });
+      });
+    }
   }
 
   function editTes($id_tes) {
+    $("#formTambahTes")[0].reset();
+    CKEDITOR.instances['message'].setData('');
+
     $.ajax({
       url: "<?= base_url()?>/tes/getTes/" + $id_tes,
       type: "get",
@@ -420,6 +449,16 @@
           $(`#formTambahTes [name='password']`).val($obj.password);
           $(`#formTambahTes [name='catatan']`).val($obj.catatan);
           CKEDITOR.instances['message'].setData($obj.message);
+
+          if ($obj.listening == 1) {
+            $('#listeningCheckbox').prop('checked', true);
+          }
+          if ($obj.reading == 1) {
+            $('#readingCheckbox').prop('checked', true);
+          }
+          if ($obj.writing == 1) {
+            $('#writingCheckbox').prop('checked', true);
+          }
         }
       }
 
