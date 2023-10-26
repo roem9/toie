@@ -376,6 +376,8 @@
         },
         {
           data: null,
+          searchable: false,
+          orderable: false,
           render: function(data, type, row) {
             return `
               <a href="javascript:void(0)" onclick="editPeserta('${row.id_peserta}')" class="me-1">
@@ -404,6 +406,8 @@
         },
         {
           data: null,
+          searchable: false,
+          orderable: false,
           className: 'text-xs w-1',
           render: function(data, type, row) {
             return `
@@ -417,6 +421,8 @@
         },
         {
           data: null,
+          searchable: false,
+          orderable: false,
           className: 'text-xs w-1',
           render: function(data, type, row) {
             return `
@@ -430,6 +436,8 @@
         },
         {
           data: null,
+          searchable: false,
+          orderable: false,
           className: 'text-xs w-1',
           render: function(data, type, row) {
             return `
