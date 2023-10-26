@@ -42,7 +42,7 @@ class Sertifikat extends BaseController
             $data['tahun'] = date('y', strtotime($data['tgl_tes']));
             $data['bulan'] = getHurufBulan(date('m', strtotime($data['tgl_tes'])));
 
-            $data['skor_listening'] = ielts_listening($data['nilai_listening']);
+            $data['skor_listening'] = ielts_listening($data['nilai_listening'], date("Y-m-d", strtotime($data['created_at'])));
             $data['skor_reading'] = ielts_reading($data['nilai_reading'], $data['tipe_tes']);
             $data['skor_writing'] = ielts_writing( $data['nilai_ta_1'], $data['nilai_cc_1'], $data['nilai_gra_1'], $data['nilai_lr_1'], $data['nilai_ta_2'], $data['nilai_cc_2'], $data['nilai_gra_2'], $data['nilai_lr_2'], date("Y-m-d", strtotime($data['created_at'])));
             $data['skor_speaking'] = ielts_speaking( $data['nilai_topic'], $data['nilai_fluency'], $data['nilai_grammar'], $data['nilai_vocabulary'], date("Y-m-d", strtotime($data['created_at'])));

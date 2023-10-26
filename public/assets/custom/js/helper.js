@@ -1,34 +1,72 @@
-function ielts_listening(benar) {
-  if (benar >= 39 && benar <= 40) {
-    return 9;
-  } else if (benar >= 37 && benar <= 38) {
-    return 8.5;
-  } else if (benar >= 35 && benar <= 36) {
-    return 8;
-  } else if (benar >= 32 && benar <= 34) {
-    return 7.5;
-  } else if (benar >= 30 && benar <= 31) {
-    return 7;
-  } else if (benar >= 26 && benar <= 29) {
-    return 6.5;
-  } else if (benar >= 23 && benar <= 25) {
-    return 6;
-  } else if (benar >= 18 && benar <= 22) {
-    return 5.5;
-  } else if (benar >= 16 && benar <= 17) {
-    return 5;
-  } else if (benar >= 13 && benar <= 15) {
-    return 4.5;
-  } else if (benar >= 11 && benar <= 12) {
-    return 4;
-  } else if (benar >= 8 && benar <= 10) {
-    return 3.5;
-  } else if (benar >= 6 && benar <= 7) {
-    return 3;
-  } else if (benar >= 4 && benar <= 5) {
-    return 2.5;
+function ielts_listening(benar, date) {
+  if (date < "2023-10-20") {
+    if (benar >= 39 && benar <= 40) {
+      return 9;
+    } else if (benar >= 37 && benar <= 38) {
+      return 8.5;
+    } else if (benar >= 35 && benar <= 36) {
+      return 8;
+    } else if (benar >= 32 && benar <= 34) {
+      return 7.5;
+    } else if (benar >= 30 && benar <= 31) {
+      return 7;
+    } else if (benar >= 26 && benar <= 29) {
+      return 6.5;
+    } else if (benar >= 23 && benar <= 25) {
+      return 6;
+    } else if (benar >= 18 && benar <= 22) {
+      return 5.5;
+    } else if (benar >= 16 && benar <= 17) {
+      return 5;
+    } else if (benar >= 13 && benar <= 15) {
+      return 4.5;
+    } else if (benar >= 11 && benar <= 12) {
+      return 4;
+    } else if (benar >= 8 && benar <= 10) {
+      return 3.5;
+    } else if (benar >= 6 && benar <= 7) {
+      return 3;
+    } else if (benar >= 4 && benar <= 5) {
+      return 2.5;
+    } else {
+      return 0;
+    }
   } else {
-    return 0;
+    if (benar >= 39 && benar <= 40) {
+      return 9;
+    } else if (benar >= 37 && benar <= 38) {
+      return 8.5;
+    } else if (benar >= 35 && benar <= 36) {
+      return 8;
+    } else if (benar >= 32 && benar <= 34) {
+      return 7.5;
+    } else if (benar >= 30 && benar <= 31) {
+      return 7;
+    } else if (benar >= 26 && benar <= 29) {
+      return 6.5;
+    } else if (benar >= 23 && benar <= 25) {
+      return 6;
+    } else if (benar >= 18 && benar <= 22) {
+      return 5.5;
+    } else if (benar >= 16 && benar <= 17) {
+      return 5;
+    } else if (benar >= 13 && benar <= 15) {
+      return 4.5;
+    } else if (benar >= 11 && benar <= 12) {
+      return 4;
+    } else if (benar >= 8 && benar <= 10) {
+      return 3.5;
+    } else if (benar >= 6 && benar <= 7) {
+      return 3;
+    } else if (benar >= 4 && benar <= 5) {
+      return 2.5;
+    } else if (benar >= 2 && benar <= 3) {
+      return 2;
+    } else if (benar == 1) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 }
 

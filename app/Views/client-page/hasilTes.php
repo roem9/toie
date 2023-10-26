@@ -334,7 +334,7 @@
           className: 'text-center text-xs w-1',
           orderable: false,
           render: function(data, type, row) {
-            return ielts_listening(row.nilai_listening);
+            return ielts_listening(row.nilai_listening, row.created_at);
           }
         },
         {
@@ -352,7 +352,7 @@
           orderable: false,
           className: 'text-center text-xs w-1',
           render: function(data, type, row) {
-            return ielts_writing(row.nilai_ta_1,row.nilai_cc_1, row.nilai_gra_1, row.nilai_lr_1, row.nilai_ta_2, row.nilai_cc_2, row.nilai_gra_2, row.nilai_lr_2);
+            return ielts_writing(row.nilai_ta_1,row.nilai_cc_1, row.nilai_gra_1, row.nilai_lr_1, row.nilai_ta_2, row.nilai_cc_2, row.nilai_gra_2, row.nilai_lr_2, row.created_at);
           }
         },
         {
@@ -361,7 +361,7 @@
           orderable: false,
           className: 'text-center text-xs w-1',
           render: function(data, type, row) {
-            return ielts_speaking(row.nilai_topic, row.nilai_fluency, row.nilai_grammar, row.nilai_vocabulary);
+            return ielts_speaking(row.nilai_topic, row.nilai_fluency, row.nilai_grammar, row.nilai_vocabulary, row.created_at);
           }
         },
         {
@@ -370,8 +370,8 @@
           className: 'text-center text-xs w-1',
           orderable: false,
           render: function(data, type, row) {
-            let skor = skor_ielts(ielts_listening(row.nilai_listening), ielts_reading(row.nilai_reading, row.tipe_tes), ielts_writing(row.nilai_ta_1,row.nilai_cc_1, row.nilai_gra_1, row.nilai_lr_1, row.nilai_ta_2, row.nilai_cc_2, row.nilai_gra_2, row.nilai_lr_2), ielts_speaking(row.nilai_topic, row.nilai_fluency, row.nilai_grammar, row.nilai_vocabulary));
-            return  skor + " / " + pembulatan_skor_ielts(skor);
+            let skor = skor_ielts(ielts_listening(row.nilai_listening, row.created_at), ielts_reading(row.nilai_reading, row.tipe_tes), ielts_writing(row.nilai_ta_1,row.nilai_cc_1, row.nilai_gra_1, row.nilai_lr_1, row.nilai_ta_2, row.nilai_cc_2, row.nilai_gra_2, row.nilai_lr_2, row.created_at), ielts_speaking(row.nilai_topic, row.nilai_fluency, row.nilai_grammar, row.nilai_vocabulary, row.created_at));
+            return  skor + " / " + pembulatan_skor_ielts(skor, row.created_at);
           }
         },
         {

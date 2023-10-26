@@ -119,7 +119,7 @@
   </div>
 
   <?php
-    $skor_listening = ielts_listening($nilai_listening);
+    $skor_listening = ielts_listening($nilai_listening, date("Y-m-d", strtotime($created_at)));
     $skor_reading = ielts_reading($nilai_reading, $tipe_tes);
     $skor_writing = ielts_writing( $nilai_ta_1, $nilai_cc_1, $nilai_gra_1, $nilai_lr_1, $nilai_ta_2, $nilai_cc_2, $nilai_gra_2, $nilai_lr_2, date("Y-m-d", strtotime($created_at)));
     $skor_speaking = ielts_speaking( $nilai_topic, $nilai_fluency, $nilai_grammar, $nilai_vocabulary, date("Y-m-d", strtotime($created_at)));
