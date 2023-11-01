@@ -10,7 +10,8 @@
     position: absolute;
     top: 100px;
     left: 40px;
-    width: 500px;
+    width: 100%;
+    /* width: 500px; */
     /* background-color: red; */
   }
   

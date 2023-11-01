@@ -10,8 +10,8 @@
     position: absolute;
     top: 100px;
     left: 40px;
-    width: 500px;
-    /* background-color: red; */
+    width: 100%;
+    background-color: red;
   }
   
   .nilai_ta {
