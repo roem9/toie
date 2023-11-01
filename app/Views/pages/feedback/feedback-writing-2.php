@@ -11,7 +11,7 @@
     top: 100px;
     left: 40px;
     width: 100%;
-    background-color: red;
+    /* background-color: red; */
   }
   
   .nilai_ta {
