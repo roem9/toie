@@ -23,11 +23,20 @@
     left: 135px;
   }
 
-  .nama {
+  /* .nama {
     font-family: 'lucida-calligraphy-italic';
     font-size: 40px;
     position: absolute;
     top: 340px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+  } */
+  .nama {
+    font-family: 'lucida-calligraphy-italic';
+    font-size: 32px;
+    position: absolute;
+    top: 368px;
     left: 0px;
     right: 0px;
     text-align: center;
