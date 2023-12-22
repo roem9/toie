@@ -3470,6 +3470,7 @@
         return $data_koreksi;
     }
 
+    // copy format jawaban dari sini 
     function transforme_ac_03($jawaban_listening_peserta, $jawaban_reading_peserta){
         $jawaban_listening = [
             [
@@ -3864,6 +3865,765 @@
         return $data_koreksi;
     }
 
+    function transforme_gt_04($jawaban_listening_peserta, $jawaban_reading_peserta){
+        $jawaban_listening = [
+            [
+                "no" => 1,
+                "jawaban" => ["27 Bank Road"]
+            ],
+            [
+                "no" => 2,
+                "jawaban" => ["a dentist", "dentist"]
+            ],
+            [
+                "no" => 3,
+                "jawaban" => ["Sable"]
+            ],
+            [
+                "no" => 4,
+                "jawaban" => ["Northern Star"]
+            ],
+            [
+                "no" => 5,
+                "jawaban" => ["stolen"]
+            ],
+            [
+                "no" => 6,
+                "jawaban" => ["Paynter"]
+            ],
+            [
+                "no" => 7,
+                "jawaban" => ["brother-in-law"]
+            ],
+            [
+                "no" => 8,
+                "jawaban" => ["work", "travelling work", "traveling work", "to work", "travelling to work", "traveling to work"]
+            ],
+            [
+                "no" => 9,
+                "jawaban" => ["Red Flag"]
+            ],
+            [
+                "no" => 10,
+                "jawaban" => ["450"]
+            ],
+            [
+                "no" => 11,
+                "jawaban" => ["City Bridge"]
+            ],
+            [
+                "no" => 12,
+                "jawaban" => ["Newtown"]
+            ],
+            [
+                "no" => 13,
+                "jawaban" => ["6.30"]
+            ],
+            [
+                "no" => 14,
+                "jawaban" => ["(formal) garden", "formal garden"]
+            ],
+            [
+                "no" => 15,
+                "jawaban" => ["Tower Restaurant", "Restaurant"]
+            ],
+            [
+                "no" => 16,
+                "jawaban" => ["views", "view"]
+            ],
+            [
+                "no" => 17,
+                "jawaban" => ["history"]
+            ],
+            [
+                "no" => 18,
+                "jawaban" => ["7 screen"]
+            ],
+            [
+                "no" => 19,
+                "jawaban" => ["every 20 minutes"]
+            ],
+            [
+                "no" => 20,
+                "jawaban" => ["the Central Station", "from Central Station", "Central Station"]
+            ],
+            [
+                "no" => 21,
+                "jawaban" => ["<b>B.</b> Christchurch is geographically well positioned."]
+            ],
+            [
+                "no" => 22,
+                "jawaban" => ["<b>A.</b> provide expeditions with suitable equipment."]
+            ],
+            [
+                "no" => 23,
+                "jawaban" => ["<b>C.</b> show people what Antarctica is like."]
+            ],
+            [
+                "no" => 24,
+                "jawaban" => ["<b>B.</b> extremely beautiful."]
+            ],
+            [
+                "no" => 25,
+                "jawaban" => ["<b>A.</b> of the shape of the continent."]
+            ],
+            [
+                "no" => 26,
+                "jawaban" => ["<b>B.</b> there is geological evidence of this."]
+            ],
+            [
+                "no" => 27,
+                "jawaban" => ["editing"]
+            ],
+            [
+                "no" => 28,
+                "jawaban" => ["signed"]
+            ],
+            // special 
+            [
+                "no" => 29,
+                "jawaban" => ["A", "D"]
+            ],
+            [
+                "no" => 30,
+                "jawaban" => ["A", "D"]
+            ],
+            // special 
+            [
+                "no" => 31,
+                "jawaban" => ["<b>C.</b> the impressive size of his research project."]
+            ],
+            [
+                "no" => 32,
+                "jawaban" => ["<b>B.</b> aiding sportspeople as they plan tactics for each game."]
+            ],
+            [
+                "no" => 33,
+                "jawaban" => ["<b>C.</b> underestimate what science has to offer sport."]
+            ],
+            [
+                "no" => 34,
+                "jawaban" => ["<b>A.</b> started playing instruments in early youth."]
+            ],
+            [
+                "no" => 35,
+                "jawaban" => ["<b>A.</b> apes which always use the same hand to get food are most successful."]
+            ],
+            [
+                "no" => 36,
+                "jawaban" => ["2 directions"]
+            ],
+            [
+                "no" => 37,
+                "jawaban" => ["confident"]
+            ],
+            [
+                "no" => 38,
+                "jawaban" => ["vision"]
+            ],
+            [
+                "no" => 39,
+                "jawaban" => ["corrections"]
+            ],
+            [
+                "no" => 40,
+                "jawaban" => ["balance"]
+            ],
+        ];
+
+        $jawaban_reading = [
+            [
+                "no" => 1,
+                "jawaban" => ["C"],
+            ],
+            [
+                "no" => 2,
+                "jawaban" => ["D"],
+            ],
+            [
+                "no" => 3,
+                "jawaban" => ["A"],
+            ],
+            [
+                "no" => 4,
+                "jawaban" => ["B"],
+            ],
+            [
+                "no" => 5,
+                "jawaban" => ["C"],
+            ],
+            [
+                "no" => 6,
+                "jawaban" => ["D"],
+            ],
+            [
+                "no" => 7,
+                "jawaban" => ["A"],
+            ],
+            [
+                "no" => 8,
+                "jawaban" => ["FALSE"],
+            ],
+            [
+                "no" => 9,
+                "jawaban" => ["TRUE"],
+            ],
+            [
+                "no" => 10,
+                "jawaban" => ["NOT GIVEN"],
+            ],
+            [
+                "no" => 11,
+                "jawaban" => ["NOT GIVEN"],
+            ],
+            [
+                "no" => 12,
+                "jawaban" => ["FALSE"],
+            ],
+            [
+                "no" => 13,
+                "jawaban" => ["TRUE"],
+            ],
+            [
+                "no" => 14,
+                "jawaban" => ["TRUE"],
+            ],
+            [
+                "no" => 15,
+                "jawaban" => ["family business"],
+            ],
+            [
+                "no" => 16,
+                "jawaban" => ["training"],
+            ],
+            [
+                "no" => 17,
+                "jawaban" => ["accommodation"],
+            ],
+            [
+                "no" => 18,
+                "jawaban" => ["payroll", "the payroll"],
+            ],
+            [
+                "no" => 19,
+                "jawaban" => ["employers", "employer"],
+            ],
+            [
+                "no" => 20,
+                "jawaban" => ["pay records"],
+            ],
+            [
+                "no" => 21,
+                "jawaban" => ["three months", "3 months"],
+            ],
+            [
+                "no" => 22,
+                "jawaban" => ["spam", "obvious spam"],
+            ],
+            [
+                "no" => 23,
+                "jawaban" => ["message time"],
+            ],
+            [
+                "no" => 24,
+                "jawaban" => ["prompt attention"],
+            ],
+            [
+                "no" => 25,
+                "jawaban" => ["reply immediately"],
+            ],
+            [
+                "no" => 26,
+                "jawaban" => ["brief acknowledgement"],
+            ],
+            [
+                "no" => 27,
+                "jawaban" => ["date", "definite date"],
+            ],
+            [
+                "no" => 28,
+                "jawaban" => ["1638"],
+            ],
+            [
+                "no" => 29,
+                "jawaban" => ["1781"],
+            ],
+            [
+                "no" => 30,
+                "jawaban" => ["1934"],
+            ],
+            [
+                "no" => 31,
+                "jawaban" => ["2001"],
+            ],
+            [
+                "no" => 32,
+                "jawaban" => ["TRUE"],
+            ],
+            [
+                "no" => 33,
+                "jawaban" => ["FALSE"],
+            ],
+            [
+                "no" => 34,
+                "jawaban" => ["FALSE"],
+            ],
+            [
+                "no" => 35,
+                "jawaban" => ["NOT GIVEN"],
+            ],
+            [
+                "no" => 36,
+                "jawaban" => ["TRUE"],
+            ],
+            [
+                "no" => 37,
+                "jawaban" => ["D"],
+            ],
+            [
+                "no" => 38,
+                "jawaban" => ["E"],
+            ],
+            [
+                "no" => 39,
+                "jawaban" => ["C"],
+            ],
+            [
+                "no" => 40,
+                "jawaban" => ["H"],
+            ],
+        ];
+
+        $jawaban_ielts = "";
+
+        $benar_listening = 0;
+        foreach ($jawaban_listening_peserta as $i => $jawaban) {
+            $data_jawaban = [];
+
+            foreach ($jawaban_listening[$i]['jawaban'] as $j => $data_jawaban_listening) {
+                $data_jawaban[$j] = strtolower($data_jawaban_listening);
+            }
+
+            if($i == 29){
+                $data_ielts = dua_nomor_tidak_boleh_sama_listening($jawaban_listening_peserta[28], $jawaban_listening_peserta[29], "A", "D");
+
+                $jawaban_ielts .= $data_ielts['jawaban_ielts'];
+                $benar_listening = $benar_listening + $data_ielts['benar_listening'];
+            } else if($i != 28){
+                if (in_array(trim(strtolower($jawaban)), $data_jawaban)){
+                    $status = "Benar";
+                    $benar_listening++;
+                } else {
+                    $status = "Salah";
+                }
+                $jawaban_ielts .= 'Listening&&&'.trim(str_replace('"', "&quot;", $jawaban)).'&&&'.$status.'|||';
+            }
+        }
+
+        $benar_reading = 0;
+        foreach ($jawaban_reading_peserta as $i => $jawaban) {
+            $data_jawaban = [];
+
+            foreach ($jawaban_reading[$i]['jawaban'] as $j => $data_jawaban_reading) {
+                $data_jawaban[$j] = strtolower($data_jawaban_reading);
+            }
+
+            if (in_array(trim(strtolower($jawaban)), $data_jawaban)){
+                $status = "Benar";
+                $benar_reading++;
+            } else {
+                $status = "Salah";
+            }
+
+            $jawaban_ielts .= 'Reading&&&'.trim(str_replace('"', "&quot;", $jawaban)).'&&&'.$status.'|||';
+        }
+
+        $jawaban_ielts = substr($jawaban_ielts, 0, -3);
+
+        $data_koreksi = [
+            'jawaban_ielts' =>  $jawaban_ielts,
+            'benar_listening' =>  $benar_listening,
+            'benar_reading' =>  $benar_reading
+        ];
+
+        return $data_koreksi;
+    }
+
+    function transforme_ac_04($jawaban_listening_peserta, $jawaban_reading_peserta){
+        $jawaban_listening = [
+            [
+                "no" => 1,
+                "jawaban" => ["14 Hill Road"]
+            ],
+            [
+                "no" => 2,
+                "jawaban" => ["between 9 and 9.30", "9-9.30"]
+            ],
+            [
+                "no" => 3,
+                "jawaban" => ["I year"]
+            ],
+            [
+                "no" => 4,
+                "jawaban" => ["intermediate"]
+            ],
+            [
+                "no" => 5,
+                "jawaban" => ["North-West"]
+            ],
+            [
+                "no" => 6,
+                "jawaban" => ["vegetarian"]
+            ],
+            [
+                "no" => 7,
+                "jawaban" => ["a real garden", "real garden", "garden"]
+            ],
+            [
+                "no" => 8,
+                "jawaban" => ["the only guest", "only guest"]
+            ],
+            [
+                "no" => 9,
+                "jawaban" => ["100"]
+            ],
+            [
+                "no" => 10,
+                "jawaban" => ["23rd March", "Monday 23rd March"]
+            ],
+            [
+                "no" => 11,
+                "jawaban" => ["clubhouse"]
+            ],
+            [
+                "no" => 12,
+                "jawaban" => ["picnic"]
+            ],
+            [
+                "no" => 13,
+                "jawaban" => ["prizes"]
+            ],
+            [
+                "no" => 14,
+                "jawaban" => ["10"]
+            ],
+            [
+                "no" => 15,
+                "jawaban" => ["Wednesday afternoon", "Wednesday afternoons"]
+            ],
+            [
+                "no" => 16,
+                "jawaban" => ["4"]
+            ],
+            [
+                "no" => 17,
+                "jawaban" => ["Sunday afternoons", "Sunday afternoon"]
+            ],
+            [
+                "no" => 18,
+                "jawaban" => ["collect the fees", "collect fees", "collect the money", "collect money"]
+            ],
+            [
+                "no" => 19,
+                "jawaban" => ["send out newsletters", "send out newsletter", "send the newsletter", "send the newsletters"]
+            ],
+            [
+                "no" => 20,
+                "jawaban" => ["supervise teams", "supervise the teams"]
+            ],
+            [
+                "no" => 21,
+                "jawaban" => ["sales"]
+            ],
+            [
+                "no" => 22,
+                "jawaban" => ["competition"]
+            ],
+            [
+                "no" => 23,
+                "jawaban" => ["interest rates", "rates of interest"]
+            ],
+            [
+                "no" => 24,
+                "jawaban" => ["training"]
+            ],
+            [
+                "no" => 25,
+                "jawaban" => ["<b>A.</b> look for private investors"]
+            ],
+            [
+                "no" => 26,
+                "jawaban" => ["<b>B.</b> by changing the way it is organized"]
+            ],
+            [
+                "no" => 27,
+                "jawaban" => ["<b>A.</b> offers solutions to Box Telecom's problems."]
+            ],
+            [
+                "no" => 28,
+                "jawaban" => ["C"]
+            ],
+            [
+                "no" => 29,
+                "jawaban" => ["B"]
+            ],
+            [
+                "no" => 30,
+                "jawaban" => ["D"]
+            ],
+            [
+                "no" => 31,
+                "jawaban" => ["<b>B.</b> listen to descriptions of library resources."]
+            ],
+            [
+                "no" => 32,
+                "jawaban" => ["<b>A.</b> Internet materials can be unreliable."]
+            ],
+            [
+                "no" => 33,
+                "jawaban" => ["<b>A.</b> they are a cheap source of information."]
+            ],
+            [
+                "no" => 34,
+                "jawaban" => ["<b>C.</b> the stock of printed articles is to be reduced"]
+            ],
+            [
+                "no" => 35,
+                "jawaban" => ["<b>A.</b> they can be taken away from the library"]
+            ],
+            [
+                "no" => 36,
+                "jawaban" => ["<b>B.</b> to provide orientation to the library facilities"]
+            ],
+            [
+                "no" => 37,
+                "jawaban" => ["B"]
+            ],
+            [
+                "no" => 38,
+                "jawaban" => ["A"]
+            ],
+            [
+                "no" => 39,
+                "jawaban" => ["B"]
+            ],
+            [
+                "no" => 40,
+                "jawaban" => ["C"]
+            ],
+        ];
+
+        $jawaban_reading = [
+            [
+                "no" => 1,
+                "jawaban" => ["iii"]
+            ],
+            [
+                "no" => 2,
+                "jawaban" => ["v"]
+            ],
+            [
+                "no" => 3,
+                "jawaban" => ["ii"]
+            ],
+            [
+                "no" => 4,
+                "jawaban" => ["YES"]
+            ],
+            [
+                "no" => 5,
+                "jawaban" => ["YES"]
+            ],
+            [
+                "no" => 6,
+                "jawaban" => ["NO"]
+            ],
+            [
+                "no" => 7,
+                "jawaban" => ["YES"]
+            ],
+            [
+                "no" => 8,
+                "jawaban" => ["NO"]
+            ],
+            [
+                "no" => 9,
+                "jawaban" => ["NOT GIVEN"]
+            ],
+            [
+                "no" => 10,
+                "jawaban" => ["cheese"]
+            ],
+            [
+                "no" => 11,
+                "jawaban" => ["tourism", "tourist", "tour"]
+            ],
+            [
+                "no" => 12,
+                "jawaban" => ["pottery"]
+            ],
+            [
+                "no" => 13,
+                "jawaban" => ["jewellery", "jewelry"]
+            ],
+            [
+                "no" => 14,
+                "jawaban" => ["G"]
+            ],
+            [
+                "no" => 15,
+                "jawaban" => ["A"]
+            ],
+            [
+                "no" => 16,
+                "jawaban" => ["H"]
+            ],
+            [
+                "no" => 17,
+                "jawaban" => ["C"]
+            ],
+            [
+                "no" => 18,
+                "jawaban" => ["F"]
+            ],
+            [
+                "no" => 19,
+                "jawaban" => ["I"]
+            ],
+            [
+                "no" => 20,
+                "jawaban" => ["C"]
+            ],
+            [
+                "no" => 21,
+                "jawaban" => ["K"]
+            ],
+            [
+                "no" => 22,
+                "jawaban" => ["E"]
+            ],
+            [
+                "no" => 23,
+                "jawaban" => ["L"]
+            ],
+            [
+                "no" => 24,
+                "jawaban" => ["TRUE"]
+            ],
+            [
+                "no" => 25,
+                "jawaban" => ["NOT GIVEN"]
+            ],
+            [
+                "no" => 26,
+                "jawaban" => ["FALSE"]
+            ],
+            [
+                "no" => 27,
+                "jawaban" => ["TRUE"]
+            ],
+            [
+                "no" => 28,
+                "jawaban" => ["TRUE"]
+            ],
+            [
+                "no" => 29,
+                "jawaban" => ["NOT GIVEN"]
+            ],
+            [
+                "no" => 30,
+                "jawaban" => ["FALSE"]
+            ],
+            [
+                "no" => 31,
+                "jawaban" => ["FALSE"]
+            ],
+            [
+                "no" => 32,
+                "jawaban" => ["TRUE"]
+            ],
+            [
+                "no" => 33,
+                "jawaban" => ["FALSE"]
+            ],
+            [
+                "no" => 34,
+                "jawaban" => ["temperatures"]
+            ],
+            [
+                "no" => 35,
+                "jawaban" => ["day-neutral", "day-neutral plants"]
+            ],
+            [
+                "no" => 36,
+                "jawaban" => ["food", "food resources", "adequate food", "adequate food resources"]
+            ],
+            [
+                "no" => 37,
+                "jawaban" => ["insects by insects", "fertilization by insects"]
+            ],
+            [
+                "no" => 38,
+                "jawaban" => ["rainfall", "suitable rainfall"]
+            ],
+            [
+                "no" => 39,
+                "jawaban" => ["sugarcane"]
+            ],
+            [
+                "no" => 40,
+                "jawaban" => ["classification"]
+            ],
+        ];
+
+        $jawaban_ielts = "";
+
+        $benar_listening = 0;
+        foreach ($jawaban_listening_peserta as $i => $jawaban) {
+            $data_jawaban = [];
+
+            foreach ($jawaban_listening[$i]['jawaban'] as $j => $data_jawaban_listening) {
+                $data_jawaban[$j] = strtolower($data_jawaban_listening);
+            }
+
+            if (in_array(trim(strtolower($jawaban)), $data_jawaban)){
+                $status = "Benar";
+                $benar_listening++;
+            } else {
+                $status = "Salah";
+            }
+            $jawaban_ielts .= 'Listening&&&'.trim(str_replace('"', "&quot;", $jawaban)).'&&&'.$status.'|||';
+        }
+
+        $benar_reading = 0;
+        foreach ($jawaban_reading_peserta as $i => $jawaban) {
+            $data_jawaban = [];
+
+            foreach ($jawaban_reading[$i]['jawaban'] as $j => $data_jawaban_reading) {
+                $data_jawaban[$j] = strtolower($data_jawaban_reading);
+            }
+
+            if (in_array(trim(strtolower($jawaban)), $data_jawaban)){
+                $status = "Benar";
+                $benar_reading++;
+            } else {
+                $status = "Salah";
+            }
+
+            $jawaban_ielts .= 'Reading&&&'.trim(str_replace('"', "&quot;", $jawaban)).'&&&'.$status.'|||';
+        }
+
+        $jawaban_ielts = substr($jawaban_ielts, 0, -3);
+
+        $data_koreksi = [
+            'jawaban_ielts' =>  $jawaban_ielts,
+            'benar_listening' =>  $benar_listening,
+            'benar_reading' =>  $benar_reading
+        ];
+
+        return $data_koreksi;
+    }
+
     function dua_nomor_tidak_boleh_sama_reading($jawaban_no_awal, $jawaban_no_akhir, $kunci_no_awal, $kunci_no_akhir){
         $benar_reading = 0;
         if(strtolower($jawaban_no_awal) == strtolower($kunci_no_awal) && strtolower($jawaban_no_akhir) == strtolower($kunci_no_akhir)){
@@ -3891,6 +4651,38 @@
         $data = [
             "jawaban_ielts" => $jawaban_ielts,
             "benar_reading" => $benar_reading
+        ];
+
+        return $data;
+    }
+
+    function dua_nomor_tidak_boleh_sama_listening($jawaban_no_awal, $jawaban_no_akhir, $kunci_no_awal, $kunci_no_akhir){
+        $benar_listening = 0;
+        if(strtolower($jawaban_no_awal) == strtolower($kunci_no_awal) && strtolower($jawaban_no_akhir) == strtolower($kunci_no_akhir)){
+            $jawaban_ielts = 'Listening&&&' . $jawaban_no_awal . '&&&Benar|||Listening&&&' . $jawaban_no_akhir . '&&&Benar|||';
+            $benar_listening = $benar_listening + 2;
+        } else if(strtolower($jawaban_no_awal) == strtolower($kunci_no_akhir) && strtolower($jawaban_no_akhir) == strtolower($kunci_no_awal)){
+            $jawaban_ielts = 'Listening&&&' . $jawaban_no_awal . '&&&Benar|||Listening&&&' . $jawaban_no_akhir . '&&&Benar|||';
+            $benar_listening = $benar_listening + 2;
+        } else if(strtolower($jawaban_no_awal) == strtolower($kunci_no_akhir)){
+            $jawaban_ielts = 'Listening&&&' . $jawaban_no_awal . '&&&Benar|||Listening&&&'.trim(str_replace('"', "&quot;", $jawaban_no_akhir)).'&&&Salah|||';
+            $benar_listening++;
+        } else if(strtolower($jawaban_no_awal) == strtolower($kunci_no_awal)){
+            $jawaban_ielts = 'Listening&&&' . $jawaban_no_awal . '&&&Benar|||Listening&&&'.trim(str_replace('"', "&quot;", $jawaban_no_akhir)).'&&&Salah|||';
+            $benar_listening++;
+        } else if(strtolower($jawaban_no_akhir) == strtolower($kunci_no_akhir)){
+            $jawaban_ielts = 'Listening&&&'.trim(str_replace('"', "&quot;", $jawaban_no_awal)).'&&&Salah|||Listening&&&' . $jawaban_no_akhir . '&&&Benar|||';
+            $benar_listening++;
+        } else if(strtolower($jawaban_no_akhir) == strtolower($kunci_no_awal)){
+            $jawaban_ielts = 'Listening&&&'.trim(str_replace('"', "&quot;", $jawaban_no_awal)).'&&&Salah|||Listening&&&' . $jawaban_no_akhir . '&&&Benar|||';
+            $benar_listening++;
+        } else {
+            $jawaban_ielts = 'Listening&&&'.trim(str_replace('"', "&quot;", $jawaban_no_awal)).'&&&Salah|||Listening&&&'.trim(str_replace('"', "&quot;", $jawaban_no_akhir)).'&&&Salah|||';
+        }
+
+        $data = [
+            "jawaban_ielts" => $jawaban_ielts,
+            "benar_listening" => $benar_listening
         ];
 
         return $data;

@@ -130,6 +130,8 @@
               <option value="Soal_General_Pretest">Soal_General_Pretest</option>
               <option value="Transforme_GT_03">Transforme_GT_03</option>
               <option value="Transforme_AC_03">Transforme_AC_03</option>
+              <option value="Transforme_GT_04">Transforme_GT_04</option>
+              <option value="Transforme_AC_04">Transforme_AC_04</option>
             </select>
           </div>
           <div class="col-12 mb-3">

@@ -435,3 +435,12 @@ function no_doc($no){
 
     return $no_doc;
 }
+
+function tabHtml($int){
+    $tab = "";
+    for ($i=0; $i < $int; $i++) { 
+        $tab .= "&emsp;";
+    }
+
+    return $tab;
+}

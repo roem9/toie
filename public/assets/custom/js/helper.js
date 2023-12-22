@@ -597,6 +597,126 @@ function writing(tipe_soal, task, url) {
         <p>Write at least 250 words.</p>
       `;
     }
+  } else if (tipe_soal == "Transforme_GT_04") {
+    if (task == 1) {
+      return `
+        <p class="question mb-3">
+            Writing Task 1<br>
+            You should spend about 20 minutes on this task.
+        </p>
+
+        <div class="ps-4">
+            <p><b>Last month you had a holiday overseas where you stayed with some friend. They have just sent you some photos of your holiday.</b></p>
+            <p><b>Write a letter to an English-speaking friend. In your letter</b></p>
+            <ul>
+                <li>
+                    <b>Thank them for the photos and for the holiday</b>
+                </li>
+                <li>
+                    <b>Explain why you didn’t write earlier</b>
+                </li>
+                <li>
+                    <b>Invite them to come and stay with you</b>
+                </li>
+            </ul>
+        </div>
+
+        <p>You should write at least 150 words.</p>
+        <p>You do <b>NOT</b> need to write your own address. Begin your letter as follows:</p>
+        <p><b>Dear …………….,</b></p>
+      `;
+    } else if (task == 2) {
+      return `
+        <p class="question mb-3">
+            Writing Task 2<br>
+            You should spend about 40 minutes on this task.
+        </p>
+        <p>Write about the following topic:</p>
+        <div class="ps-4">
+            <p><b>Some people feel that entertainers (e.g. film stars, pop musicians or sports stars) are paid too much money.</b></p>
+            <p><b>Do you agree or disagree?</b></p>
+            <p><b>Which other types of job should be highly paid?</b></p>
+        </div>
+        <p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p>
+        <p>Write at least 250 words</p>
+      `;
+    }
+  } else if (tipe_soal == "Transforme_AC_04") {
+    if (task == 1) {
+      return `
+          <p class="question mb-3">
+              Writing Task 1<br>
+              You should spend about 20 minutes on this task.
+          </p>
+
+          <div class="ps-4">
+              <p><b>The take below gives information about the underground railway systems in six cities.</b></p>
+              <p><b>Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</b></p>
+          </div>
+
+          <p>You should write at least 150 words.</p>
+          <p><center><b>Underground Railways Systems</b></center></p>
+
+          <table class="tableSoal w-100">
+              <tr>
+                  <td><b>City</b></td>
+                  <td><b>Date opened</b></td>
+                  <td><b>Kilometres of route</b></td>
+                  <td><b>Passengers per year <br>(in  millions)</b></td>
+              </tr>
+              <tr>
+                  <td><b>London</b></td>
+                  <td>1863</td>
+                  <td>394</td>
+                  <td>775</td>
+              </tr>
+              <tr>
+                  <td><b>Paris</b></td>
+                  <td>1900</td>
+                  <td>199</td>
+                  <td>1191</td>
+              </tr>
+              <tr>
+                  <td><b>Tokyo</b></td>
+                  <td>1927</td>
+                  <td>155</td>
+                  <td>1927</td>
+              </tr>
+              <tr>
+                  <td><b>Washington DC</b></td>
+                  <td>1976</td>
+                  <td>126</td>
+                  <td>144</td>
+              </tr>
+              <tr>
+                  <td><b>Kyoto</b></td>
+                  <td>1981</td>
+                  <td>11</td>
+                  <td>45</td>
+              </tr>
+              <tr>
+                  <td><b>Los Angeles</b></td>
+                  <td>2001</td>
+                  <td>28</td>
+                  <td>50</td>
+              </tr>
+          </table>
+      `;
+    } else if (task == 2) {
+      return `
+        <p class="question mb-3">
+            Writing Task 2<br>
+            You should spend about 40 minutes on this task.
+        </p>
+        <p>Write about the following topic:</p>
+        <div class="ps-4">
+            <p><b>Research indicates that the characteristics we are born with have much more influence on our personality and development than any experiences we may have in our life.</b></p>
+            <p><b>Which do you consider to be the major influence?</b></p>
+        </div>
+        <p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p>
+        <p>Write at least 250 words</p>
+      `;
+    }
   }
 }
 

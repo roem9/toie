@@ -542,6 +542,10 @@ class Tes extends BaseController
                 return view('pages/soal/transforme/transforme-gt-03', $data);
             } else if($data['tipe_soal'] == "Transforme_AC_03"){
                 return view('pages/soal/transforme/transforme-ac-03', $data);
+            } else if($data['tipe_soal'] == "Transforme_GT_04"){
+                return view('pages/soal/transforme/transforme-gt-04', $data);
+            } else if($data['tipe_soal'] == "Transforme_AC_04"){
+                return view('pages/soal/transforme/transforme-ac-04', $data);
             }
         }
     }
