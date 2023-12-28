@@ -3921,7 +3921,7 @@
             ],
             [
                 "no" => 14,
-                "jawaban" => ["(formal) garden", "formal garden"]
+                "jawaban" => ["garden", "formal garden"]
             ],
             [
                 "no" => 15,
@@ -3973,7 +3973,7 @@
             ],
             [
                 "no" => 27,
-                "jawaban" => ["editing"]
+                "jawaban" => ["1882 to 1883", "82 to 83"]
             ],
             [
                 "no" => 28,
