@@ -307,6 +307,7 @@
           orderable: false
         },
       ],
+      order: [3, 'desc'],
       language: {
         paginate: {
           first: '<<',

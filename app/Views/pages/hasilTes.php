@@ -52,7 +52,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalHasilTesLabel">Edit Peserta</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
         <!-- KALAU SUKSES -->
@@ -125,7 +127,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalFeedbackWritingLabel">Edit Peserta</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -151,35 +155,35 @@
                   <input type="hidden" name="task" id="task">
                   <div class="form-group">
                     <label for="kriteria_ta"><span class="kriteria_ta">Evaluation TA (Task Achievement)</span></label>
-                    <textarea name="kriteria_ta" class="form-control" id="kriteria_ta" rows="3"></textarea>
+                    <textarea name="kriteria_ta" class="form-control autoSaveWriting" id="kriteria_ta" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label><span class="score_ta">Score TA (Task Achievement)</span></label>
-                    <input name="nilai_ta" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
+                    <input name="nilai_ta" class="multisteps-form__input form-control autoSaveWriting" type="text" placeholder="score task achievement">
                   </div>
                   <div class="form-group">
                     <label for="kriteria_cc">Evaluation CC (Coherence and Cohesion)</label>
-                    <textarea name="kriteria_cc" class="form-control" id="kriteria_cc" rows="3"></textarea>
+                    <textarea name="kriteria_cc" class="form-control autoSaveWriting" id="kriteria_cc" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Score CC (Coherence and Cohesion)</label>
-                    <input name="nilai_cc" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
+                    <input name="nilai_cc" class="multisteps-form__input form-control autoSaveWriting" type="text" placeholder="score task achievement">
                   </div>
                   <div class="form-group">
                     <label for="kriteria_gra">Evaluation GRA (Grammar)</label>
-                    <textarea name="kriteria_gra" class="form-control" id="kriteria_gra" rows="3"></textarea>
+                    <textarea name="kriteria_gra" class="form-control autoSaveWriting" id="kriteria_gra" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Score GRA (Grammar)</label>
-                    <input name="nilai_gra" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
+                    <input name="nilai_gra" class="multisteps-form__input form-control autoSaveWriting" type="text" placeholder="score task achievement">
                   </div>
                   <div class="form-group">
                     <label for="kriteria_lr">Evaluation LR (Lexical Resource)</label>
-                    <textarea name="kriteria_lr" class="form-control" id="kriteria_lr" rows="3"></textarea>
+                    <textarea name="kriteria_lr" class="form-control autoSaveWriting" id="kriteria_lr" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Score LR (Lexical Resource)</label>
-                    <input name="nilai_lr" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
+                    <input name="nilai_lr" class="multisteps-form__input form-control autoSaveWriting" type="text" placeholder="score task achievement">
                   </div>
                 </form>
               </div>
@@ -201,7 +205,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalFeedbackSpeakingLabel">Edit Peserta</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -226,35 +232,35 @@
                   <input type="hidden" name="id" id="id">
                   <div class="form-group">
                     <label for="kriteria_topic">Fluency and Coherence</label>
-                    <textarea name="kriteria_topic" class="form-control" id="kriteria_topic" rows="3"></textarea>
+                    <textarea name="kriteria_topic" class="form-control autoSaveSpeaking" id="kriteria_topic" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Score Fluency and Coherence</label>
-                    <input name="nilai_topic" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
+                    <input name="nilai_topic" class="multisteps-form__input form-control autoSaveSpeaking" type="text" placeholder="score task achievement">
                   </div>
                   <div class="form-group">
                     <label for="kriteria_fluency">Lexical Resource</label>
-                    <textarea name="kriteria_fluency" class="form-control" id="kriteria_fluency" rows="3"></textarea>
+                    <textarea name="kriteria_fluency" class="form-control autoSaveSpeaking" id="kriteria_fluency" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Score Lexical Resource</label>
-                    <input name="nilai_fluency" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
+                    <input name="nilai_fluency" class="multisteps-form__input form-control autoSaveSpeaking" type="text" placeholder="score task achievement">
                   </div>
                   <div class="form-group">
                     <label for="kriteria_grammar">Grammatical Range and Accuracy</label>
-                    <textarea name="kriteria_grammar" class="form-control" id="kriteria_grammar" rows="3"></textarea>
+                    <textarea name="kriteria_grammar" class="form-control autoSaveSpeaking" id="kriteria_grammar" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Score Grammatical Range and Accuracy</label>
-                    <input name="nilai_grammar" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
+                    <input name="nilai_grammar" class="multisteps-form__input form-control autoSaveSpeaking" type="text" placeholder="score task achievement">
                   </div>
                   <div class="form-group">
                     <label for="kriteria_vocabulary">Pronunciation</label>
-                    <textarea name="kriteria_vocabulary" class="form-control" id="kriteria_vocabulary" rows="3"></textarea>
+                    <textarea name="kriteria_vocabulary" class="form-control autoSaveSpeaking" id="kriteria_vocabulary" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Score Pronunciation</label>
-                    <input name="nilai_vocabulary" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
+                    <input name="nilai_vocabulary" class="multisteps-form__input form-control autoSaveSpeaking" type="text" placeholder="score task achievement">
                   </div>
                 </form>
               </div>
@@ -281,17 +287,69 @@
     const btnSimpan = $("#btnSimpan");
 
     btnSimpan.on("click", simpanPesertaIelts);
-    $("#btnSimpanFeedbackWriting").on("click", simpanFeedbackWriting)
-    $("#btnSimpanFeedbackSpeaking").on("click", simpanFeedbackSpeaking)
+    // $("#btnSimpanFeedbackWriting").on("click", simpanFeedbackWriting)
+    $("#btnSimpanFeedbackWriting").on("click", function() {
+        simpanFeedbackWriting(true);
+    });
+    // $("#btnSimpanFeedbackSpeaking").on("click", simpanFeedbackSpeaking)
+    $("#btnSimpanFeedbackSpeaking").on("click", function() {
+        simpanFeedbackSpeaking(true);
+    });
+
+    $(".autoSaveWriting").on("keyup", function(){
+        simpanFeedbackWriting(false)
+    })
+
+    // autoSaveSpeaking
+    $(".autoSaveSpeaking").on("keyup", function(){
+        simpanFeedbackSpeaking(false)
+    })
 
     CKEDITOR.replace('kriteria_ta');
     CKEDITOR.replace('kriteria_cc');
     CKEDITOR.replace('kriteria_gra');
     CKEDITOR.replace('kriteria_lr');
+    
     CKEDITOR.replace('kriteria_topic');
     CKEDITOR.replace('kriteria_fluency');
     CKEDITOR.replace('kriteria_grammar');
     CKEDITOR.replace('kriteria_vocabulary');
+
+    // Initialize CKEditor instances
+    // Initialize more instances as needed
+
+    // CKEDITOR.instances['kriteria_ta'].on('change', function () {
+    //     // Your functionality on CKEditor change
+    //     simpanFeedbackWriting(false)
+    // });
+
+    // Add "change" event using jQuery for CKEditor instances
+    $('[id^="kriteria_"]').each(function () {
+        var editorId = $(this).attr('id');
+
+        if(editorId == 'kriteria_ta' || editorId == 'kriteria_cc' || editorId == 'kriteria_gra' || editorId == 'kriteria_lr'){
+            CKEDITOR.instances[editorId].on('change', function () {
+                // Your functionality on CKEditor change
+                simpanFeedbackWriting(false)
+            });
+        } else if(editorId == 'kriteria_topic' || editorId == 'kriteria_fluency' || editorId == 'kriteria_grammar' || editorId == 'kriteria_vocabulary'){
+            CKEDITOR.instances[editorId].on('change', function () {
+                // Your functionality on CKEditor change
+                simpanFeedbackSpeaking(false)
+            });
+        }
+    });
+
+    // handleCkeditorWritingAutoSave(CKEDITOR.instances.kriteria_ta);
+    // handleCkeditorWritingAutoSave(CKEDITOR.instances.kriteria_cc);
+    // handleCkeditorWritingAutoSave(CKEDITOR.instances.kriteria_gra);
+    // handleCkeditorWritingAutoSave(CKEDITOR.instances.kriteria_lr);
+
+    // handleCkeditorSpeakingAutoSave(CKEDITOR.instances.kriteria_topic);
+    // handleCkeditorSpeakingAutoSave(CKEDITOR.instances.kriteria_fluency);
+    // handleCkeditorSpeakingAutoSave(CKEDITOR.instances.kriteria_grammar);
+    // handleCkeditorSpeakingAutoSave(CKEDITOR.instances.kriteria_vocabulary);
+    
 
     // $('html, .modal-body').animate({
     //     scrollTop: 0
@@ -663,8 +721,7 @@
     });
   }
 
-  function simpanFeedbackWriting(e) {
-    e.preventDefault();
+  function simpanFeedbackWriting(showMsg) {
 
     let id = $(`#formFeedbackWriting [name='id']`).val();
     let task = $(`#formFeedbackWriting [name='task']`).val();
@@ -699,9 +756,9 @@
           $('.alert-error').show();
           $('.error').html($obj.error);
         } else {
-          $('.alert-error').hide();
-          $('.alert-sukses').show();
-          $('.sukses').html($obj.sukses);
+        //   $('.alert-error').hide();
+        //   $('.alert-sukses').show();
+        //   $('.sukses').html($obj.sukses);
 
           if ($obj.edit == false) {
             $("#formTambahTes")[0].reset();
@@ -711,15 +768,22 @@
           $('#table-hasil-tes').DataTable().ajax.reload();
         }
 
-        $('#feedbackWriting .card-body').animate({
-          scrollTop: 0
-        }, 'slow');
+        // $('#feedbackWriting .card-body').animate({
+        //   scrollTop: 0
+        // }, 'slow');
+
+        if(showMsg){
+            Toast.fire({
+                icon: "success",
+                title: "Berhasil mengubah data"
+            });
+        }
       }
     });
   }
 
-  function simpanFeedbackSpeaking(e) {
-    e.preventDefault();
+  function simpanFeedbackSpeaking(showMsg) {
+    // e.preventDefault();
 
     let id = $(`#formFeedbackSpeaking [name='id']`).val();
     let kriteria_topic = CKEDITOR.instances['kriteria_topic'].getData();
@@ -752,9 +816,9 @@
           $('.alert-error').show();
           $('.error').html($obj.error);
         } else {
-          $('.alert-error').hide();
-          $('.alert-sukses').show();
-          $('.sukses').html($obj.sukses);
+        //   $('.alert-error').hide();
+        //   $('.alert-sukses').show();
+        //   $('.sukses').html($obj.sukses);
 
           if ($obj.edit == false) {
             $("#formTambahTes")[0].reset();
@@ -764,9 +828,16 @@
           $('#table-hasil-tes').DataTable().ajax.reload();
         }
 
-        $('#feedbackSpeaking .card-body').animate({
-          scrollTop: 0
-        }, 'slow');
+        // $('#feedbackSpeaking .card-body').animate({
+        //   scrollTop: 0
+        // }, 'slow');
+
+        if(showMsg){
+            Toast.fire({
+                icon: "success",
+                title: "Berhasil mengubah data"
+            });
+        }
       }
     });
   }

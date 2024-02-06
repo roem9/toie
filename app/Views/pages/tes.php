@@ -351,6 +351,7 @@
           last: '>>'
         }
       },
+      order: [[ 3, "desc" ]],
       pageLength: 5,
       lengthMenu: [
         [5, 10, 20],

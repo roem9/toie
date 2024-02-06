@@ -52,7 +52,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalHasilTesLabel">Edit Peserta</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button> -->
+        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
         <!-- KALAU SUKSES -->
@@ -121,7 +124,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalFeedbackWritingLabel">Edit Peserta</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -197,7 +203,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalFeedbackSpeakingLabel">Edit Peserta</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
         <div class="row">

@@ -36,7 +36,8 @@ class Tes extends BaseController
         $db = db_connect();
         $builder = $db->table('tes')
             ->where(["tes.hapus" => 0, "client.hapus" => 0])
-            ->select('id_tes, nama_tes, nama_client, DATE_FORMAT(tgl_tes, "%d-%M-%Y") as tgl_tes, tipe_tes, tipe_soal, kuota, status, url, MD5(id_tes) as tes, tes.password, (SELECT COUNT(id) FROM peserta_ielts WHERE id_tes = tes.id_tes) as peserta')
+            ->select('id_tes, nama_tes, nama_client, tgl_tes, tipe_tes, tipe_soal, kuota, status, url, MD5(id_tes) as tes, tes.password, (SELECT COUNT(id) FROM peserta_ielts WHERE id_tes = tes.id_tes) as peserta')
+            // ->select('id_tes, nama_tes, nama_client, DATE_FORMAT(tgl_tes, "%d-%M-%Y") as tgl_tes, tipe_tes, tipe_soal, kuota, status, url, MD5(id_tes) as tes, tes.password, (SELECT COUNT(id) FROM peserta_ielts WHERE id_tes = tes.id_tes) as peserta')
             ->join('client', 'tes.fk_id_client = client.id_client');
 
         return DataTable::of($builder)->toJson(true);
@@ -138,66 +139,66 @@ class Tes extends BaseController
     {
         $validasi  = \Config\Services::validation();
         $aturan = [
-            'kriteria_ta' => [
-                'label' => 'Evaluation TA (Task Achievement)',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
-            'nilai_ta' => [
-                'label' => 'Score TA (Task Achievement)',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
-            'kriteria_cc' => [
-                'label' => 'Evaluation CC (Coherence and Cohesion)',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
-            'nilai_cc' => [
-                'label' => 'Score CC (Coherence and Cohesion)',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
-            'kriteria_gra' => [
-                'label' => 'Evaluation GRA (Grammar)',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
-            'nilai_gra' => [
-                'label' => 'Score GRA (Grammar)',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
-            'kriteria_lr' => [
-                'label' => 'Evaluation LR (Lexical Resource)',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
-            'nilai_lr' => [
-                'label' => 'Score LR (Lexical Resource)',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
+            // 'kriteria_ta' => [
+            //     'label' => 'Evaluation TA (Task Achievement)',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} harus diisi'
+            //     ]
+            // ],
+            // 'nilai_ta' => [
+            //     'label' => 'Score TA (Task Achievement)',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} harus diisi'
+            //     ]
+            // ],
+            // 'kriteria_cc' => [
+            //     'label' => 'Evaluation CC (Coherence and Cohesion)',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} harus diisi'
+            //     ]
+            // ],
+            // 'nilai_cc' => [
+            //     'label' => 'Score CC (Coherence and Cohesion)',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} harus diisi'
+            //     ]
+            // ],
+            // 'kriteria_gra' => [
+            //     'label' => 'Evaluation GRA (Grammar)',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} harus diisi'
+            //     ]
+            // ],
+            // 'nilai_gra' => [
+            //     'label' => 'Score GRA (Grammar)',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} harus diisi'
+            //     ]
+            // ],
+            // 'kriteria_lr' => [
+            //     'label' => 'Evaluation LR (Lexical Resource)',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} harus diisi'
+            //     ]
+            // ],
+            // 'nilai_lr' => [
+            //     'label' => 'Score LR (Lexical Resource)',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} harus diisi'
+            //     ]
+            // ],
         ];
 
-        $validasi->setRules($aturan);
-        if ($validasi->withRequest($this->request)->run()) {
+        // $validasi->setRules($aturan);
+        // if ($validasi->withRequest($this->request)->run()) {
             $id = $this->request->getPost('id');
             $task = $this->request->getPost('task');
             $kriteria_ta = $this->request->getPost('kriteria_ta');
@@ -242,10 +243,10 @@ class Tes extends BaseController
                 $hasil['error'] = true;
                 $hasil['edit'] = true;
             }
-        } else {
-            $hasil['sukses'] = false;
-            $hasil['error'] = $validasi->listErrors();
-        }
+        // } else {
+        //     $hasil['sukses'] = false;
+        //     $hasil['error'] = $validasi->listErrors();
+        // }
 
         return json_encode($hasil);
     }
@@ -254,66 +255,66 @@ class Tes extends BaseController
     {
         $validasi  = \Config\Services::validation();
         $aturan = [
-            'kriteria_topic' => [
-                'label' => 'Evaluation Topic',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
-            'nilai_topic' => [
-                'label' => 'Score Topic',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
-            'kriteria_fluency' => [
-                'label' => 'Evaluation Fluency',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
-            'nilai_fluency' => [
-                'label' => 'Score Fluency',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
-            'kriteria_grammar' => [
-                'label' => 'Evaluation Grammar',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
-            'nilai_grammar' => [
-                'label' => 'Score Grammar',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
-            'kriteria_vocabulary' => [
-                'label' => 'Evaluation Vocabulary',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
-            'nilai_vocabulary' => [
-                'label' => 'Score Vocabulary',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi'
-                ]
-            ],
+            // 'kriteria_topic' => [
+            //     'label' => 'Evaluation Topic',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} harus diisi'
+            //     ]
+            // ],
+            // 'nilai_topic' => [
+            //     'label' => 'Score Topic',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} harus diisi'
+            //     ]
+            // ],
+            // 'kriteria_fluency' => [
+            //     'label' => 'Evaluation Fluency',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} harus diisi'
+            //     ]
+            // ],
+            // 'nilai_fluency' => [
+            //     'label' => 'Score Fluency',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} harus diisi'
+            //     ]
+            // ],
+            // 'kriteria_grammar' => [
+            //     'label' => 'Evaluation Grammar',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} harus diisi'
+            //     ]
+            // ],
+            // 'nilai_grammar' => [
+            //     'label' => 'Score Grammar',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} harus diisi'
+            //     ]
+            // ],
+            // 'kriteria_vocabulary' => [
+            //     'label' => 'Evaluation Vocabulary',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} harus diisi'
+            //     ]
+            // ],
+            // 'nilai_vocabulary' => [
+            //     'label' => 'Score Vocabulary',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} harus diisi'
+            //     ]
+            // ],
         ];
 
-        $validasi->setRules($aturan);
-        if ($validasi->withRequest($this->request)->run()) {
+        // $validasi->setRules($aturan);
+        // if ($validasi->withRequest($this->request)->run()) {
             $id = $this->request->getPost('id');
             $kriteria_topic = $this->request->getPost('kriteria_topic');
             $nilai_topic = $this->request->getPost('nilai_topic');
@@ -344,10 +345,10 @@ class Tes extends BaseController
                 $hasil['error'] = true;
                 $hasil['edit'] = true;
             }
-        } else {
-            $hasil['sukses'] = false;
-            $hasil['error'] = $validasi->listErrors();
-        }
+        // } else {
+        //     $hasil['sukses'] = false;
+        //     $hasil['error'] = $validasi->listErrors();
+        // }
 
         return json_encode($hasil);
     }
