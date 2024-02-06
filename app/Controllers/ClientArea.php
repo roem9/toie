@@ -452,8 +452,8 @@ class ClientArea extends BaseController
             // ],
         ];
 
-        $validasi->setRules($aturan);
-        if ($validasi->withRequest($this->request)->run()) {
+        // $validasi->setRules($aturan);
+        // if ($validasi->withRequest($this->request)->run()) {
             $id = $this->request->getPost('id');
             $task = $this->request->getPost('task');
             $kriteria_ta = $this->request->getPost('kriteria_ta');
@@ -503,10 +503,10 @@ class ClientArea extends BaseController
                 $hasil['sukses'] = false;
                 $hasil['error'] = 'Anda tidak memiliki akses untuk mengubah data ini';
             }
-        } else {
-            $hasil['sukses'] = false;
-            $hasil['error'] = $validasi->listErrors();
-        }
+        // } else {
+        //     $hasil['sukses'] = false;
+        //     $hasil['error'] = $validasi->listErrors();
+        // }
 
         return json_encode($hasil);
     }
@@ -576,8 +576,8 @@ class ClientArea extends BaseController
             // ],
         ];
 
-        $validasi->setRules($aturan);
-        if ($validasi->withRequest($this->request)->run()) {
+        // $validasi->setRules($aturan);
+        // if ($validasi->withRequest($this->request)->run()) {
             $id = $this->request->getPost('id');
             $kriteria_topic = $this->request->getPost('kriteria_topic');
             $nilai_topic = $this->request->getPost('nilai_topic');
@@ -609,10 +609,10 @@ class ClientArea extends BaseController
                 $hasil['error'] = true;
                 $hasil['edit'] = true;
             }
-        } else {
-            $hasil['sukses'] = false;
-            $hasil['error'] = $validasi->listErrors();
-        }
+        // } else {
+        //     $hasil['sukses'] = false;
+        //     $hasil['error'] = $validasi->listErrors();
+        // }
 
         return json_encode($hasil);
     }

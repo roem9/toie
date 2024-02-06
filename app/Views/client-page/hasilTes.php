@@ -153,35 +153,35 @@
                   <input type="hidden" name="task" id="task">
                   <div class="form-group">
                     <label for="kriteria_ta"><span class="kriteria_ta">Evaluation TA (Task Achievement)</span></label>
-                    <textarea name="kriteria_ta" class="form-control" id="kriteria_ta" rows="3"></textarea>
+                    <textarea name="kriteria_ta" class="form-control autoSaveWriting" id="kriteria_ta" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label><span class="score_ta">Score TA (Task Achievement)</span></label>
-                    <input name="nilai_ta" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
+                    <input name="nilai_ta" class="multisteps-form__input form-control autoSaveWriting" type="text" placeholder="score task achievement">
                   </div>
                   <div class="form-group">
                     <label for="kriteria_cc">Evaluation CC (Coherence and Cohesion)</label>
-                    <textarea name="kriteria_cc" class="form-control" id="kriteria_cc" rows="3"></textarea>
+                    <textarea name="kriteria_cc" class="form-control autoSaveWriting" id="kriteria_cc" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Score CC (Coherence and Cohesion)</label>
-                    <input name="nilai_cc" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
+                    <input name="nilai_cc" class="multisteps-form__input form-control autoSaveWriting" type="text" placeholder="score task achievement">
                   </div>
                   <div class="form-group">
                     <label for="kriteria_gra">Evaluation GRA (Grammar)</label>
-                    <textarea name="kriteria_gra" class="form-control" id="kriteria_gra" rows="3"></textarea>
+                    <textarea name="kriteria_gra" class="form-control autoSaveWriting" id="kriteria_gra" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Score GRA (Grammar)</label>
-                    <input name="nilai_gra" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
+                    <input name="nilai_gra" class="multisteps-form__input form-control autoSaveWriting" type="text" placeholder="score task achievement">
                   </div>
                   <div class="form-group">
                     <label for="kriteria_lr">Evaluation LR (Lexical Resource)</label>
-                    <textarea name="kriteria_lr" class="form-control" id="kriteria_lr" rows="3"></textarea>
+                    <textarea name="kriteria_lr" class="form-control autoSaveWriting" id="kriteria_lr" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Score LR (Lexical Resource)</label>
-                    <input name="nilai_lr" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
+                    <input name="nilai_lr" class="multisteps-form__input form-control autoSaveWriting" type="text" placeholder="score task achievement">
                   </div>
                 </form>
               </div>
@@ -231,35 +231,35 @@
                   <input type="hidden" name="id" id="id">
                   <div class="form-group">
                     <label for="kriteria_topic">Fluency and Coherence</label>
-                    <textarea name="kriteria_topic" class="form-control" id="kriteria_topic" rows="3"></textarea>
+                    <textarea name="kriteria_topic" class="form-control autoSaveSpeaking" id="kriteria_topic" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Score Fluency and Coherence</label>
-                    <input name="nilai_topic" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
+                    <input name="nilai_topic" class="multisteps-form__input form-control autoSaveSpeaking" type="text" placeholder="score task achievement">
                   </div>
                   <div class="form-group">
                     <label for="kriteria_fluency">Lexical Resource</label>
-                    <textarea name="kriteria_fluency" class="form-control" id="kriteria_fluency" rows="3"></textarea>
+                    <textarea name="kriteria_fluency" class="form-control autoSaveSpeaking" id="kriteria_fluency" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Score Lexical Resource</label>
-                    <input name="nilai_fluency" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
+                    <input name="nilai_fluency" class="multisteps-form__input form-control autoSaveSpeaking" type="text" placeholder="score task achievement">
                   </div>
                   <div class="form-group">
                     <label for="kriteria_grammar">Grammatical Range and Accuracy</label>
-                    <textarea name="kriteria_grammar" class="form-control" id="kriteria_grammar" rows="3"></textarea>
+                    <textarea name="kriteria_grammar" class="form-control autoSaveSpeaking" id="kriteria_grammar" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Score Grammatical Range and Accuracy</label>
-                    <input name="nilai_grammar" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
+                    <input name="nilai_grammar" class="multisteps-form__input form-control autoSaveSpeaking" type="text" placeholder="score task achievement">
                   </div>
                   <div class="form-group">
                     <label for="kriteria_vocabulary">Pronunciation</label>
-                    <textarea name="kriteria_vocabulary" class="form-control" id="kriteria_vocabulary" rows="3"></textarea>
+                    <textarea name="kriteria_vocabulary" class="form-control autoSaveSpeaking" id="kriteria_vocabulary" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Score Pronunciation</label>
-                    <input name="nilai_vocabulary" class="multisteps-form__input form-control" type="text" placeholder="score task achievement">
+                    <input name="nilai_vocabulary" class="multisteps-form__input form-control autoSaveSpeaking" type="text" placeholder="score task achievement">
                   </div>
                 </form>
               </div>
@@ -286,8 +286,25 @@
     const btnSimpan = $("#btnSimpan");
 
     btnSimpan.on("click", simpanPesertaIelts);
-    $("#btnSimpanFeedbackWriting").on("click", simpanFeedbackWriting)
-    $("#btnSimpanFeedbackSpeaking").on("click", simpanFeedbackSpeaking)
+    // $("#btnSimpanFeedbackWriting").on("click", simpanFeedbackWriting)
+    // $("#btnSimpanFeedbackSpeaking").on("click", simpanFeedbackSpeaking)
+
+    $("#btnSimpanFeedbackWriting").on("click", function() {
+        simpanFeedbackWriting(true);
+    });
+    // $("#btnSimpanFeedbackSpeaking").on("click", simpanFeedbackSpeaking)
+    $("#btnSimpanFeedbackSpeaking").on("click", function() {
+        simpanFeedbackSpeaking(true);
+    });
+
+    $(".autoSaveWriting").on("keyup", function(){
+        simpanFeedbackWriting(false)
+    })
+
+    // autoSaveSpeaking
+    $(".autoSaveSpeaking").on("keyup", function(){
+        simpanFeedbackSpeaking(false)
+    })
 
     CKEDITOR.replace('kriteria_ta');
     CKEDITOR.replace('kriteria_cc');
@@ -301,6 +318,22 @@
     // $('html, .modal-body').animate({
     //     scrollTop: 0
     //   }, 'slow');
+
+        $('[id^="kriteria_"]').each(function () {
+            var editorId = $(this).attr('id');
+
+            if(editorId == 'kriteria_ta' || editorId == 'kriteria_cc' || editorId == 'kriteria_gra' || editorId == 'kriteria_lr'){
+                CKEDITOR.instances[editorId].on('change', function () {
+                    // Your functionality on CKEditor change
+                    simpanFeedbackWriting(false)
+                });
+            } else if(editorId == 'kriteria_topic' || editorId == 'kriteria_fluency' || editorId == 'kriteria_grammar' || editorId == 'kriteria_vocabulary'){
+                CKEDITOR.instances[editorId].on('change', function () {
+                    // Your functionality on CKEditor change
+                    simpanFeedbackSpeaking(false)
+                });
+            }
+        });
   });
 
   // show data from database
@@ -666,113 +699,234 @@
     });
   }
 
-  function simpanFeedbackWriting(e) {
-    e.preventDefault();
+  // function simpanFeedbackWriting(e) {
+  //   e.preventDefault();
 
-    let id = $(`#formFeedbackWriting [name='id']`).val();
-    let task = $(`#formFeedbackWriting [name='task']`).val();
-    let kriteria_ta = CKEDITOR.instances['kriteria_ta'].getData();
-    let kriteria_cc = CKEDITOR.instances['kriteria_cc'].getData();
-    let kriteria_gra = CKEDITOR.instances['kriteria_gra'].getData();
-    let kriteria_lr = CKEDITOR.instances['kriteria_lr'].getData();
-    let nilai_ta = $(`#formFeedbackWriting [name='nilai_ta']`).val();
-    let nilai_cc = $(`#formFeedbackWriting [name='nilai_cc']`).val();
-    let nilai_gra = $(`#formFeedbackWriting [name='nilai_gra']`).val();
-    let nilai_lr = $(`#formFeedbackWriting [name='nilai_lr']`).val();
+  //   let id = $(`#formFeedbackWriting [name='id']`).val();
+  //   let task = $(`#formFeedbackWriting [name='task']`).val();
+  //   let kriteria_ta = CKEDITOR.instances['kriteria_ta'].getData();
+  //   let kriteria_cc = CKEDITOR.instances['kriteria_cc'].getData();
+  //   let kriteria_gra = CKEDITOR.instances['kriteria_gra'].getData();
+  //   let kriteria_lr = CKEDITOR.instances['kriteria_lr'].getData();
+  //   let nilai_ta = $(`#formFeedbackWriting [name='nilai_ta']`).val();
+  //   let nilai_cc = $(`#formFeedbackWriting [name='nilai_cc']`).val();
+  //   let nilai_gra = $(`#formFeedbackWriting [name='nilai_gra']`).val();
+  //   let nilai_lr = $(`#formFeedbackWriting [name='nilai_lr']`).val();
 
-    $.ajax({
-      url: "<?= base_url()?>clientarea/simpanFeedbackWriting",
-      type: "POST",
-      data: {
-        id: id,
-        task: task,
-        kriteria_ta: kriteria_ta,
-        kriteria_cc: kriteria_cc,
-        kriteria_gra: kriteria_gra,
-        kriteria_lr: kriteria_lr,
-        nilai_ta: nilai_ta,
-        nilai_cc: nilai_cc,
-        nilai_gra: nilai_gra,
-        nilai_lr: nilai_lr
-      },
-      success: function(hasil) {
-        var $obj = $.parseJSON(hasil);
-        if ($obj.sukses == false) {
-          $('.alert-sukses').hide();
-          $('.alert-error').show();
-          $('.error').html($obj.error);
-        } else {
-          $('.alert-error').hide();
-          $('.alert-sukses').show();
-          $('.sukses').html($obj.sukses);
+  //   $.ajax({
+  //     url: "<?= base_url()?>clientarea/simpanFeedbackWriting",
+  //     type: "POST",
+  //     data: {
+  //       id: id,
+  //       task: task,
+  //       kriteria_ta: kriteria_ta,
+  //       kriteria_cc: kriteria_cc,
+  //       kriteria_gra: kriteria_gra,
+  //       kriteria_lr: kriteria_lr,
+  //       nilai_ta: nilai_ta,
+  //       nilai_cc: nilai_cc,
+  //       nilai_gra: nilai_gra,
+  //       nilai_lr: nilai_lr
+  //     },
+  //     success: function(hasil) {
+  //       var $obj = $.parseJSON(hasil);
+  //       if ($obj.sukses == false) {
+  //         $('.alert-sukses').hide();
+  //         $('.alert-error').show();
+  //         $('.error').html($obj.error);
+  //       } else {
+  //         $('.alert-error').hide();
+  //         $('.alert-sukses').show();
+  //         $('.sukses').html($obj.sukses);
 
-          if ($obj.edit == false) {
-            $("#formTambahTes")[0].reset();
-            CKEDITOR.instances['message'].setData('');
-          }
+  //         if ($obj.edit == false) {
+  //           $("#formTambahTes")[0].reset();
+  //           CKEDITOR.instances['message'].setData('');
+  //         }
 
-          $('#table-hasil-tes').DataTable().ajax.reload();
+  //         $('#table-hasil-tes').DataTable().ajax.reload();
+  //       }
+
+  //       $('#feedbackWriting .card-body').animate({
+  //         scrollTop: 0
+  //       }, 'slow');
+  //     }
+  //   });
+  // }
+
+  // function simpanFeedbackSpeaking(e) {
+  //   e.preventDefault();
+
+  //   let id = $(`#formFeedbackSpeaking [name='id']`).val();
+  //   let kriteria_topic = CKEDITOR.instances['kriteria_topic'].getData();
+  //   let kriteria_fluency = CKEDITOR.instances['kriteria_fluency'].getData();
+  //   let kriteria_grammar = CKEDITOR.instances['kriteria_grammar'].getData();
+  //   let kriteria_vocabulary = CKEDITOR.instances['kriteria_vocabulary'].getData();
+  //   let nilai_topic = $(`#formFeedbackSpeaking [name='nilai_topic']`).val();
+  //   let nilai_fluency = $(`#formFeedbackSpeaking [name='nilai_fluency']`).val();
+  //   let nilai_grammar = $(`#formFeedbackSpeaking [name='nilai_grammar']`).val();
+  //   let nilai_vocabulary = $(`#formFeedbackSpeaking [name='nilai_vocabulary']`).val();
+
+  //   $.ajax({
+  //     url: "<?= base_url()?>clientarea/simpanFeedbackSpeaking",
+  //     type: "POST",
+  //     data: {
+  //       id: id,
+  //       kriteria_topic: kriteria_topic,
+  //       kriteria_fluency: kriteria_fluency,
+  //       kriteria_grammar: kriteria_grammar,
+  //       kriteria_vocabulary: kriteria_vocabulary,
+  //       nilai_topic: nilai_topic,
+  //       nilai_fluency: nilai_fluency,
+  //       nilai_grammar: nilai_grammar,
+  //       nilai_vocabulary: nilai_vocabulary
+  //     },
+  //     success: function(hasil) {
+  //       var $obj = $.parseJSON(hasil);
+  //       if ($obj.sukses == false) {
+  //         $('.alert-sukses').hide();
+  //         $('.alert-error').show();
+  //         $('.error').html($obj.error);
+  //       } else {
+  //         $('.alert-error').hide();
+  //         $('.alert-sukses').show();
+  //         $('.sukses').html($obj.sukses);
+
+  //         if ($obj.edit == false) {
+  //           $("#formTambahTes")[0].reset();
+  //           CKEDITOR.instances['message'].setData('');
+  //         }
+
+  //         $('#table-hasil-tes').DataTable().ajax.reload();
+  //       }
+
+  //       $('#feedbackSpeaking .card-body').animate({
+  //         scrollTop: 0
+  //       }, 'slow');
+  //     }
+  //   });
+  // }
+
+    function simpanFeedbackWriting(showMsg) {
+
+        let id = $(`#formFeedbackWriting [name='id']`).val();
+        let task = $(`#formFeedbackWriting [name='task']`).val();
+        let kriteria_ta = CKEDITOR.instances['kriteria_ta'].getData();
+        let kriteria_cc = CKEDITOR.instances['kriteria_cc'].getData();
+        let kriteria_gra = CKEDITOR.instances['kriteria_gra'].getData();
+        let kriteria_lr = CKEDITOR.instances['kriteria_lr'].getData();
+        let nilai_ta = $(`#formFeedbackWriting [name='nilai_ta']`).val();
+        let nilai_cc = $(`#formFeedbackWriting [name='nilai_cc']`).val();
+        let nilai_gra = $(`#formFeedbackWriting [name='nilai_gra']`).val();
+        let nilai_lr = $(`#formFeedbackWriting [name='nilai_lr']`).val();
+
+        $.ajax({
+        url: "<?= base_url()?>/clientarea/simpanFeedbackWriting",
+        type: "POST",
+        data: {
+            id: id,
+            task: task,
+            kriteria_ta: kriteria_ta,
+            kriteria_cc: kriteria_cc,
+            kriteria_gra: kriteria_gra,
+            kriteria_lr: kriteria_lr,
+            nilai_ta: nilai_ta,
+            nilai_cc: nilai_cc,
+            nilai_gra: nilai_gra,
+            nilai_lr: nilai_lr
+        },
+        success: function(hasil) {
+            var $obj = $.parseJSON(hasil);
+            if ($obj.sukses == false) {
+            $('.alert-sukses').hide();
+            $('.alert-error').show();
+            $('.error').html($obj.error);
+            } else {
+            //   $('.alert-error').hide();
+            //   $('.alert-sukses').show();
+            //   $('.sukses').html($obj.sukses);
+
+            if ($obj.edit == false) {
+                $("#formTambahTes")[0].reset();
+                CKEDITOR.instances['message'].setData('');
+            }
+
+            $('#table-hasil-tes').DataTable().ajax.reload();
+            }
+
+            // $('#feedbackWriting .card-body').animate({
+            //   scrollTop: 0
+            // }, 'slow');
+
+            if(showMsg){
+                Toast.fire({
+                    icon: "success",
+                    title: "Berhasil mengubah data"
+                });
+            }
         }
+        });
+    }
 
-        $('#feedbackWriting .card-body').animate({
-          scrollTop: 0
-        }, 'slow');
-      }
-    });
-  }
+    function simpanFeedbackSpeaking(showMsg) {
+        // e.preventDefault();
 
-  function simpanFeedbackSpeaking(e) {
-    e.preventDefault();
+        let id = $(`#formFeedbackSpeaking [name='id']`).val();
+        let kriteria_topic = CKEDITOR.instances['kriteria_topic'].getData();
+        let kriteria_fluency = CKEDITOR.instances['kriteria_fluency'].getData();
+        let kriteria_grammar = CKEDITOR.instances['kriteria_grammar'].getData();
+        let kriteria_vocabulary = CKEDITOR.instances['kriteria_vocabulary'].getData();
+        let nilai_topic = $(`#formFeedbackSpeaking [name='nilai_topic']`).val();
+        let nilai_fluency = $(`#formFeedbackSpeaking [name='nilai_fluency']`).val();
+        let nilai_grammar = $(`#formFeedbackSpeaking [name='nilai_grammar']`).val();
+        let nilai_vocabulary = $(`#formFeedbackSpeaking [name='nilai_vocabulary']`).val();
 
-    let id = $(`#formFeedbackSpeaking [name='id']`).val();
-    let kriteria_topic = CKEDITOR.instances['kriteria_topic'].getData();
-    let kriteria_fluency = CKEDITOR.instances['kriteria_fluency'].getData();
-    let kriteria_grammar = CKEDITOR.instances['kriteria_grammar'].getData();
-    let kriteria_vocabulary = CKEDITOR.instances['kriteria_vocabulary'].getData();
-    let nilai_topic = $(`#formFeedbackSpeaking [name='nilai_topic']`).val();
-    let nilai_fluency = $(`#formFeedbackSpeaking [name='nilai_fluency']`).val();
-    let nilai_grammar = $(`#formFeedbackSpeaking [name='nilai_grammar']`).val();
-    let nilai_vocabulary = $(`#formFeedbackSpeaking [name='nilai_vocabulary']`).val();
+        $.ajax({
+        url: "<?= base_url()?>/clientarea/simpanFeedbackSpeaking",
+        type: "POST",
+        data: {
+            id: id,
+            kriteria_topic: kriteria_topic,
+            kriteria_fluency: kriteria_fluency,
+            kriteria_grammar: kriteria_grammar,
+            kriteria_vocabulary: kriteria_vocabulary,
+            nilai_topic: nilai_topic,
+            nilai_fluency: nilai_fluency,
+            nilai_grammar: nilai_grammar,
+            nilai_vocabulary: nilai_vocabulary
+        },
+        success: function(hasil) {
+            var $obj = $.parseJSON(hasil);
+            if ($obj.sukses == false) {
+            $('.alert-sukses').hide();
+            $('.alert-error').show();
+            $('.error').html($obj.error);
+            } else {
+            //   $('.alert-error').hide();
+            //   $('.alert-sukses').show();
+            //   $('.sukses').html($obj.sukses);
 
-    $.ajax({
-      url: "<?= base_url()?>clientarea/simpanFeedbackSpeaking",
-      type: "POST",
-      data: {
-        id: id,
-        kriteria_topic: kriteria_topic,
-        kriteria_fluency: kriteria_fluency,
-        kriteria_grammar: kriteria_grammar,
-        kriteria_vocabulary: kriteria_vocabulary,
-        nilai_topic: nilai_topic,
-        nilai_fluency: nilai_fluency,
-        nilai_grammar: nilai_grammar,
-        nilai_vocabulary: nilai_vocabulary
-      },
-      success: function(hasil) {
-        var $obj = $.parseJSON(hasil);
-        if ($obj.sukses == false) {
-          $('.alert-sukses').hide();
-          $('.alert-error').show();
-          $('.error').html($obj.error);
-        } else {
-          $('.alert-error').hide();
-          $('.alert-sukses').show();
-          $('.sukses').html($obj.sukses);
+            if ($obj.edit == false) {
+                $("#formTambahTes")[0].reset();
+                CKEDITOR.instances['message'].setData('');
+            }
 
-          if ($obj.edit == false) {
-            $("#formTambahTes")[0].reset();
-            CKEDITOR.instances['message'].setData('');
-          }
+            $('#table-hasil-tes').DataTable().ajax.reload();
+            }
 
-          $('#table-hasil-tes').DataTable().ajax.reload();
+            // $('#feedbackSpeaking .card-body').animate({
+            //   scrollTop: 0
+            // }, 'slow');
+
+            if(showMsg){
+                Toast.fire({
+                    icon: "success",
+                    title: "Berhasil mengubah data"
+                });
+            }
         }
-
-        $('#feedbackSpeaking .card-body').animate({
-          scrollTop: 0
-        }, 'slow');
-      }
-    });
-  }
+        });
+    }
 
 </script>
 <?= $this->endSection() ?>
