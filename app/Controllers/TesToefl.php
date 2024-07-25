@@ -265,6 +265,21 @@ class TesToefl extends BaseController
                     $data['sesi'][$i]['id_sub'] = $sesi['id_sub'];
                 }
             }
+
+            $data['reload_page'] = $db->query("
+                SELECT
+                    *
+                FROM config
+                WHERE field = 'reload_page'
+            ")->getRowArray();
+
+            $data['time_reload'] = $db->query("
+                SELECT
+                    *
+                FROM config
+                WHERE field = 'time_reload'
+            ")->getRowArray();
+
             return view('pages/soal/soal-toefl', $data);
         }
     }

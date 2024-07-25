@@ -503,7 +503,7 @@ class Tes extends BaseController
         // var_dump($url, $id_tes);
         $db = db_connect();
         $peserta = COUNT($db->query("SELECT id FROM peserta_ielts WHERE md5(id_tes) = '$id_tes'")->getResultArray());
-        $data = $db->query("SELECT id_tes, logo, nama_tes, tipe_soal, kuota, `status` FROM tes as a JOIN client as b ON a.fk_id_client = b.id_client WHERE md5(id_tes) = '$id_tes' AND `url` = '$url' AND a.status = 1")->getRowArray();
+        $data = $db->query("SELECT id_tes, logo, nama_tes, tipe_soal, kuota, `status`, listening, reading, writing FROM tes as a JOIN client as b ON a.fk_id_client = b.id_client WHERE md5(id_tes) = '$id_tes' AND `url` = '$url' AND a.status = 1")->getRowArray();
 
         if(is_null($data)){
             
@@ -522,6 +522,20 @@ class Tes extends BaseController
     
             $data['title'] = $data['nama_tes'];
             $data['logo'] = base_url().'/public/assets/logo-client/'.$data['logo'];
+
+            $data['reload_page'] = $db->query("
+                SELECT
+                    *
+                FROM config
+                WHERE field = 'reload_page'
+            ")->getRowArray();
+
+            $data['time_reload'] = $db->query("
+                SELECT
+                    *
+                FROM config
+                WHERE field = 'time_reload'
+            ")->getRowArray();
             
             if($data['tipe_soal'] == "Soal_002"){
                 return view('pages/soal/soal-ielts-002', $data);

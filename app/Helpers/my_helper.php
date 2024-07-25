@@ -47,7 +47,7 @@ function list_soal_toefl()
             $data_pilihan .= '
                 <div class="mb-3">
                     <label style="font-size: 14px; font-weight: normal; color: black">
-                        <input type="radio" data-id="'.$data_soal['name'].'" name="radio-'.$data_soal['no'].'" value="'.$pilihan.'"> 
+                        <input type="radio" data-id="'.$data_soal['name'].'" name="radio-'.$data_soal['name'].'-'.$data_soal['no'].'" value="'.$pilihan.'"> 
                         '.$pilihan.'
                     </label>
                 </div>
