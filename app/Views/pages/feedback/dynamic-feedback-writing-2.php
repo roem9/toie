@@ -9,10 +9,10 @@
     font-size: 25px;
     position: absolute;
     top: 80px;
-    left: 170px;
-    width: 553px;
+    left: 370px;
+    width: 353px;
     /* background-color: red; */
-    text-align: right;
+    text-align: left;
   }
   
   .nilai_ta {
